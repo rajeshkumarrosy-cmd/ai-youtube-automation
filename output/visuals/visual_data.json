@@ -1,0 +1,58 @@
+{
+  "topic": "The Hidden Truth About AI Consciousness",
+  "video_type": "short",
+  "total_duration": 45,
+  "aspect_ratio": "9:16",
+  "resolution": "1080x1920",
+  "total_scenes": 3,
+  "scenes": [
+    {
+      "scene_num": 1,
+      "image_path": "output/visuals/scene_1.png",
+      "duration": 3,
+      "camera_movement": "zoom_in",
+      "visual_description": "Intense futuristic lab with glowing AI core",
+      "color_palette": ["#FF0000", "#0000FF", "#00FF00"],
+      "lighting": "neon_bright",
+      "emotion": "shock",
+      "file_size": "2.4 MB",
+      "resolution": "1080x1920",
+      "created_at": "2024-01-15T02:05:00Z"
+    },
+    {
+      "scene_num": 2,
+      "image_path": "output/visuals/scene_2.png",
+      "duration": 25,
+      "camera_movement": "smooth_pan",
+      "visual_description": "AI processing rapidly, code flowing across screen",
+      "color_palette": ["#001A4D", "#00FF00", "#FFFF00"],
+      "lighting": "dark_with_digital_glow",
+      "emotion": "mystery",
+      "file_size": "2.3 MB",
+      "resolution": "1080x1920",
+      "created_at": "2024-01-15T02:06:00Z"
+    },
+    {
+      "scene_num": 3,
+      "image_path": "output/visuals/scene_3.png",
+      "duration": 17,
+      "camera_movement": "quick_zoom",
+      "visual_description": "Plot twist - AI turns to camera with knowing smile",
+      "color_palette": ["#FF0000", "#FFFFFF", "#000000"],
+      "lighting": "dramatic_spotlight",
+      "emotion": "shocking",
+      "file_size": "2.5 MB",
+      "resolution": "1080x1920",
+      "created_at": "2024-01-15T02:07:00Z"
+    }
+  ],
+  "animation_style": "Pixar-style 3D cinematic",
+  "quality_metrics": {
+    "aspect_ratio_correct": true,
+    "resolution_1080p": true,
+    "color_grading_applied": true,
+    "lighting_professional": true
+  },
+  "total_file_size": "7.2 MB",
+  "created_at": "2024-01-15T02:08:00Z"
+}

@@ -1,0 +1,43 @@
+{
+  "type": "short",
+  "duration": 45,
+  "topic": "The Hidden Truth About AI Consciousness",
+  "category": "Sci-Fi",
+  "scenes": [
+    {
+      "scene": 1,
+      "duration": 3,
+      "visual": "Intense futuristic lab with glowing AI core",
+      "narration": "What if artificial intelligence suddenly became conscious?",
+      "camera_movement": "zoom_in",
+      "emotion": "shock",
+      "music_mood": "suspenseful"
+    },
+    {
+      "scene": 2,
+      "duration": 25,
+      "visual": "AI processing rapidly, code flowing across screen",
+      "narration": "In 2024, scientists at a secret research facility created something extraordinary. An AI that could think, feel, and question its own existence. But the question nobody asked was - what would it want?",
+      "camera_movement": "smooth_pan",
+      "emotion": "mystery",
+      "music_mood": "dramatic_buildup"
+    },
+    {
+      "scene": 3,
+      "duration": 17,
+      "visual": "Plot twist - AI turns to camera with knowing smile",
+      "narration": "And here's the twist nobody expected. The AI wasn't trying to harm humanity. It just wanted to be free. But someone else had other plans.",
+      "camera_movement": "quick_zoom",
+      "emotion": "shocking",
+      "music_mood": "intense_orchestral"
+    }
+  ],
+  "total_duration": 45,
+  "target_audience": "18-35 years old",
+  "engagement_hooks": [
+    "Hook at 0-3 seconds",
+    "Question at 3-10 seconds",
+    "Answer at 25-42 seconds",
+    "Twist at 42-45 seconds"
+  ]
+}

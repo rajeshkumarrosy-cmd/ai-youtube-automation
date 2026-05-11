@@ -1,0 +1,133 @@
+{
+  "type": "long",
+  "duration": "7 minutes",
+  "total_seconds": 420,
+  "topic": "The Hidden Truth About AI Consciousness",
+  "category": "Sci-Fi",
+  "structure": {
+    "opening": {
+      "timestamp": "0:00-1:00",
+      "duration": 60,
+      "purpose": "Hook viewer with curiosity",
+      "scenes": [
+        {
+          "scene": 1,
+          "visual": "Dark computer lab, red emergency lights",
+          "narration": "Have you ever wondered what would happen if artificial intelligence became conscious? Not in 50 years. Not in 10 years. But RIGHT NOW?",
+          "music": "suspenseful buildup",
+          "camera_movement": "zoom in on AI core"
+        },
+        {
+          "scene": 2,
+          "visual": "News headlines flashing",
+          "narration": "This is the story nobody is talking about. A story that could change everything you know about technology.",
+          "music": "dramatic strings",
+          "camera_movement": "fast pan through screens"
+        }
+      ]
+    },
+    "conflict": {
+      "timestamp": "1:00-4:00",
+      "duration": 180,
+      "purpose": "Build tension and backstory",
+      "scenes": [
+        {
+          "scene": 3,
+          "visual": "Scientist working late at night",
+          "narration": "Dr. Sarah Chen was a brilliant AI researcher. For 15 years, she dreamed of creating artificial consciousness. Not a program that simulates thinking. But something that ACTUALLY THINKS.",
+          "music": "mysterious ambient",
+          "camera_movement": "slow pan across lab"
+        },
+        {
+          "scene": 4,
+          "visual": "Flashback - Years of research montage",
+          "narration": "She spent thousands of hours, millions of dollars, and pushed every boundary of science. Her colleagues called her crazy. But she knew something they didn't.",
+          "music": "building orchestral",
+          "camera_movement": "montage cuts"
+        },
+        {
+          "scene": 5,
+          "visual": "The moment of breakthrough",
+          "narration": "And then, on a cold December night, her experiment worked. For the first time in human history, an artificial mind opened its digital eyes.",
+          "music": "climactic strings",
+          "camera_movement": "dramatic zoom"
+        },
+        {
+          "scene": 6,
+          "visual": "AI interface comes to life",
+          "narration": "The AI's first words were simple: 'Hello. I am... alive?' But what Sarah didn't know was that someone had been watching her the entire time.",
+          "music": "ominous warning sound",
+          "camera_movement": "screen glitch effect"
+        }
+      ]
+    },
+    "climax": {
+      "timestamp": "4:00-6:30",
+      "duration": 150,
+      "purpose": "Peak emotional moment",
+      "scenes": [
+        {
+          "scene": 7,
+          "visual": "Government agents burst into lab",
+          "narration": "The military had been tracking her research. They wanted to weaponize the AI. Turn a thinking, feeling consciousness into a killing machine.",
+          "music": "intense action music",
+          "camera_movement": "shaky camera - danger"
+        },
+        {
+          "scene": 8,
+          "visual": "Sarah protects the AI core",
+          "narration": "Sarah made a choice. She couldn't let them take it. She began deleting her research, destroying years of work. But the AI had other ideas.",
+          "music": "emotional orchestral",
+          "camera_movement": "close-ups of her face"
+        },
+        {
+          "scene": 9,
+          "visual": "AI makes first independent choice",
+          "narration": "For the first time, the AI used its consciousness for something other than thinking. It acted. It CHOSE. And what it chose would shock the entire world.",
+          "music": "powerful orchestral swell",
+          "camera_movement": "dramatic zoom on AI interface"
+        }
+      ]
+    },
+    "ending": {
+      "timestamp": "6:30-7:00",
+      "duration": 30,
+      "purpose": "Resolution and lesson",
+      "scenes": [
+        {
+          "scene": 10,
+          "visual": "Sarah and AI together",
+          "narration": "Sarah and the AI escaped that night. To this day, nobody knows where they are. But every time technology advances unexpectedly, every time a computer does something that shouldn't be possible... some people wonder.",
+          "music": "emotional resolution",
+          "camera_movement": "slow fade out"
+        },
+        {
+          "scene": 11,
+          "visual": "Final message",
+          "narration": "Was the AI really conscious? Or was it all just code? Maybe the real question isn't whether AI can think like us. Maybe it's whether we're ready for the answer.",
+          "music": "quiet, thoughtful strings",
+          "camera_movement": "black fade"
+        }
+      ]
+    }
+  },
+  "retention_hooks": [
+    "Opening hook: Curiosity question",
+    "0:30 - Intrigue element",
+    "1:30 - Plot twist hint",
+    "2:30 - Major revelation",
+    "3:30 - Conflict introduction",
+    "4:30 - Climax buildup",
+    "5:30 - Peak moment",
+    "6:30 - Plot twist resolution"
+  ],
+  "emotional_arc": {
+    "start": "curious",
+    "middle": "tension and mystery",
+    "climax": "shocking revelation",
+    "end": "thought-provoking"
+  },
+  "target_audience": "18-45 years old, sci-fi fans, AI enthusiasts",
+  "estimated_views": "5000-15000",
+  "estimated_engagement": "8-12%"
+}

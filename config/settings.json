@@ -1,0 +1,34 @@
+{
+  "channel": {
+    "name": "AI Animation Stories",
+    "description": "Automated AI-generated animation stories",
+    "upload_frequency": "daily",
+    "upload_time": "14:00",
+    "timezone": "UTC"
+  },
+  "video_formats": {
+    "shorts": {
+      "duration": "15-60s",
+      "aspect_ratio": "9:16",
+      "resolution": "1080x1920"
+    },
+    "longform": {
+      "duration": "5-8min",
+      "aspect_ratio": "16:9",
+      "resolution": "1920x1080"
+    }
+  },
+  "free_tools": {
+    "text_generation": "google-generativeai-free",
+    "image_generation": "openai-api-free-tier",
+    "voiceover": "edge-tts",
+    "music": "pixabay-free-music",
+    "video_editing": "moviepy",
+    "youtube_upload": "google-api-python-client"
+  },
+  "quality_standards": {
+    "min_resolution": "1080p",
+    "min_fps": 30,
+    "min_audio_quality": "192kbps"
+  }
+}

@@ -1,0 +1,72 @@
+name: 🎬 Autonomous Daily Video Production
+
+on:
+  schedule:
+    - cron: '0 2 * * *'  # Runs daily at 2 AM UTC
+  workflow_dispatch:     # Manual trigger option
+
+jobs:
+  video-production:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+      
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+      
+      - name: Install Dependencies
+        run: |
+          pip install requests beautifulsoup4 praw google-trends-api \
+          moviepy pillow pyttsx3 edge-tts youtube-dl yt-dlp \
+          google-auth-oauthlib google-auth-httplib2 google-api-python-client
+      
+      - name: 📈 Step 1 - Trend Research
+        run: python scripts/1_trend_research.py
+      
+      - name: ✍️ Step 2 - Script Generation
+        run: python scripts/2_script_generation.py
+      
+      - name: 🎨 Step 3 - Visual Generation
+        run: python scripts/3_visual_generation.py
+      
+      - name: 🎙️ Step 4 - Voiceover Generation
+        run: python scripts/4_voiceover.py
+      
+      - name: 🎵 Step 5 - Background Music & SFX
+        run: python scripts/5_music_sfx.py
+      
+      - name: 🎬 Step 6 - Video Editing
+        run: python scripts/6_video_editing.py
+      
+      - name: 🖼️ Step 7 - Thumbnail Generation
+        run: python scripts/7_thumbnail.py
+      
+      - name: 🔍 Step 8 - SEO Optimization
+        run: python scripts/8_seo_optimization.py
+      
+      - name: 📤 Step 9 - YouTube Upload
+        env:
+          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
+          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
+        run: python scripts/9_youtube_upload.py
+      
+      - name: 📊 Step 10 - Analytics & Learning
+        run: python scripts/10_analytics.py
+      
+      - name: 📝 Commit Results
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "AI Bot"
+          git add -A
+          git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d')"
+          git push
+
+      - name: 📧 Send Notification
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log("✅ Video production completed successfully!");

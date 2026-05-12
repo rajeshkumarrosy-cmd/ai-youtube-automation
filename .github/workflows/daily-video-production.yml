@@ -58,12 +58,14 @@ jobs:
         run: python scripts/10_analytics.py
       
       - name: 📝 Commit Results
-        run: |
-          git config --local user.email "action@github.com"
-          git config --local user.name "AI Bot"
-          git add -A
-          git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d')"
-          git push
+  env:
+    GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  run: |
+    git config --local user.email "action@github.com"
+    git config --local user.name "AI Bot"
+    git add -A
+    git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d')" || echo "No changes to commit"
+    git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git || echo "Push failed, continuing..."
 
       - name: 📧 Send Notification
         uses: actions/github-script@v6

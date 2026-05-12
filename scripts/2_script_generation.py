@@ -4,8 +4,9 @@ from datetime import datetime
 
 class ScriptGenerator:
     """
-    Generates complete video scripts from trending topics
-    NO EXTERNAL API NEEDED - Uses templates and rules
+    Generates DIFFERENT scripts for short vs long videos
+    Short: 45-60 seconds, 3 scenes
+    Long: 5-8 minutes, 4 acts with subplots
     """
     
     def __init__(self):
@@ -15,475 +16,273 @@ class ScriptGenerator:
         self.short_script_file = f"{self.output_dir}/short_script.json"
         self.long_script_file = f"{self.output_dir}/long_script.json"
     
-    # ============================================
-    # METHOD 1: Load Topics from Step 1
-    # ============================================
     def load_topics(self):
-        """
-        Loads trending topics from Step 1
-        """
+        """Load topics from Step 1"""
         try:
             with open("output/scripts/trending_topics.json", 'r') as f:
                 data = json.load(f)
                 return data.get('topics', [])
         except FileNotFoundError:
-            print("⚠️ No trending topics found!")
+            print("⚠️ No topics found!")
             return []
     
     # ============================================
-    # METHOD 2: Generate Narration Based on Category
-    # ============================================
-    def get_narration_templates(self, category, title):
-        """
-        Gets narration templates based on story category
-        NO API CALL NEEDED
-        """
-        
-        templates = {
-            'Sci-Fi': {
-                'scene1': f"What if {title.lower()} suddenly became a reality?",
-                'scene2': f"In 2024, scientists made a discovery about {title.lower()}. Something extraordinary.",
-                'scene3': f"But here's the twist nobody expected about {title.lower()}."
-            },
-            'Horror': {
-                'scene1': f"The terrifying truth about {title.lower()} is finally revealed.",
-                'scene2': f"Witnesses reported something shocking related to {title.lower()}. Something unexplainable.",
-                'scene3': f"And then, something even more horrifying about {title.lower()} happened."
-            },
-            'Motivational': {
-                'scene1': f"How did someone achieve {title.lower()}? The answer might surprise you.",
-                'scene2': f"Against all odds, they pursued their dream of {title.lower()}. Here's how they did it.",
-                'scene3': f"The lessons from {title.lower()} will change how you see success."
-            },
-            'Mystery': {
-                'scene1': f"The mystery of {title.lower()} has stumped experts for years.",
-                'scene2': f"Investigators finally uncovered the truth about {title.lower()}.",
-                'scene3': f"The shocking revelation about {title.lower()} will blow your mind."
-            },
-            'Kids Stories': {
-                'scene1': f"Once upon a time, {title.lower()} began an incredible adventure.",
-                'scene2': f"On their journey, they discovered something magical about {title.lower()}.",
-                'scene3': f"And that's how {title.lower()} changed everything forever."
-            },
-            'Emotional': {
-                'scene1': f"The story of {title.lower()} is one of heartbreak and hope.",
-                'scene2': f"Through tears and struggles, someone overcame {title.lower()}.",
-                'scene3': f"The lesson from {title.lower()} will touch your heart forever."
-            },
-            'Adventure': {
-                'scene1': f"The adventure of {title.lower()} begins with a single decision.",
-                'scene2': f"Facing unimaginable challenges, they pursued {title.lower()}.",
-                'scene3': f"The incredible ending of {title.lower()} will amaze you."
-            }
-        }
-        
-        # Return template for category, or default
-        return templates.get(category, templates['Adventure'])
-    
-    # ============================================
-    # METHOD 3: Generate Short Script (45-60 sec)
+    # SHORT SCRIPT: 45-60 seconds
     # ============================================
     def generate_short_script(self, topic):
         """
-        Creates a complete short-form video script
-        Duration: 45-60 seconds
+        SHORT VIDEO: 45-60 seconds
+        - Hook instantly
+        - Tell story fast
+        - Leave audience wanting more
+        - Perfect for Shorts
         """
-        print(f"✍️ Generating short script for: {topic['title']}")
+        print(f"✍️ Generating SHORT script (45s)...")
         
         title = topic.get('title', 'Untitled')
         category = topic.get('category', 'Adventure')
         
-        # Get narration for this category
-        narrations = self.get_narration_templates(category, title)
-        
         script = {
             'type': 'short',
-            'format': 'vertical',
+            'format': 'vertical (9:16)',
             'duration': 45,
             'topic': title,
             'category': category,
             'created_at': datetime.now().isoformat(),
             
+            'structure': 'Hook → Tension → Twist',
+            
             'scenes': [
                 {
                     'scene': 1,
                     'duration': 3,
-                    'timing': '0:00-0:03',
-                    'visual': {
-                        'description': f"Shocking moment related to: {title}",
-                        'style': 'Pixar 3D cinematic',
-                        'emotion': 'shock',
-                        'colors': ['bright_red', 'gold', 'black'],
-                        'lighting': 'dramatic spotlight',
-                        'camera_movement': 'zoom_in',
-                        'camera_speed': 'fast'
-                    },
-                    'narration': narrations['scene1'],
-                    'audio': {
-                        'mood': 'suspenseful',
-                        'music_intensity': 'building'
-                    },
-                    'effects': {
-                        'transition_in': 'quick_zoom',
-                        'transition_out': 'fade',
-                        'text_overlay': 'None'
-                    }
+                    'visual': f"INTENSE SHOCK IMAGE related to {title}",
+                    'narration': f"Wait... what if {title.lower()} is actually real?",
+                    'tone': 'shocked',
+                    'music': 'suspenseful'
                 },
-                
                 {
                     'scene': 2,
                     'duration': 25,
-                    'timing': '0:03-0:28',
-                    'visual': {
-                        'description': f"The incredible story unfolds: {title}",
-                        'style': 'Pixar 3D cinematic',
-                        'emotion': 'mystery',
-                        'colors': ['blue', 'purple', 'cyan'],
-                        'lighting': 'atmospheric',
-                        'camera_movement': 'smooth_pan',
-                        'camera_speed': 'slow'
-                    },
-                    'narration': narrations['scene2'],
-                    'audio': {
-                        'mood': 'dramatic',
-                        'music_intensity': 'building'
-                    },
-                    'effects': {
-                        'transition_in': 'fade',
-                        'transition_out': 'fade',
-                        'text_overlay': 'Title text'
-                    }
+                    'visual': f"Evidence and story unfolds about {title}",
+                    'narration': f"Experts discovered something about {title}. The truth is more shocking than anyone imagined. Scientists couldn't explain it for years.",
+                    'tone': 'mysterious',
+                    'music': 'building tension'
                 },
-                
                 {
                     'scene': 3,
                     'duration': 17,
-                    'timing': '0:28-0:45',
-                    'visual': {
-                        'description': f"Plot twist! {title}",
-                        'style': 'Pixar 3D cinematic',
-                        'emotion': 'shocking',
-                        'colors': ['red', 'white', 'yellow'],
-                        'lighting': 'intense',
-                        'camera_movement': 'quick_zoom',
-                        'camera_speed': 'fast'
-                    },
-                    'narration': narrations['scene3'],
-                    'audio': {
-                        'mood': 'intense',
-                        'music_intensity': 'peak'
-                    },
-                    'effects': {
-                        'transition_in': 'shock_cut',
-                        'transition_out': 'black_fade',
-                        'text_overlay': 'Subscribe button reminder'
-                    }
+                    'visual': f"PLOT TWIST - Ultimate revelation about {title}",
+                    'narration': f"But here's what NOBODY expected. The real story behind {title} will change how you see everything.",
+                    'tone': 'shocking revelation',
+                    'music': 'dramatic peak'
                 }
             ],
             
-            'retention_hooks': [
-                {'time': '0:00-0:03', 'hook': 'Shocking visual hook'},
-                {'time': '0:15', 'hook': 'Question asked - curiosity gap'},
-                {'time': '0:25', 'hook': 'Hint at revelation'},
-                {'time': '0:40', 'hook': 'Unexpected twist'}
-            ],
-            
-            'emotional_arc': {
-                'start': 'curious',
-                'middle': 'intrigued',
-                'climax': 'shocked',
-                'end': 'satisfied'
-            }
+            'hooks': [
+                '0:00-0:03 = Immediate shock',
+                '0:15 = "Wait..." moment',
+                '0:30 = Plot twist hint',
+                '0:42 = Cliffhanger ending'
+            ]
         }
         
         return script
     
     # ============================================
-    # METHOD 4: Generate Long Script (5-8 min)
+    # LONG SCRIPT: 5-8 minutes
     # ============================================
     def generate_long_script(self, topic):
         """
-        Creates a complete long-form video script
-        Duration: 5-8 minutes
+        LONG VIDEO: 5-8 minutes
+        - Deep storytelling
+        - Character development
+        - Multiple plot points
+        - Emotional journey
         """
-        print(f"📖 Generating long script for: {topic['title']}")
+        print(f"📖 Generating LONG script (7 minutes)...")
         
         title = topic.get('title', 'Untitled')
         category = topic.get('category', 'Adventure')
         
-        # Get narrations
-        narrations = self.get_narration_templates(category, title)
-        
         script = {
             'type': 'long',
-            'format': 'horizontal',
+            'format': 'horizontal (16:9)',
             'duration': '7 minutes',
             'total_seconds': 420,
             'topic': title,
             'category': category,
             'created_at': datetime.now().isoformat(),
             
-            'structure': {
-                
-                # ACT 1: OPENING (0:00-1:00)
-                'opening': {
-                    'act': 1,
-                    'duration': 60,
-                    'timestamp': '0:00-1:00',
-                    'purpose': 'Hook + Context',
-                    'key_emotion': 'curiosity',
+            'structure': 'Introduction → Conflict → Climax → Resolution',
+            
+            'acts': {
+                'act_1_opening': {
+                    'name': 'THE QUESTION',
+                    'timestamp': '0:00-1:30',
+                    'duration': 90,
+                    'purpose': 'Hook and establish mystery',
                     'scenes': [
                         {
                             'scene': 1,
-                            'duration': 30,
-                            'narration': f"Have you ever wondered about {title}?",
-                            'visual': f"Shocking visual of {title}",
-                            'music': 'suspenseful_buildup',
-                            'camera': 'zoom_in'
+                            'duration': 45,
+                            'narration': f"Have you ever wondered what really happened with {title}? Most people don't know the REAL story.",
+                            'visual': f"Intriguing visuals about {title}"
                         },
                         {
                             'scene': 2,
-                            'duration': 30,
-                            'narration': f"This is the story nobody is talking about. A story that could change everything.",
-                            'visual': f"News headlines about {title}",
-                            'music': 'dramatic_strings',
-                            'camera': 'fast_pan'
+                            'duration': 45,
+                            'narration': f"The official story says one thing. But the truth? The truth is much stranger than anyone imagined.",
+                            'visual': f"News clips and evidence about {title}"
                         }
                     ]
                 },
                 
-                # ACT 2: CONFLICT (1:00-4:00)
-                'conflict': {
-                    'act': 2,
-                    'duration': 180,
-                    'timestamp': '1:00-4:00',
-                    'purpose': 'Build tension + Backstory',
-                    'key_emotion': 'mystery',
+                'act_2_conflict': {
+                    'name': 'THE INVESTIGATION',
+                    'timestamp': '1:30-4:00',
+                    'duration': 150,
+                    'purpose': 'Build tension and reveal backstory',
                     'scenes': [
                         {
                             'scene': 3,
-                            'duration': 45,
-                            'narration': f"For years, nobody knew the truth about {title}.",
-                            'visual': f"Character introduction related to {title}",
-                            'music': 'mysterious_ambient',
-                            'camera': 'slow_pan'
+                            'duration': 50,
+                            'narration': f"It started with a discovery. Scientists found something unexpected about {title}.",
+                            'visual': f"Research and investigation scenes"
                         },
                         {
                             'scene': 4,
-                            'duration': 45,
-                            'narration': f"They spent years searching for answers about {title}. Everyone said they were crazy.",
-                            'visual': f"Montage of research and investigation",
-                            'music': 'building_orchestral',
-                            'camera': 'montage_cuts'
+                            'duration': 50,
+                            'narration': f"They kept digging deeper. What they found contradicted everything they believed about {title}.",
+                            'visual': f"Mounting evidence and complications"
                         },
                         {
                             'scene': 5,
-                            'duration': 45,
-                            'narration': f"And then, they found something incredible related to {title}.",
-                            'visual': f"The breakthrough moment",
-                            'music': 'climactic_strings',
-                            'camera': 'dramatic_zoom'
-                        },
-                        {
-                            'scene': 6,
-                            'duration': 45,
-                            'narration': f"But what they didn't know was that someone else had been watching.",
-                            'visual': f"Mysterious figures in shadows",
-                            'music': 'ominous_warning',
-                            'camera': 'glitch_effect'
+                            'duration': 50,
+                            'narration': f"But their investigation caught the attention of powerful people. People who wanted to keep the truth about {title} hidden.",
+                            'visual': f"Tension and conflict emerging"
                         }
                     ]
                 },
                 
-                # ACT 3: CLIMAX (4:00-6:30)
-                'climax': {
-                    'act': 3,
-                    'duration': 150,
-                    'timestamp': '4:00-6:30',
-                    'purpose': 'Peak emotional moment',
-                    'key_emotion': 'shock',
+                'act_3_climax': {
+                    'name': 'THE REVELATION',
+                    'timestamp': '4:00-6:00',
+                    'duration': 120,
+                    'purpose': 'Peak emotional moment, big reveal',
                     'scenes': [
                         {
-                            'scene': 7,
-                            'duration': 50,
-                            'narration': f"The stakes had never been higher. Everything changed.",
-                            'visual': f"Conflict/confrontation scene",
-                            'music': 'intense_action',
-                            'camera': 'shaky_danger'
+                            'scene': 6,
+                            'duration': 60,
+                            'narration': f"They had to make a choice. Hide the truth about {title}, or risk everything to expose it.",
+                            'visual': f"Critical decision moment"
                         },
                         {
+                            'scene': 7,
+                            'duration': 60,
+                            'narration': f"They chose the truth. And what they revealed about {title} shocked the world. Everything changed after that.",
+                            'visual': f"Shocking revelation and impact"
+                        }
+                    ]
+                },
+                
+                'act_4_resolution': {
+                    'name': 'THE TRUTH',
+                    'timestamp': '6:00-7:00',
+                    'duration': 60,
+                    'purpose': 'Wrap up and life lesson',
+                    'scenes': [
+                        {
                             'scene': 8,
-                            'duration': 50,
-                            'narration': f"A critical choice had to be made. There was no going back.",
-                            'visual': f"Character making critical decision",
-                            'music': 'emotional_orchestral',
-                            'camera': 'close_up_emotion'
+                            'duration': 30,
+                            'narration': f"Today, the truth about {title} is finally known. But not everyone believes it.",
+                            'visual': f"Aftermath and new normal"
                         },
                         {
                             'scene': 9,
-                            'duration': 50,
-                            'narration': f"And then, something nobody expected happened.",
-                            'visual': f"The twist revelation",
-                            'music': 'powerful_swell',
-                            'camera': 'dramatic_zoom'
-                        }
-                    ]
-                },
-                
-                # ACT 4: ENDING (6:30-7:00)
-                'ending': {
-                    'act': 4,
-                    'duration': 30,
-                    'timestamp': '6:30-7:00',
-                    'purpose': 'Resolution + Lesson',
-                    'key_emotion': 'reflection',
-                    'scenes': [
-                        {
-                            'scene': 10,
-                            'duration': 20,
-                            'narration': f"To this day, people still wonder about {title}.",
-                            'visual': f"Resolution scene",
-                            'music': 'emotional_resolution',
-                            'camera': 'slow_fade'
-                        },
-                        {
-                            'scene': 11,
-                            'duration': 10,
-                            'narration': f"What do you think about {title}? Let us know in the comments!",
-                            'visual': f"Final message",
-                            'music': 'quiet_strings',
-                            'camera': 'black_fade'
+                            'duration': 30,
+                            'narration': f"What we learned from {title} is this: the truth always matters. Even when it's uncomfortable.",
+                            'visual': f"Final reflection and conclusion"
                         }
                     ]
                 }
             },
             
-            'retention_hooks': [
-                {'time': '0:00-0:30', 'hook': 'Opening question hook'},
-                {'time': '0:45', 'hook': 'Curiosity gap'},
-                {'time': '1:30', 'hook': 'Plot twist hint'},
-                {'time': '2:30', 'hook': 'Major revelation'},
-                {'time': '3:30', 'hook': 'Conflict introduced'},
-                {'time': '4:00', 'hook': 'Stakes raised'},
-                {'time': '4:30', 'hook': 'Climax buildup'},
-                {'time': '5:30', 'hook': 'Peak moment'},
-                {'time': '6:00', 'hook': 'Plot twist revealed'},
-                {'time': '6:30', 'hook': 'Resolution'}
-            ],
-            
-            'emotional_arc': {
-                'opening': 'curious',
-                'buildup': 'tense',
-                'climax': 'shocked',
-                'ending': 'thoughtful'
-            },
-            
-            'target_audience': '18-45 years old',
-            'estimated_views': '5000-15000',
-            'estimated_watch_time_minutes': 4.5
+            'retention_points': [
+                '0:30 - Hook question',
+                '1:30 - Conflict introduced',
+                '2:30 - Stakes raised',
+                '3:30 - Major complication',
+                '4:30 - Climax begins',
+                '5:30 - Peak moment',
+                '6:00 - Resolution starts',
+                '6:30 - Final message'
+            ]
         }
         
         return script
     
     # ============================================
-    # METHOD 5: Save Scripts
+    # SAVE SCRIPTS
     # ============================================
     def save_scripts(self, short_script, long_script):
-        """
-        Saves both scripts to JSON files
-        """
-        # Save short script
+        """Save both scripts"""
         with open(self.short_script_file, 'w') as f:
             json.dump(short_script, f, indent=2)
-        print(f"✅ Short script saved: {self.short_script_file}")
+        print(f"✅ Short script saved")
         
-        # Save long script
         with open(self.long_script_file, 'w') as f:
             json.dump(long_script, f, indent=2)
-        print(f"✅ Long script saved: {self.long_script_file}")
+        print(f"✅ Long script saved")
     
     # ============================================
-    # METHOD 6: Print Results
-    # ============================================
-    def print_script_info(self, short_script, long_script):
-        """
-        Prints script information
-        """
-        print(f"""
-╔═══════════════════════════════════════════════════════╗
-║            📝 SCRIPTS GENERATED SUCCESSFULLY           ║
-╚═══════════════════════════════════════════════════════╝
-
-📊 SHORT SCRIPT:
-   Duration: {short_script['duration']} seconds
-   Scenes: {len(short_script['scenes'])}
-   Format: {short_script['format']}
-   Topic: {short_script['topic']}
-   Category: {short_script['category']}
-   File: {self.short_script_file}
-
-📊 LONG SCRIPT:
-   Duration: {long_script['duration']}
-   Acts: {len(long_script['structure'])}
-   Format: {long_script['format']}
-   Topic: {long_script['topic']}
-   File: {self.long_script_file}
-
-✨ Features:
-   ✓ Retention hooks included
-   ✓ Emotional arc designed
-   ✓ Camera movements detailed
-   ✓ Music mood specified
-   ✓ Narration written
-   ✓ NO API calls needed
-        """)
-    
-    # ============================================
-    # MAIN RUN METHOD
+    # MAIN RUN
     # ============================================
     def run(self):
-        """
-        Execute script generation
-        """
+        """Generate scripts"""
         print("\n" + "="*60)
-        print("✍️ STEP 2: SCRIPT GENERATION STARTING...")
+        print("✍️ STEP 2: SCRIPT GENERATION")
         print("="*60 + "\n")
         
-        # Check if topics exist
         if not self.topics:
-            print("⚠️ No topics found! Using default topic...")
+            print("⚠️ No topics found! Using default...")
             self.topics = [{
-                'title': 'The Most Incredible AI Story Ever Told',
+                'title': 'The Most Incredible Discovery Ever',
                 'category': 'Sci-Fi'
             }]
         
-        # Select best topic
-        selected_topic = self.topics[0]
-        print(f"\n🎯 Selected Topic: {selected_topic['title']}")
-        print(f"📂 Category: {selected_topic['category']}\n")
+        topic = self.topics[0]
+        print(f"🎯 Topic: {topic['title']}")
+        print(f"📂 Category: {topic['category']}\n")
         
-        # Generate scripts
-        short_script = self.generate_short_script(selected_topic)
-        long_script = self.generate_long_script(selected_topic)
+        # Generate different scripts
+        short_script = self.generate_short_script(topic)
+        long_script = self.generate_long_script(topic)
         
-        # Save to files
+        # Save
         self.save_scripts(short_script, long_script)
-        
-        # Print results
-        self.print_script_info(short_script, long_script)
         
         print(f"""
 ╔═══════════════════════════════════════════════════════╗
-║           ✅ SCRIPT GENERATION COMPLETE               ║
+║         ✅ SCRIPT GENERATION COMPLETE                 ║
 ╚═══════════════════════════════════════════════════════╝
 
-🎬 Next Step: Visual Generation
+📊 SHORT SCRIPT (45 seconds):
+   Scenes: 3
+   Focus: Fast-paced, instant hook
+   Structure: Hook → Tension → Twist
+
+📊 LONG SCRIPT (7 minutes):
+   Scenes: 9
+   Focus: Deep storytelling
+   Structure: Opening → Conflict → Climax → Resolution
+
+✨ Both scripts are COMPLETELY DIFFERENT!
+   - Short = Shorts/Reels
+   - Long = YouTube Videos
         """)
         
-        return {
-            'short': short_script,
-            'long': long_script
-        }
+        return {'short': short_script, 'long': long_script}
 
 # ============================================
 # RUN THE SCRIPT

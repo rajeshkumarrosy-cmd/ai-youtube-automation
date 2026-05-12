@@ -1,0 +1,53 @@
+{
+  "generated_at": "2024-01-15T02:11:00Z",
+  "background_music": {
+    "file": "output/music_sfx/background_music.mp3",
+    "title": "Suspenseful Orchestral Theme",
+    "artist": "Free Music Source",
+    "source": "Pixabay",
+    "license": "CC0 - Public Domain",
+    "duration": 45,
+    "volume": 0.4,
+    "fade_in": 1.0,
+    "fade_out": 2.0,
+    "tempo": "120 BPM",
+    "mood": "suspenseful",
+    "genre": "orchestral"
+  },
+  "voiceover": {
+    "volume": 1.0,
+    "normalization": true,
+    "compression": true,
+    "eq_applied": "voice_enhancement"
+  },
+  "sound_effects": [
+    {
+      "name": "Transition Whoosh",
+      "file": "output/music_sfx/whoosh.mp3",
+      "start_time": 0.15,
+      "duration": 0.5,
+      "volume": 0.6,
+      "source": "Freesound"
+    },
+    {
+      "name": "Dramatic Sting",
+      "file": "output/music_sfx/sting.mp3",
+      "start_time": 0.45,
+      "duration": 0.8,
+      "volume": 0.6,
+      "source": "Zapsplat"
+    }
+  ],
+  "audio_mix_levels": {
+    "background_music": -12,
+    "voiceover": 0,
+    "sound_effects": -6,
+    "overall_lufs": -14
+  },
+  "audio_quality": {
+    "sample_rate": "44100 Hz",
+    "bit_depth": "16-bit",
+    "stereo": true,
+    "codec": "MP3"
+  }
+}

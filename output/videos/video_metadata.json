@@ -1,7 +1,8 @@
 {
-  "generated_at": "2026-05-12T16:18:11.388705",
+  "generated_at": "2026-05-12T18:28:41.341600",
   "type": "long",
-  "output_file": null,
-  "file_exists": false,
-  "status": "pending"
+  "output_file": "output/videos/final_video_long.mp4",
+  "file_exists": true,
+  "file_size_mb": 0.52,
+  "status": "ready"
 }

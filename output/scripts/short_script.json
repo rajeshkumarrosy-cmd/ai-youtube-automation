@@ -1,43 +1,118 @@
 {
   "type": "short",
+  "format": "vertical",
   "duration": 45,
-  "topic": "The Hidden Truth About AI Consciousness",
-  "category": "Sci-Fi",
+  "topic": "Magic Forest Adventure",
+  "category": "Kids Stories",
+  "created_at": "2026-05-12T16:18:09.102560",
   "scenes": [
     {
       "scene": 1,
       "duration": 3,
-      "visual": "Intense futuristic lab with glowing AI core",
-      "narration": "What if artificial intelligence suddenly became conscious?",
-      "camera_movement": "zoom_in",
-      "emotion": "shock",
-      "music_mood": "suspenseful"
+      "timing": "0:00-0:03",
+      "visual": {
+        "description": "Shocking moment related to: Magic Forest Adventure",
+        "style": "Pixar 3D cinematic",
+        "emotion": "shock",
+        "colors": [
+          "bright_red",
+          "gold",
+          "black"
+        ],
+        "lighting": "dramatic spotlight",
+        "camera_movement": "zoom_in",
+        "camera_speed": "fast"
+      },
+      "narration": "Once upon a time, magic forest adventure began an incredible adventure.",
+      "audio": {
+        "mood": "suspenseful",
+        "music_intensity": "building"
+      },
+      "effects": {
+        "transition_in": "quick_zoom",
+        "transition_out": "fade",
+        "text_overlay": "None"
+      }
     },
     {
       "scene": 2,
       "duration": 25,
-      "visual": "AI processing rapidly, code flowing across screen",
-      "narration": "In 2024, scientists at a secret research facility created something extraordinary. An AI that could think, feel, and question its own existence. But the question nobody asked was - what would it want?",
-      "camera_movement": "smooth_pan",
-      "emotion": "mystery",
-      "music_mood": "dramatic_buildup"
+      "timing": "0:03-0:28",
+      "visual": {
+        "description": "The incredible story unfolds: Magic Forest Adventure",
+        "style": "Pixar 3D cinematic",
+        "emotion": "mystery",
+        "colors": [
+          "blue",
+          "purple",
+          "cyan"
+        ],
+        "lighting": "atmospheric",
+        "camera_movement": "smooth_pan",
+        "camera_speed": "slow"
+      },
+      "narration": "On their journey, they discovered something magical about magic forest adventure.",
+      "audio": {
+        "mood": "dramatic",
+        "music_intensity": "building"
+      },
+      "effects": {
+        "transition_in": "fade",
+        "transition_out": "fade",
+        "text_overlay": "Title text"
+      }
     },
     {
       "scene": 3,
       "duration": 17,
-      "visual": "Plot twist - AI turns to camera with knowing smile",
-      "narration": "And here's the twist nobody expected. The AI wasn't trying to harm humanity. It just wanted to be free. But someone else had other plans.",
-      "camera_movement": "quick_zoom",
-      "emotion": "shocking",
-      "music_mood": "intense_orchestral"
+      "timing": "0:28-0:45",
+      "visual": {
+        "description": "Plot twist! Magic Forest Adventure",
+        "style": "Pixar 3D cinematic",
+        "emotion": "shocking",
+        "colors": [
+          "red",
+          "white",
+          "yellow"
+        ],
+        "lighting": "intense",
+        "camera_movement": "quick_zoom",
+        "camera_speed": "fast"
+      },
+      "narration": "And that's how magic forest adventure changed everything forever.",
+      "audio": {
+        "mood": "intense",
+        "music_intensity": "peak"
+      },
+      "effects": {
+        "transition_in": "shock_cut",
+        "transition_out": "black_fade",
+        "text_overlay": "Subscribe button reminder"
+      }
     }
   ],
-  "total_duration": 45,
-  "target_audience": "18-35 years old",
-  "engagement_hooks": [
-    "Hook at 0-3 seconds",
-    "Question at 3-10 seconds",
-    "Answer at 25-42 seconds",
-    "Twist at 42-45 seconds"
-  ]
+  "retention_hooks": [
+    {
+      "time": "0:00-0:03",
+      "hook": "Shocking visual hook"
+    },
+    {
+      "time": "0:15",
+      "hook": "Question asked - curiosity gap"
+    },
+    {
+      "time": "0:25",
+      "hook": "Hint at revelation"
+    },
+    {
+      "time": "0:40",
+      "hook": "Unexpected twist"
+    }
+  ],
+  "emotional_arc": {
+    "start": "curious",
+    "middle": "intrigued",
+    "climax": "shocked",
+    "end": "satisfied"
+  }
 }

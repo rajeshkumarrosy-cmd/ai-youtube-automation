@@ -1,0 +1,5 @@
+{
+  "status": "pending",
+  "message": "Video file not found - check video editing step",
+  "recommended_action": "Run video editing step and retry"
+}

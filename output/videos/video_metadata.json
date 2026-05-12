@@ -1,54 +1,7 @@
 {
-  "generated_at": "2024-01-15T02:15:00Z",
-  "videos": [
-    {
-      "type": "short",
-      "filename": "final_video_short.mp4",
-      "file_path": "output/videos/final_video_short.mp4",
-      "duration": 45,
-      "aspect_ratio": "9:16",
-      "resolution": "1080x1920",
-      "fps": 30,
-      "codec": "H.264",
-      "bitrate": "5000 kbps",
-      "audio_codec": "AAC",
-      "audio_bitrate": "128 kbps",
-      "file_size": "28.5 MB",
-      "quality": "1080p",
-      "created_at": "2024-01-15T02:15:30Z",
-      "status": "ready_for_upload"
-    },
-    {
-      "type": "long",
-      "filename": "final_video_long.mp4",
-      "file_path": "output/videos/final_video_long.mp4",
-      "duration": 420,
-      "aspect_ratio": "16:9",
-      "resolution": "1920x1080",
-      "fps": 30,
-      "codec": "H.264",
-      "bitrate": "6000 kbps",
-      "audio_codec": "AAC",
-      "audio_bitrate": "192 kbps",
-      "file_size": "315 MB",
-      "quality": "1080p",
-      "created_at": "2024-01-15T02:25:00Z",
-      "status": "ready_for_upload"
-    }
-  ],
-  "video_quality_checks": {
-    "resolution_correct": true,
-    "framerate_30fps": true,
-    "audio_synced": true,
-    "no_black_bars": true,
-    "transitions_smooth": true,
-    "captions_readable": true
-  },
-  "effects_applied": {
-    "zoom_effects": true,
-    "color_grading": true,
-    "transitions": true,
-    "captions": true,
-    "motion_effects": true
-  }
+  "generated_at": "2026-05-12T16:18:11.388705",
+  "type": "long",
+  "output_file": null,
+  "file_exists": false,
+  "status": "pending"
 }

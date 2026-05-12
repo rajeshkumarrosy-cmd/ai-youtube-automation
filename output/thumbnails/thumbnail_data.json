@@ -1,40 +1,15 @@
 {
-  "generated_at": "2024-01-15T02:20:00Z",
   "main_thumbnail": "output/thumbnails/thumbnail_main.png",
-  "thumbnail_size": "1280x720",
-  "thumbnail_variants": {
-    "main": {
-      "file": "output/thumbnails/thumbnail_main.png",
-      "style": "Bold Red",
-      "color_scheme": ["#FF0000", "#FFFFFF", "#FFFF00"],
-      "text": "AI BECAME CONSCIOUS - SHOCKING TRUTH"
-    },
-    "variant_1": {
-      "file": "output/thumbnails/thumbnail_variant_1.png",
-      "style": "Dark Mystery",
-      "color_scheme": ["#1A1A1A", "#FFFFFF", "#0099FF"]
-    },
-    "variant_2": {
-      "file": "output/thumbnails/thumbnail_variant_2.png",
-      "style": "Golden Glow",
-      "color_scheme": ["#FFD700", "#FFFFFF", "#FF6600"]
-    }
-  },
-  "ctr_optimization": {
-    "text_size": "Large and readable",
-    "color_contrast": "High",
-    "emotional_element": "Shocked face emoji",
-    "curiosity_gap": "Present (arrow pointing)",
-    "brand_consistency": true
-  },
-  "click_through_rate_estimate": "8-12%",
-  "design_principles": [
+  "variants": [
+    "output/thumbnails/thumbnail_variant_1.png",
+    "output/thumbnails/thumbnail_variant_2.png",
+    "output/thumbnails/thumbnail_variant_3.png"
+  ],
+  "ctr_tips": [
     "High contrast colors (red, yellow, blue)",
-    "Large readable text (minimum 60px)",
-    "Emotional faces or expressions",
-    "Curiosity gap - 'what happens next?'",
-    "Arrow or pointer element",
-    "Maximum 3 colors",
-    "No tiny text or crowded layout"
+    "Large readable text",
+    "Emotional faces",
+    "Curiosity gap words (shocking, hidden, revealed)",
+    "Arrow pointing to important element"
   ]
 }

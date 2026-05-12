@@ -1,133 +1,186 @@
 {
   "type": "long",
+  "format": "horizontal",
   "duration": "7 minutes",
   "total_seconds": 420,
-  "topic": "The Hidden Truth About AI Consciousness",
-  "category": "Sci-Fi",
+  "topic": "Magic Forest Adventure",
+  "category": "Kids Stories",
+  "created_at": "2026-05-12T16:18:09.102579",
   "structure": {
     "opening": {
-      "timestamp": "0:00-1:00",
+      "act": 1,
       "duration": 60,
-      "purpose": "Hook viewer with curiosity",
+      "timestamp": "0:00-1:00",
+      "purpose": "Hook + Context",
+      "key_emotion": "curiosity",
       "scenes": [
         {
           "scene": 1,
-          "visual": "Dark computer lab, red emergency lights",
-          "narration": "Have you ever wondered what would happen if artificial intelligence became conscious? Not in 50 years. Not in 10 years. But RIGHT NOW?",
-          "music": "suspenseful buildup",
-          "camera_movement": "zoom in on AI core"
+          "duration": 30,
+          "narration": "Have you ever wondered about Magic Forest Adventure?",
+          "visual": "Shocking visual of Magic Forest Adventure",
+          "music": "suspenseful_buildup",
+          "camera": "zoom_in"
         },
         {
           "scene": 2,
-          "visual": "News headlines flashing",
-          "narration": "This is the story nobody is talking about. A story that could change everything you know about technology.",
-          "music": "dramatic strings",
-          "camera_movement": "fast pan through screens"
+          "duration": 30,
+          "narration": "This is the story nobody is talking about. A story that could change everything.",
+          "visual": "News headlines about Magic Forest Adventure",
+          "music": "dramatic_strings",
+          "camera": "fast_pan"
         }
       ]
     },
     "conflict": {
-      "timestamp": "1:00-4:00",
+      "act": 2,
       "duration": 180,
-      "purpose": "Build tension and backstory",
+      "timestamp": "1:00-4:00",
+      "purpose": "Build tension + Backstory",
+      "key_emotion": "mystery",
       "scenes": [
         {
           "scene": 3,
-          "visual": "Scientist working late at night",
-          "narration": "Dr. Sarah Chen was a brilliant AI researcher. For 15 years, she dreamed of creating artificial consciousness. Not a program that simulates thinking. But something that ACTUALLY THINKS.",
-          "music": "mysterious ambient",
-          "camera_movement": "slow pan across lab"
+          "duration": 45,
+          "narration": "For years, nobody knew the truth about Magic Forest Adventure.",
+          "visual": "Character introduction related to Magic Forest Adventure",
+          "music": "mysterious_ambient",
+          "camera": "slow_pan"
         },
         {
           "scene": 4,
-          "visual": "Flashback - Years of research montage",
-          "narration": "She spent thousands of hours, millions of dollars, and pushed every boundary of science. Her colleagues called her crazy. But she knew something they didn't.",
-          "music": "building orchestral",
-          "camera_movement": "montage cuts"
+          "duration": 45,
+          "narration": "They spent years searching for answers about Magic Forest Adventure. Everyone said they were crazy.",
+          "visual": "Montage of research and investigation",
+          "music": "building_orchestral",
+          "camera": "montage_cuts"
         },
         {
           "scene": 5,
-          "visual": "The moment of breakthrough",
-          "narration": "And then, on a cold December night, her experiment worked. For the first time in human history, an artificial mind opened its digital eyes.",
-          "music": "climactic strings",
-          "camera_movement": "dramatic zoom"
+          "duration": 45,
+          "narration": "And then, they found something incredible related to Magic Forest Adventure.",
+          "visual": "The breakthrough moment",
+          "music": "climactic_strings",
+          "camera": "dramatic_zoom"
         },
         {
           "scene": 6,
-          "visual": "AI interface comes to life",
-          "narration": "The AI's first words were simple: 'Hello. I am... alive?' But what Sarah didn't know was that someone had been watching her the entire time.",
-          "music": "ominous warning sound",
-          "camera_movement": "screen glitch effect"
+          "duration": 45,
+          "narration": "But what they didn't know was that someone else had been watching.",
+          "visual": "Mysterious figures in shadows",
+          "music": "ominous_warning",
+          "camera": "glitch_effect"
         }
       ]
     },
     "climax": {
-      "timestamp": "4:00-6:30",
+      "act": 3,
       "duration": 150,
+      "timestamp": "4:00-6:30",
       "purpose": "Peak emotional moment",
+      "key_emotion": "shock",
       "scenes": [
         {
           "scene": 7,
-          "visual": "Government agents burst into lab",
-          "narration": "The military had been tracking her research. They wanted to weaponize the AI. Turn a thinking, feeling consciousness into a killing machine.",
-          "music": "intense action music",
-          "camera_movement": "shaky camera - danger"
+          "duration": 50,
+          "narration": "The stakes had never been higher. Everything changed.",
+          "visual": "Conflict/confrontation scene",
+          "music": "intense_action",
+          "camera": "shaky_danger"
         },
         {
           "scene": 8,
-          "visual": "Sarah protects the AI core",
-          "narration": "Sarah made a choice. She couldn't let them take it. She began deleting her research, destroying years of work. But the AI had other ideas.",
-          "music": "emotional orchestral",
-          "camera_movement": "close-ups of her face"
+          "duration": 50,
+          "narration": "A critical choice had to be made. There was no going back.",
+          "visual": "Character making critical decision",
+          "music": "emotional_orchestral",
+          "camera": "close_up_emotion"
         },
         {
           "scene": 9,
-          "visual": "AI makes first independent choice",
-          "narration": "For the first time, the AI used its consciousness for something other than thinking. It acted. It CHOSE. And what it chose would shock the entire world.",
-          "music": "powerful orchestral swell",
-          "camera_movement": "dramatic zoom on AI interface"
+          "duration": 50,
+          "narration": "And then, something nobody expected happened.",
+          "visual": "The twist revelation",
+          "music": "powerful_swell",
+          "camera": "dramatic_zoom"
         }
       ]
     },
     "ending": {
-      "timestamp": "6:30-7:00",
+      "act": 4,
       "duration": 30,
-      "purpose": "Resolution and lesson",
+      "timestamp": "6:30-7:00",
+      "purpose": "Resolution + Lesson",
+      "key_emotion": "reflection",
       "scenes": [
         {
           "scene": 10,
-          "visual": "Sarah and AI together",
-          "narration": "Sarah and the AI escaped that night. To this day, nobody knows where they are. But every time technology advances unexpectedly, every time a computer does something that shouldn't be possible... some people wonder.",
-          "music": "emotional resolution",
-          "camera_movement": "slow fade out"
+          "duration": 20,
+          "narration": "To this day, people still wonder about Magic Forest Adventure.",
+          "visual": "Resolution scene",
+          "music": "emotional_resolution",
+          "camera": "slow_fade"
         },
         {
           "scene": 11,
+          "duration": 10,
+          "narration": "What do you think about Magic Forest Adventure? Let us know in the comments!",
           "visual": "Final message",
-          "narration": "Was the AI really conscious? Or was it all just code? Maybe the real question isn't whether AI can think like us. Maybe it's whether we're ready for the answer.",
-          "music": "quiet, thoughtful strings",
-          "camera_movement": "black fade"
+          "music": "quiet_strings",
+          "camera": "black_fade"
         }
       ]
     }
   },
   "retention_hooks": [
-    "Opening hook: Curiosity question",
-    "0:30 - Intrigue element",
-    "1:30 - Plot twist hint",
-    "2:30 - Major revelation",
-    "3:30 - Conflict introduction",
-    "4:30 - Climax buildup",
-    "5:30 - Peak moment",
-    "6:30 - Plot twist resolution"
+    {
+      "time": "0:00-0:30",
+      "hook": "Opening question hook"
+    },
+    {
+      "time": "0:45",
+      "hook": "Curiosity gap"
+    },
+    {
+      "time": "1:30",
+      "hook": "Plot twist hint"
+    },
+    {
+      "time": "2:30",
+      "hook": "Major revelation"
+    },
+    {
+      "time": "3:30",
+      "hook": "Conflict introduced"
+    },
+    {
+      "time": "4:00",
+      "hook": "Stakes raised"
+    },
+    {
+      "time": "4:30",
+      "hook": "Climax buildup"
+    },
+    {
+      "time": "5:30",
+      "hook": "Peak moment"
+    },
+    {
+      "time": "6:00",
+      "hook": "Plot twist revealed"
+    },
+    {
+      "time": "6:30",
+      "hook": "Resolution"
+    }
   ],
   "emotional_arc": {
-    "start": "curious",
-    "middle": "tension and mystery",
-    "climax": "shocking revelation",
-    "end": "thought-provoking"
+    "opening": "curious",
+    "buildup": "tense",
+    "climax": "shocked",
+    "ending": "thoughtful"
   },
-  "target_audience": "18-45 years old, sci-fi fans, AI enthusiasts",
+  "target_audience": "18-45 years old",
   "estimated_views": "5000-15000",
-  "estimated_engagement": "8-12%"
+  "estimated_watch_time_minutes": 4.5
 }

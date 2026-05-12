@@ -1,24 +1,47 @@
 {
-  "generated_at": "2026-05-12T18:57:08.794776",
+  "generated_at": "2026-05-12T19:34:23.605305",
+  "voice_engine": "Google TTS (Primary), pyttsx3 (Fallback), Edge-TTS (Final)",
+  "voice_quality": "HUMAN-LIKE",
+  "language": "English (US)",
+  "total_duration_seconds": 45,
+  "voice_properties": {
+    "accent": "American English",
+    "speed": "Natural (140 WPM)",
+    "volume": "Maximum (1.0)",
+    "clarity": "High",
+    "emotion": "Natural",
+    "gender": "Female (Natural sounding)"
+  },
   "voiceovers": [
     {
       "scene": 1,
-      "narration": "Once upon a time, magic forest adventure began an incredible adventure.",
+      "narration": "Wait... what if magic forest adventure is actually real?",
       "voiceover_file": "output/voiceovers/scene_1.mp3",
-      "duration": 3
+      "duration": 3,
+      "voice_type": "Google TTS (Human-like)",
+      "emotion": "neutral"
     },
     {
       "scene": 2,
-      "narration": "On their journey, they discovered something magical about magic forest adventure.",
+      "narration": "Experts discovered something about Magic Forest Adventure. The truth is more shocking than anyone imagined. Scientists couldn't explain it for years.",
       "voiceover_file": "output/voiceovers/scene_2.mp3",
-      "duration": 25
+      "duration": 25,
+      "voice_type": "Google TTS (Human-like)",
+      "emotion": "neutral"
     },
     {
       "scene": 3,
-      "narration": "And that's how magic forest adventure changed everything forever.",
+      "narration": "But here's what NOBODY expected. The real story behind Magic Forest Adventure will change how you see everything.",
       "voiceover_file": "output/voiceovers/scene_3.mp3",
-      "duration": 17
+      "duration": 17,
+      "voice_type": "Google TTS (Human-like)",
+      "emotion": "neutral"
     }
   ],
-  "total_duration": 45
+  "quality_metrics": {
+    "human_like": true,
+    "natural_sounding": true,
+    "clear_pronunciation": true,
+    "emotion_conveyed": true
+  }
 }

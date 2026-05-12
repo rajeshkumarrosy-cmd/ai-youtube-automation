@@ -1,186 +1,108 @@
 {
   "type": "long",
-  "format": "horizontal",
+  "format": "horizontal (16:9)",
   "duration": "7 minutes",
   "total_seconds": 420,
   "topic": "Magic Forest Adventure",
   "category": "Kids Stories",
-  "created_at": "2026-05-12T18:57:06.229191",
-  "structure": {
-    "opening": {
-      "act": 1,
-      "duration": 60,
-      "timestamp": "0:00-1:00",
-      "purpose": "Hook + Context",
-      "key_emotion": "curiosity",
+  "created_at": "2026-05-12T19:34:18.867190",
+  "structure": "Introduction \u2192 Conflict \u2192 Climax \u2192 Resolution",
+  "acts": {
+    "act_1_opening": {
+      "name": "THE QUESTION",
+      "timestamp": "0:00-1:30",
+      "duration": 90,
+      "purpose": "Hook and establish mystery",
       "scenes": [
         {
           "scene": 1,
-          "duration": 30,
-          "narration": "Have you ever wondered about Magic Forest Adventure?",
-          "visual": "Shocking visual of Magic Forest Adventure",
-          "music": "suspenseful_buildup",
-          "camera": "zoom_in"
+          "duration": 45,
+          "narration": "Have you ever wondered what really happened with Magic Forest Adventure? Most people don't know the REAL story.",
+          "visual": "Intriguing visuals about Magic Forest Adventure"
         },
         {
           "scene": 2,
-          "duration": 30,
-          "narration": "This is the story nobody is talking about. A story that could change everything.",
-          "visual": "News headlines about Magic Forest Adventure",
-          "music": "dramatic_strings",
-          "camera": "fast_pan"
+          "duration": 45,
+          "narration": "The official story says one thing. But the truth? The truth is much stranger than anyone imagined.",
+          "visual": "News clips and evidence about Magic Forest Adventure"
         }
       ]
     },
-    "conflict": {
-      "act": 2,
-      "duration": 180,
-      "timestamp": "1:00-4:00",
-      "purpose": "Build tension + Backstory",
-      "key_emotion": "mystery",
+    "act_2_conflict": {
+      "name": "THE INVESTIGATION",
+      "timestamp": "1:30-4:00",
+      "duration": 150,
+      "purpose": "Build tension and reveal backstory",
       "scenes": [
         {
           "scene": 3,
-          "duration": 45,
-          "narration": "For years, nobody knew the truth about Magic Forest Adventure.",
-          "visual": "Character introduction related to Magic Forest Adventure",
-          "music": "mysterious_ambient",
-          "camera": "slow_pan"
+          "duration": 50,
+          "narration": "It started with a discovery. Scientists found something unexpected about Magic Forest Adventure.",
+          "visual": "Research and investigation scenes"
         },
         {
           "scene": 4,
-          "duration": 45,
-          "narration": "They spent years searching for answers about Magic Forest Adventure. Everyone said they were crazy.",
-          "visual": "Montage of research and investigation",
-          "music": "building_orchestral",
-          "camera": "montage_cuts"
+          "duration": 50,
+          "narration": "They kept digging deeper. What they found contradicted everything they believed about Magic Forest Adventure.",
+          "visual": "Mounting evidence and complications"
         },
         {
           "scene": 5,
-          "duration": 45,
-          "narration": "And then, they found something incredible related to Magic Forest Adventure.",
-          "visual": "The breakthrough moment",
-          "music": "climactic_strings",
-          "camera": "dramatic_zoom"
-        },
-        {
-          "scene": 6,
-          "duration": 45,
-          "narration": "But what they didn't know was that someone else had been watching.",
-          "visual": "Mysterious figures in shadows",
-          "music": "ominous_warning",
-          "camera": "glitch_effect"
+          "duration": 50,
+          "narration": "But their investigation caught the attention of powerful people. People who wanted to keep the truth about Magic Forest Adventure hidden.",
+          "visual": "Tension and conflict emerging"
         }
       ]
     },
-    "climax": {
-      "act": 3,
-      "duration": 150,
-      "timestamp": "4:00-6:30",
-      "purpose": "Peak emotional moment",
-      "key_emotion": "shock",
+    "act_3_climax": {
+      "name": "THE REVELATION",
+      "timestamp": "4:00-6:00",
+      "duration": 120,
+      "purpose": "Peak emotional moment, big reveal",
       "scenes": [
         {
-          "scene": 7,
-          "duration": 50,
-          "narration": "The stakes had never been higher. Everything changed.",
-          "visual": "Conflict/confrontation scene",
-          "music": "intense_action",
-          "camera": "shaky_danger"
+          "scene": 6,
+          "duration": 60,
+          "narration": "They had to make a choice. Hide the truth about Magic Forest Adventure, or risk everything to expose it.",
+          "visual": "Critical decision moment"
         },
         {
+          "scene": 7,
+          "duration": 60,
+          "narration": "They chose the truth. And what they revealed about Magic Forest Adventure shocked the world. Everything changed after that.",
+          "visual": "Shocking revelation and impact"
+        }
+      ]
+    },
+    "act_4_resolution": {
+      "name": "THE TRUTH",
+      "timestamp": "6:00-7:00",
+      "duration": 60,
+      "purpose": "Wrap up and life lesson",
+      "scenes": [
+        {
           "scene": 8,
-          "duration": 50,
-          "narration": "A critical choice had to be made. There was no going back.",
-          "visual": "Character making critical decision",
-          "music": "emotional_orchestral",
-          "camera": "close_up_emotion"
+          "duration": 30,
+          "narration": "Today, the truth about Magic Forest Adventure is finally known. But not everyone believes it.",
+          "visual": "Aftermath and new normal"
         },
         {
           "scene": 9,
-          "duration": 50,
-          "narration": "And then, something nobody expected happened.",
-          "visual": "The twist revelation",
-          "music": "powerful_swell",
-          "camera": "dramatic_zoom"
-        }
-      ]
-    },
-    "ending": {
-      "act": 4,
-      "duration": 30,
-      "timestamp": "6:30-7:00",
-      "purpose": "Resolution + Lesson",
-      "key_emotion": "reflection",
-      "scenes": [
-        {
-          "scene": 10,
-          "duration": 20,
-          "narration": "To this day, people still wonder about Magic Forest Adventure.",
-          "visual": "Resolution scene",
-          "music": "emotional_resolution",
-          "camera": "slow_fade"
-        },
-        {
-          "scene": 11,
-          "duration": 10,
-          "narration": "What do you think about Magic Forest Adventure? Let us know in the comments!",
-          "visual": "Final message",
-          "music": "quiet_strings",
-          "camera": "black_fade"
+          "duration": 30,
+          "narration": "What we learned from Magic Forest Adventure is this: the truth always matters. Even when it's uncomfortable.",
+          "visual": "Final reflection and conclusion"
         }
       ]
     }
   },
-  "retention_hooks": [
-    {
-      "time": "0:00-0:30",
-      "hook": "Opening question hook"
-    },
-    {
-      "time": "0:45",
-      "hook": "Curiosity gap"
-    },
-    {
-      "time": "1:30",
-      "hook": "Plot twist hint"
-    },
-    {
-      "time": "2:30",
-      "hook": "Major revelation"
-    },
-    {
-      "time": "3:30",
-      "hook": "Conflict introduced"
-    },
-    {
-      "time": "4:00",
-      "hook": "Stakes raised"
-    },
-    {
-      "time": "4:30",
-      "hook": "Climax buildup"
-    },
-    {
-      "time": "5:30",
-      "hook": "Peak moment"
-    },
-    {
-      "time": "6:00",
-      "hook": "Plot twist revealed"
-    },
-    {
-      "time": "6:30",
-      "hook": "Resolution"
-    }
-  ],
-  "emotional_arc": {
-    "opening": "curious",
-    "buildup": "tense",
-    "climax": "shocked",
-    "ending": "thoughtful"
-  },
-  "target_audience": "18-45 years old",
-  "estimated_views": "5000-15000",
-  "estimated_watch_time_minutes": 4.5
+  "retention_points": [
+    "0:30 - Hook question",
+    "1:30 - Conflict introduced",
+    "2:30 - Stakes raised",
+    "3:30 - Major complication",
+    "4:30 - Climax begins",
+    "5:30 - Peak moment",
+    "6:00 - Resolution starts",
+    "6:30 - Final message"
+  ]
 }

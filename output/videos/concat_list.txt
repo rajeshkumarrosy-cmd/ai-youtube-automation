@@ -1,3 +1,3 @@
-file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_1_temp.mp4'
-file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_2_temp.mp4'
-file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_3_temp.mp4'
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_1_final.mp4'
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_2_final.mp4'
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_3_final.mp4'

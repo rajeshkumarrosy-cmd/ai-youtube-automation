@@ -1,23 +1,25 @@
 {
-  "topic": "Magic Forest Adventure",
+  "generated_at": "2026-05-12T19:34:22.348647",
+  "type": "animated",
+  "total_scenes": 3,
   "scenes": [
     {
-      "scene_num": 1,
-      "image_path": "output/visuals/scene_1.png",
+      "scene": 1,
+      "visual_file": "output/visuals/scene_1_animated.mp4",
       "duration": 3,
-      "camera_movement": "none"
+      "description": "INTENSE SHOCK IMAGE related to Magic Forest Adventure"
     },
     {
-      "scene_num": 2,
-      "image_path": "output/visuals/scene_2.png",
+      "scene": 2,
+      "visual_file": "output/visuals/scene_2_animated.mp4",
       "duration": 25,
-      "camera_movement": "none"
+      "description": "Evidence and story unfolds about Magic Forest Adventure"
     },
     {
-      "scene_num": 3,
-      "image_path": "output/visuals/scene_3.png",
+      "scene": 3,
+      "visual_file": "output/visuals/scene_3_animated.mp4",
       "duration": 17,
-      "camera_movement": "none"
+      "description": "PLOT TWIST - Ultimate revelation about Magic Forest Adventure"
     }
   ]
 }

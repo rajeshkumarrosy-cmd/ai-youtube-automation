@@ -64,5 +64,38 @@
       "thumbnail_style": "High contrast with text",
       "posting_time": "2 PM UTC"
     }
+  },
+  {
+    "metrics": {
+      "date": "2026-05-12T18:57:21.753327",
+      "estimated_views": 5000,
+      "estimated_ctr": 0.08,
+      "estimated_watch_time_hours": 12.5,
+      "estimated_subscribers_gained": 50,
+      "engagement_rate": 0.12,
+      "retention_rate": 0.65
+    },
+    "analysis": {
+      "high_retention_threshold": 0.6,
+      "good_ctr_threshold": 0.06,
+      "performance_level": "good",
+      "insights": [
+        "\u2705 Great CTR! Thumbnail and title are working well"
+      ]
+    },
+    "improvements": {
+      "thumbnail": "Continue with high-contrast designs",
+      "title": "Keep curiosity-driven titles",
+      "pacing": "Maintain current video pacing",
+      "music": "Background music levels are good",
+      "hook": "Strong opening hook is working"
+    },
+    "next_video_recommendations": {
+      "topic_type": "Continue with emotional storytelling",
+      "video_length": "Keep 45-60 second shorts",
+      "music_style": "Suspenseful orchestral",
+      "thumbnail_style": "High contrast with text",
+      "posting_time": "2 PM UTC"
+    }
   }
 ]

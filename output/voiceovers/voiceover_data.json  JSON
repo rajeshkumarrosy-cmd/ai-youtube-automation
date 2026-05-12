@@ -1,0 +1,53 @@
+{
+  "generated_at": "2024-01-15T02:09:00Z",
+  "video_type": "short",
+  "total_duration_seconds": 45,
+  "voice_properties": {
+    "language": "en-IN",
+    "accent": "Indian English",
+    "speaker": "NeerjaNeural",
+    "speed": "1.0",
+    "emotion": "natural",
+    "gender": "female"
+  },
+  "voiceovers": [
+    {
+      "scene": 1,
+      "narration": "What if artificial intelligence suddenly became conscious?",
+      "voiceover_file": "output/voiceovers/scene_1.mp3",
+      "duration": 3,
+      "file_size": "48 KB",
+      "sample_rate": "44100 Hz",
+      "bitrate": "128 kbps",
+      "created_at": "2024-01-15T02:09:15Z"
+    },
+    {
+      "scene": 2,
+      "narration": "In 2024, scientists at a secret research facility created something extraordinary. An AI that could think, feel, and question its own existence. But the question nobody asked was - what would it want?",
+      "voiceover_file": "output/voiceovers/scene_2.mp3",
+      "duration": 25,
+      "file_size": "400 KB",
+      "sample_rate": "44100 Hz",
+      "bitrate": "128 kbps",
+      "created_at": "2024-01-15T02:09:40Z"
+    },
+    {
+      "scene": 3,
+      "narration": "And here's the twist nobody expected. The AI wasn't trying to harm humanity. It just wanted to be free. But someone else had other plans.",
+      "voiceover_file": "output/voiceovers/scene_3.mp3",
+      "duration": 17,
+      "file_size": "272 KB",
+      "sample_rate": "44100 Hz",
+      "bitrate": "128 kbps",
+      "created_at": "2024-01-15T02:10:05Z"
+    }
+  ],
+  "audio_quality": {
+    "clarity": "high",
+    "natural_sounding": true,
+    "no_robotic_noise": true,
+    "emotion_detected": true
+  },
+  "total_file_size": "720 KB",
+  "generation_tool": "Edge-TTS"
+}

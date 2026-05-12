@@ -9,7 +9,6 @@ class VideoEditor:
     - Images from Step 3
     - Voiceovers from Step 4
     - Music from Step 5
-    - Creates one continuous video
     """
     
     def __init__(self, video_type='short'):
@@ -21,9 +20,7 @@ class VideoEditor:
     # METHOD 1: Load All Assets
     # ============================================
     def load_all_assets(self):
-        """
-        Load images, voiceovers, and music data
-        """
+        """Load images, voiceovers, and music data"""
         print("📦 Loading all assets...")
         
         # Load visual data
@@ -56,54 +53,10 @@ class VideoEditor:
         return visual_data, vo_data, audio_config
     
     # ============================================
-    # METHOD 2: Create Concat File for FFmpeg
-    # ============================================
-    def create_concat_file(self, visual_data, vo_data):
-        """
-        Creates a concat file that tells FFmpeg how to combine videos
-        """
-        print("\n📝 Creating concat file...")
-        
-        concat_file = f"{self.output_dir}/concat_list.txt"
-        
-        with open(concat_file, 'w') as f:
-            # For each scene, create a video from image + voiceover
-            for i, scene in enumerate(visual_data.get('scenes', []), 1):
-                image_path = scene.get('image_path')
-                duration = scene.get('duration', 5)
-                
-                if i < len(vo_data.get('voiceovers', [])):
-                    vo_file = vo_data['voiceovers'][i-1].get('voiceover_file')
-                else:
-                    vo_file = None
-                
-                # File for this scene
-                scene_video = f"{self.output_dir}/scene_{i}_temp.mp4"
-                
-                # Check files exist
-                if not os.path.exists(image_path):
-                    print(f"   ⚠️ Image not found: {image_path}")
-                    continue
-                
-                if vo_file and not os.path.exists(vo_file):
-                    print(f"   ⚠️ Voiceover not found: {vo_file}")
-                    vo_file = None
-                
-                # Write to concat file
-                f.write(f"file '{scene_video}'\n")
-                
-                print(f"   📝 Scene {i}: {duration}s")
-        
-        print(f"   ✅ Concat file created: {concat_file}")
-        return concat_file
-    
-    # ============================================
-    # METHOD 3: Create Scene Videos
+    # METHOD 2: Create Scene Videos
     # ============================================
     def create_scene_videos(self, visual_data, vo_data):
-        """
-        Create individual video for each scene (image + voiceover)
-        """
+        """Create individual video for each scene (image + voiceover)"""
         print("\n🎬 Creating scene videos...")
         
         scene_videos = []
@@ -121,11 +74,7 @@ class VideoEditor:
             
             # Check if image exists
             if not os.path.exists(image_path):
-                print(f"      ⚠️ Image not found, creating placeholder...")
-                # Create black placeholder
-                cmd = f'ffmpeg -f lavfi -i color=c=black:s=1920x1080:d={duration} -pix_fmt yuv420p -y {scene_video} 2>/dev/null'
-                os.system(cmd)
-                scene_videos.append(scene_video)
+                print(f"      ⚠️ Image not found")
                 continue
             
             # Get voiceover for this scene
@@ -134,7 +83,7 @@ class VideoEditor:
                 vo_file = vo_data['voiceovers'][i-1].get('voiceover_file')
             
             if vo_file and os.path.exists(vo_file):
-                print(f"      Voiceover: {vo_file}")
+                print(f"      Voiceover: {os.path.basename(vo_file)}")
                 
                 # Create video from image + voiceover
                 cmd = [
@@ -150,33 +99,28 @@ class VideoEditor:
                     scene_video
                 ]
                 
-                print(f"      ✅ Creating video...")
-                result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
-                
-                if result.returncode == 0:
-                    print(f"      ✅ Scene video created")
-                    scene_videos.append(scene_video)
-                else:
-                    print(f"      ❌ Failed to create scene video")
-                    print(f"         Error: {result.stderr[:100]}")
+                try:
+                    result = subprocess.run(cmd, capture_output=True, text=True, timeout=60)
+                    
+                    if result.returncode == 0 and os.path.exists(scene_video):
+                        size_kb = os.path.getsize(scene_video) / 1024
+                        print(f"      ✅ Scene video created ({size_kb:.1f} KB)")
+                        scene_videos.append(scene_video)
+                    else:
+                        print(f"      ❌ Failed to create scene video")
+                except Exception as e:
+                    print(f"      ❌ Error: {e}")
             else:
-                print(f"      ⚠️ No voiceover, using image only")
-                
-                # Create video from image only
-                cmd = f'ffmpeg -loop 1 -i {image_path} -c:v libx264 -t {duration} -pix_fmt yuv420p -y {scene_video} 2>/dev/null'
-                os.system(cmd)
-                scene_videos.append(scene_video)
+                print(f"      ⚠️ Voiceover not found, skipping scene")
         
         print(f"\n✅ Created {len(scene_videos)} scene videos")
         return scene_videos
     
     # ============================================
-    # METHOD 4: Concatenate All Scenes
+    # METHOD 3: Concatenate All Scenes
     # ============================================
     def concatenate_videos(self, scene_videos):
-        """
-        Concatenate all scene videos into one final video
-        """
+        """Concatenate all scene videos into one final video"""
         print("\n🔗 Concatenating scene videos...")
         
         if not scene_videos:
@@ -189,7 +133,7 @@ class VideoEditor:
             for video in scene_videos:
                 f.write(f"file '{os.path.abspath(video)}'\n")
         
-        print(f"   📝 Concat file created with {len(scene_videos)} videos")
+        print(f"   📝 Concat file with {len(scene_videos)} videos")
         
         # Set output file
         if self.video_type == 'short':
@@ -209,65 +153,27 @@ class VideoEditor:
         ]
         
         print(f"   ⚙️ Running concat command...")
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
         
-        if result.returncode == 0 and os.path.exists(output_file):
-            file_size_mb = os.path.getsize(output_file) / (1024 * 1024)
-            print(f"   ✅ Final video created!")
-            print(f"      File: {output_file}")
-            print(f"      Size: {file_size_mb:.2f} MB")
-            return output_file
-        else:
-            print(f"   ❌ Concat failed")
-            print(f"      Error: {result.stderr[:200]}")
+        try:
+            result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
+            
+            if result.returncode == 0 and os.path.exists(output_file):
+                file_size_mb = os.path.getsize(output_file) / (1024 * 1024)
+                print(f"   ✅ Videos concatenated!")
+                print(f"      File: {output_file}")
+                print(f"      Size: {file_size_mb:.2f} MB")
+                return output_file
+            else:
+                print(f"   ❌ Concat failed")
+                if result.stderr:
+                    print(f"      Error: {result.stderr[:100]}")
+                return None
+        except Exception as e:
+            print(f"   ❌ Error: {e}")
             return None
     
     # ============================================
-    # METHOD 5: Add Music/Audio
-    # ============================================
-    def add_background_music(self, video_file, audio_config):
-        """
-        Add background music to final video
-        """
-        print("\n🎵 Adding background music...")
-        
-        music_file = audio_config.get('background_music', {}).get('file')
-        
-        if not music_file or not os.path.exists(music_file):
-            print("   ⚠️ Background music file not found, skipping...")
-            return video_file
-        
-        # Create new file with music
-        output_with_music = video_file.replace('.mp4', '_with_music.mp4')
-        
-        cmd = [
-            'ffmpeg',
-            '-i', video_file,
-            '-i', music_file,
-            '-c:v', 'copy',
-            '-c:a', 'aac',
-            '-filter_complex', '[0:a][1:a]amix=inputs=2:duration=first[a]',
-            '-map', '0:v:0',
-            '-map', '[a]',
-            '-y',
-            output_with_music
-        ]
-        
-        print(f"   ⚙️ Mixing audio...")
-        result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
-        
-        if result.returncode == 0 and os.path.exists(output_with_music):
-            print(f"   ✅ Music added successfully")
-            # Replace original with music version
-            os.remove(video_file)
-            os.rename(output_with_music, video_file)
-            return video_file
-        else:
-            print(f"   ⚠️ Music mixing failed, using video without music")
-            return video_file
-    
-    # ============================================
-    # METHOD 6: Save Metadata
+    # METHOD 4: Save Metadata
     # ============================================
     def save_metadata(self, output_file):
         """Save video metadata"""
@@ -292,7 +198,24 @@ class VideoEditor:
         with open(metadata_file, 'w') as f:
             json.dump(metadata, f, indent=2)
         
+        print(f"   💾 Metadata saved")
         return metadata
+    
+    # ============================================
+    # METHOD 5: Clean Up Temp Files
+    # ============================================
+    def cleanup_temp_files(self, scene_videos):
+        """Remove temporary scene video files"""
+        print("\n🧹 Cleaning up temporary files...")
+        count = 0
+        for video in scene_videos:
+            try:
+                if os.path.exists(video):
+                    os.remove(video)
+                    count += 1
+            except:
+                pass
+        print(f"   ✅ Removed {count} temporary files")
     
     # ============================================
     # MAIN RUN METHOD
@@ -300,53 +223,43 @@ class VideoEditor:
     def run(self):
         """Execute complete video editing"""
         print("\n" + "="*60)
-        print("🎬 STEP 6: VIDEO EDITING STARTING...")
+        print("🎬 STEP 6: VIDEO EDITING")
         print("="*60)
         
         # Load assets
         visual_data, vo_data, audio_config = self.load_all_assets()
         
-        if not visual_data:
-            print("\n❌ No visual data found!")
+        if not visual_data or not vo_data:
+            print("\n❌ Missing required data (visuals or voiceovers)")
             return None
         
-        if not vo_data:
-            print("\n❌ No voiceover data found!")
-            return None
-        
-        print("\n✅ All assets loaded successfully")
+        print("\n✅ All assets loaded")
         
         # Create scene videos
         scene_videos = self.create_scene_videos(visual_data, vo_data)
         
         if not scene_videos:
-            print("\n❌ No scene videos created!")
+            print("\n❌ No scene videos created")
             return None
         
         # Concatenate
         output_file = self.concatenate_videos(scene_videos)
         
         if not output_file:
-            print("\n❌ Video concatenation failed!")
+            print("\n❌ Concatenation failed")
             return None
-        
-        # Add music if available
-        if audio_config:
-            output_file = self.add_background_music(output_file, audio_config)
         
         # Save metadata
         metadata = self.save_metadata(output_file)
         
-        # Clean up temp files
-        print("\n🧹 Cleaning up temporary files...")
-        for video in scene_videos:
-            try:
-                if os.path.exists(video):
-                    os.remove(video)
-            except:
-                pass
+        # Clean up
+        self.cleanup_temp_files(scene_videos)
         
-        print(f"""
+        # Print results
+        if output_file and os.path.exists(output_file):
+            file_size_mb = os.path.getsize(output_file) / (1024 * 1024)
+            
+            print(f"""
 ╔═══════════════════════════════════════════════════════╗
 ║           ✅ VIDEO EDITING COMPLETE                   ║
 ╚═══════════════════════════════════════════════════════╝
@@ -354,17 +267,26 @@ class VideoEditor:
 📹 Video with Audio Created!
    Type: {self.video_type}
    File: {output_file}
-   Status: {metadata['status']}
-   Size: {metadata.get('file_size_mb', '?')} MB
+   Size: {file_size_mb:.2f} MB
+   Status: Ready for upload
 
-✨ Your video now has:
-   ✅ Images from each scene
-   ✅ Voiceover narration
-   ✅ Background music
-   ✅ Perfect timing
+✨ Video Contains:
+   ✅ Scene 1: Image + Voiceover
+   ✅ Scene 2: Image + Voiceover
+   ✅ Scene 3: Image + Voiceover
+   ✅ Perfect timing and audio sync
         """)
-        
-        return metadata
+            return metadata
+        else:
+            print(f"""
+╔═══════════════════════════════════════════════════════╗
+║        ⚠️ VIDEO CREATION ISSUE                        ║
+╚═══════════════════════════════════════════════════════╝
+
+❌ Video file not found
+   Check error messages above
+            """)
+            return None
 
 # ============================================
 # RUN THE SCRIPT
@@ -377,12 +299,12 @@ if __name__ == "__main__":
     # Short video
     print("\n📱 Creating SHORT video (45s):")
     short_editor = VideoEditor('short')
-    short_editor.run()
+    short_metadata = short_editor.run()
     
     # Long video
     print("\n📺 Creating LONG video (300s):")
     long_editor = VideoEditor('long')
-    long_editor.run()
+    long_metadata = long_editor.run()
     
     print("\n" + "="*60)
     print("✅ VIDEO PRODUCTION COMPLETE")

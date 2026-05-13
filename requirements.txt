@@ -1,18 +1,22 @@
-# Core dependencies for trend research and data processing
+# Core Dependencies
 requests>=2.28.0
 beautifulsoup4>=4.11.0
 
-# Text-to-Speech and Voice Generation
+# Text-to-Speech (HUMAN-LIKE VOICE)
 gtts>=2.3.1
 pyttsx3>=2.90
 edge-tts>=6.1.1
+
+# ElevenLabs API (Optional - Most Human-Like)
+# Set ELEVENLABS_API_KEY environment variable
+# Get free key at: https://elevenlabs.io
 
 # Image and Video Processing
 pillow>=9.3.0
 moviepy>=1.0.3
 opencv-python>=4.8.0
 
-# YouTube API and Authentication
+# YouTube API
 google-auth-oauthlib>=1.0.0
 google-auth-httplib2>=0.1.0
 google-api-python-client>=2.70.0

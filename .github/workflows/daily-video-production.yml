@@ -8,6 +8,7 @@ on:
 jobs:
   video-production:
     runs-on: ubuntu-latest
+    timeout-minutes: 60
     
     steps:
       # ============================================
@@ -24,15 +25,15 @@ jobs:
           python-version: '3.10'
       
       # ============================================
-      # INSTALL DEPENDENCIES
+      # INSTALL DEPENDENCIES (OPTIMIZED)
       # ============================================
       - name: 📦 Install System Dependencies
         run: |
           echo "=========================================="
           echo "📦 Installing system packages..."
           echo "=========================================="
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
+          sudo apt-get update -qq
+          sudo apt-get install -y --no-install-recommends ffmpeg
           echo ""
           echo "Verifying FFmpeg installation..."
           ffmpeg -version | head -3
@@ -133,8 +134,8 @@ jobs:
           echo "=========================================="
           python scripts/DEBUG_check_videos.py
           echo ""
-          echo "Listing all output files..."
-          find output/ -type f \( -name "*.mp4" -o -name "*.json" \) | sort || echo "No files found"
+          echo "Listing all output files:"
+          find output/ -type f \( -name "*.mp4" -o -name "*.json" -o -name "*.png" \) 2>/dev/null | sort || echo "No files found"
           echo ""
       
       # ============================================
@@ -191,7 +192,7 @@ jobs:
       # ============================================
       # COMMIT & PUSH RESULTS
       # ============================================
-      - name: 📝 Commit & Push Results to Repository
+      - name: 📝 Commit & Push Results
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -208,10 +209,10 @@ jobs:
           else
             echo "📝 Found changes, committing..."
             git add -A
-            git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d %H:%M:%S')"
+            git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d %H:%M:%S')" || echo "Nothing to commit"
             
             git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git || {
-              echo "⚠️ Push failed, but continuing..."
+              echo "⚠️ Push skipped"
             }
           fi
           echo ""
@@ -223,11 +224,11 @@ jobs:
         if: always()
         run: |
           echo ""
-          echo "=========================================="
-          echo "✅ WORKFLOW COMPLETE!"
-          echo "=========================================="
+          echo "╔════════════════════════════════════════╗"
+          echo "║  ✅ WORKFLOW COMPLETE!                 ║"
+          echo "╚════════════════════════════════════════╝"
           echo ""
-          echo "📊 Video Production Summary:"
+          echo "📊 Video Production Pipeline:"
           echo "   ✅ Step 1: Trend Research"
           echo "   ✅ Step 2: Script Generation"
           echo "   ✅ Step 3: Visual Generation"
@@ -239,9 +240,9 @@ jobs:
           echo "   ✅ Step 9: YouTube Upload"
           echo "   ✅ Step 10: Analytics"
           echo ""
-          echo "📁 Output files saved in: output/"
-          echo "🎬 Your video is ready!"
-          echo "📺 Check YouTube Studio for your new video"
+          echo "📁 Files saved in: output/"
+          echo "🎬 Video ready for YouTube"
+          echo "📺 Check YouTube Studio"
           echo ""
-          echo "=========================================="
+          echo "Next run: Tomorrow at 2 AM UTC"
           echo ""

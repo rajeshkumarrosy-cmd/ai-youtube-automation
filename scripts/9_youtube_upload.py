@@ -1,202 +1,123 @@
-import json
 import os
-from google.oauth2.service_account import Credentials
-from google.auth.transport.requests import Request
-from googleapiclient.discovery import build
-from googleapiclient.http import MediaFileUpload
-import google_auth_oauthlib.flow
+import json
+from datetime import datetime
 
 class YouTubeUploader:
     def __init__(self):
-        self.seo_data = self.load_seo_data()
+        self.output_dir = "output"
+    
+    def check_video_exists(self):
+        """Check if video file exists"""
+        video_paths = [
+            "output/videos/final_video_short.mp4",
+            "output/videos/final_video_long.mp4"
+        ]
+        
+        existing_videos = []
+        
+        for path in video_paths:
+            if os.path.exists(path):
+                size = os.path.getsize(path) / (1024 * 1024)
+                existing_videos.append({
+                    'path': path,
+                    'size_mb': round(size, 2)
+                })
+        
+        return existing_videos
     
     def load_seo_data(self):
-        """Load SEO optimization data"""
+        """Load SEO data if exists"""
         try:
             with open("output/seo_package.json", 'r') as f:
                 return json.load(f)
         except:
-            return {}
-    
-    def authenticate_youtube(self):
-        """Authenticate with YouTube API"""
-        try:
-            # Using OAuth2 - store token in GitHub secrets
-            CLIENT_SECRETS_FILE = "credentials.json"
-            
-            # For GitHub Actions, read from environment variable
-            if not os.path.exists(CLIENT_SECRETS_FILE):
-                creds_json = os.environ.get('YOUTUBE_CREDENTIALS')
-                if creds_json:
-                    with open(CLIENT_SECRETS_FILE, 'w') as f:
-                        f.write(creds_json)
-                else:
-                    print("❌ YouTube credentials not found")
-                    return None
-            
-            flow = google_auth_oauthlib.flow.InstalledAppFlow.from_client_secrets_file(
-                CLIENT_SECRETS_FILE,
-                scopes=['https://www.googleapis.com/auth/youtube.upload']
-            )
-            
-            creds = flow.run_local_server(port=0)
-            
-            return build('youtube', 'v3', credentials=creds)
-        
-        except Exception as e:
-            print(f"⚠️ Authentication error: {e}")
-            print("📝 Manual upload required or use YouTube CLI")
-            return None
-    
-    def prepare_video_metadata(self, video_type='short'):
-        """Prepare video metadata"""
-        metadata = {
-            'snippet': {
-                'title': self.seo_data.get('best_title', 'Untitled Video'),
-                'description': self.seo_data.get('description', ''),
-                'tags': self.seo_data.get('tags', []),
-                'categoryId': '24'  # Entertainment
-            },
-            'status': {
-                'privacyStatus': 'public',
-                'selfDeclaredMadeForKids': False
-            }
-        }
-        
-        return metadata
-    
-    def upload_to_youtube(self, video_file, video_type='short'):
-        """Upload video to YouTube"""
-        youtube = self.authenticate_youtube()
-        
-        if not youtube:
-            print("❌ Upload failed - authentication error")
-            print("📝 Please upload manually using: youtube-cli upload <file>")
-            return None
-        
-        try:
-            metadata = self.prepare_video_metadata(video_type)
-            
-            # Create media upload
-            media = MediaFileUpload(
-                video_file,
-                mimetype='video/mp4',
-                resumable=True,
-                chunksize=1024*1024
-            )
-            
-            # Create request
-            request = youtube.videos().insert(
-                part='snippet,status',
-                body=metadata,
-                media_body=media
-            )
-            
-            # Execute
-            print(f"📤 Uploading {video_file}...")
-            response = request.execute()
-            
-            video_id = response['id']
-            print(f"✅ Video uploaded! ID: {video_id}")
-            
             return {
-                'video_id': video_id,
-                'url': f'https://youtube.com/watch?v={video_id}',
-                'status': 'uploaded'
+                'title': 'Amazing AI Story - You Won\'t Believe What Happened',
+                'description': 'This incredible story will change your perspective.',
+                'tags': ['#Story', '#Amazing', '#AI']
             }
-        
-        except Exception as e:
-            print(f"⚠️ Upload error: {e}")
-            return None
     
-    def upload_thumbnail(self, thumbnail_file, video_id):
-        """Upload custom thumbnail"""
-        youtube = self.authenticate_youtube()
-        
-        if not youtube or not video_id:
-            return None
-        
-        try:
-            request = youtube.thumbnails().set(
-                videoId=video_id,
-                media_body=MediaFileUpload(thumbnail_file)
-            )
-            
-            response = request.execute()
-            print(f"✅ Thumbnail uploaded for {video_id}")
-            return response
-        
-        except Exception as e:
-            print(f"⚠️ Thumbnail upload error: {e}")
-            return None
-    
-    def add_hashtags_to_description(self):
-        """Add hashtags to description"""
-        description = self.seo_data.get('description', '')
-        hashtags = ' '.join(self.seo_data.get('hashtags', []))
-        
-        return f"{description}\n\n{hashtags}"
-    
-    def schedule_upload(self, upload_time='14:00'):
-        """Schedule video for best engagement time"""
-        # Best times: Tuesday-Thursday, 2-4 PM UTC
-        
-        scheduled_info = {
-            'scheduled_time': upload_time,
-            'upload_days': ['Tuesday', 'Thursday', 'Saturday'],
-            'timezone': 'UTC'
+    def create_upload_record(self, videos, seo_data):
+        """Create upload instructions"""
+        record = {
+            'generated_at': datetime.now().isoformat(),
+            'status': 'ready_for_manual_upload',
+            'videos_found': len(videos),
+            'videos': videos,
+            'seo_data': seo_data,
+            'instructions': [
+                "1. Download the video file from output/videos/",
+                "2. Go to https://youtube.com/studio",
+                "3. Click 'Create' → 'Upload video'",
+                "4. Upload the video file",
+                "5. Copy title and description from seo_data",
+                "6. Add tags",
+                "7. Upload thumbnail from output/thumbnails/",
+                "8. Publish!"
+            ]
         }
         
-        return scheduled_info
+        output_file = f"{self.output_dir}/upload_record.json"
+        with open(output_file, 'w') as f:
+            json.dump(record, f, indent=2)
+        
+        return record
+    
+    def print_instructions(self, videos, seo_data):
+        """Print upload instructions"""
+        print("\n" + "="*70)
+        print("📤 STEP 9: YOUTUBE UPLOAD")
+        print("="*70)
+        
+        if videos:
+            print(f"\n✅ VIDEO READY FOR YOUTUBE!")
+            print(f"\n📹 Video Files Found:")
+            
+            for video in videos:
+                print(f"   ✅ {video['path']}")
+                print(f"      Size: {video['size_mb']} MB")
+            
+            print(f"\n📋 UPLOAD INFORMATION:")
+            print(f"   Title: {seo_data.get('title', 'Amazing Story')}")
+            print(f"   Description: {seo_data.get('description', 'Amazing story')[:100]}...")
+            print(f"   Tags: {', '.join(seo_data.get('tags', [])[:5])}")
+            
+            print(f"\n📝 MANUAL UPLOAD STEPS:")
+            print(f"   1. Download video from GitHub")
+            print(f"   2. Go to: https://youtube.com/studio")
+            print(f"   3. Click 'Create' → 'Upload video'")
+            print(f"   4. Upload the video file")
+            print(f"   5. Copy title & description above")
+            print(f"   6. Upload thumbnail")
+            print(f"   7. Publish!")
+            
+            print(f"\n✅ Upload record saved: output/upload_record.json")
+        
+        else:
+            print(f"\n❌ NO VIDEO FILES FOUND!")
+            print(f"   Check Step 6 (Video Editing)")
+            print(f"   Ensure videos exist in output/videos/")
+        
+        print("\n")
     
     def run(self):
-        """Execute upload"""
-        print("📤 STEP 9: YOUTUBE UPLOAD STARTING...")
+        """Execute upload step"""
+        # Check videos
+        videos = self.check_video_exists()
         
-        # Find video files
-        video_files = [
-            'output/videos/final_video_short.mp4',
-            'output/videos/final_video_short_ffmpeg.mp4'
-        ]
+        # Load SEO data
+        seo_data = self.load_seo_data()
         
-        video_file = None
-        for vf in video_files:
-            if os.path.exists(vf):
-                video_file = vf
-                break
+        # Create upload record
+        self.create_upload_record(videos, seo_data)
         
-        if not video_file:
-            print("❌ No video file found")
-            print("📝 Creating dummy upload record...")
-            
-            # Create dummy upload record
-            upload_result = {
-                'status': 'pending',
-                'message': 'Video file not found - check video editing step',
-                'recommended_action': 'Run video editing step and retry'
-            }
-        else:
-            # Attempt upload
-            upload_result = self.upload_to_youtube(video_file, 'short')
-            
-            if upload_result:
-                # Upload thumbnail
-                thumbnail_file = 'output/thumbnails/thumbnail_main.png'
-                if os.path.exists(thumbnail_file):
-                    self.upload_thumbnail(thumbnail_file, upload_result['video_id'])
+        # Print instructions
+        self.print_instructions(videos, seo_data)
         
-        # Save upload record
-        with open('output/upload_record.json', 'w') as f:
-            json.dump(upload_result or {}, f, indent=2)
-        
-        print(f"""
-        ╔════════════════════════════════════╗
-        ║     YOUTUBE UPLOAD COMPLETE         ║
-        ╚════════════════════════════════════╝
-        Status: {upload_result.get('status', 'pending') if upload_result else 'failed'}
-        """)
-        
-        return upload_result
+        return {
+            'videos_found': len(videos),
+            'status': 'ready' if videos else 'failed'
+        }
 
 if __name__ == "__main__":
     uploader = YouTubeUploader()

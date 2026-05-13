@@ -1,126 +1,165 @@
 import json
 import os
-import subprocess
 from datetime import datetime
 
 class VoiceoverGenerator:
     def __init__(self):
-        self.script = self.load_script()
         self.output_dir = "output/voiceovers"
         os.makedirs(self.output_dir, exist_ok=True)
     
-    def load_script(self):
-        """Load script"""
+    def load_scripts(self):
+        scripts = {}
+        
         try:
             with open("output/scripts/short_script.json", 'r') as f:
-                return json.load(f)
+                scripts['short'] = json.load(f)
         except:
-            return {}
-    
-    def generate_voiceover_with_edge_tts(self, text, scene_num):
-        """Use Edge TTS (Microsoft free service)"""
-        output_file = f"{self.output_dir}/scene_{scene_num}.mp3"
+            scripts['short'] = None
         
         try:
-            # Edge TTS command
-            cmd = f'edge-tts --voice en-IN-NeerjaNeural --text "{text}" --write-media {output_file}'
-            os.system(cmd)
+            with open("output/scripts/long_script.json", 'r') as f:
+                scripts['long'] = json.load(f)
+        except:
+            scripts['long'] = None
+        
+        return scripts
+    
+    def generate_voice_gtts(self, text, output_file):
+        """
+        Generate voice using Google TTS
+        More natural than pyttsx3
+        """
+        try:
+            from gtts import gTTS
             
-            print(f"✅ Voiceover generated: {output_file}")
-            return output_file
-        except Exception as e:
-            print(f"⚠️ Edge TTS error: {e}")
-            return self.generate_with_pyttsx3(text, scene_num)
-    
-    def generate_with_pyttsx3(self, text, scene_num):
-        """Fallback: Use pyttsx3"""
-        import pyttsx3
-        
-        engine = pyttsx3.init()
-        engine.setProperty('rate', 150)
-        engine.setProperty('volume', 0.9)
-        
-        # Set Indian accent if available
-        voices = engine.getProperty('voices')
-        for voice in voices:
-            if 'indian' in voice.name.lower() or 'hindi' in voice.name.lower():
-                engine.setProperty('voice', voice.id)
-                break
-        
-        output_file = f"{self.output_dir}/scene_{scene_num}.wav"
-        engine.save_to_file(text, output_file)
-        engine.runAndWait()
-        
-        print(f"✅ Voiceover generated (pyttsx3): {output_file}")
-        return output_file
-    
-    def extract_narration(self):
-        """Extract narration from script"""
-        narrations = []
-        
-        for scene in self.script.get('scenes', []):
-            narrations.append({
-                'scene': scene.get('scene'),
-                'narration': scene.get('narration'),
-                'duration': scene.get('duration')
-            })
-        
-        return narrations
-    
-    def generate_all_voiceovers(self):
-        """Generate voiceovers for all scenes"""
-        narrations = self.extract_narration()
-        voiceovers = []
-        
-        for narration in narrations:
-            vo_file = self.generate_voiceover_with_edge_tts(
-                narration['narration'],
-                narration['scene']
+            tts = gTTS(
+                text=text,
+                lang='en',
+                slow=False,
+                tld='us'
             )
             
-            voiceovers.append({
-                'scene': narration['scene'],
-                'narration': narration['narration'],
-                'voiceover_file': vo_file,
-                'duration': narration['duration']
-            })
+            tts.save(output_file)
+            
+            if os.path.exists(output_file):
+                size = os.path.getsize(output_file) / 1024
+                return True, size
+        
+        except Exception as e:
+            print(f"         gTTS error: {e}")
+        
+        return False, 0
+    
+    def generate_voice_edge_tts(self, text, output_file):
+        """
+        Generate voice using Edge TTS
+        More natural, human-like voices
+        """
+        try:
+            import subprocess
+            
+            cmd = [
+                'edge-tts',
+                '--voice', 'en-US-GuyNeural',
+                '--text', text,
+                '--write-media', output_file
+            ]
+            
+            result = subprocess.run(cmd, capture_output=True, timeout=30)
+            
+            if result.returncode == 0 and os.path.exists(output_file):
+                size = os.path.getsize(output_file) / 1024
+                return True, size
+        
+        except Exception as e:
+            print(f"         Edge TTS error: {e}")
+        
+        return False, 0
+    
+    def generate_voice(self, text, scene_num, script_type):
+        """
+        Generate voice with best available method
+        """
+        output_file = f"{self.output_dir}/{script_type}_scene_{scene_num}.mp3"
+        
+        print(f"      Scene {scene_num}: '{text[:40]}...'")
+        
+        # Try Edge TTS first (most human-like)
+        success, size = self.generate_voice_edge_tts(text, output_file)
+        if success:
+            print(f"         ✅ Edge TTS (human-like): {size:.1f} KB")
+            return output_file
+        
+        # Try gTTS second
+        success, size = self.generate_voice_gtts(text, output_file)
+        if success:
+            print(f"         ✅ Google TTS: {size:.1f} KB")
+            return output_file
+        
+        print(f"         ❌ Voice generation failed")
+        return None
+    
+    def process_script(self, script, script_type):
+        """Process all scenes in a script"""
+        if not script:
+            return []
+        
+        voiceovers = []
+        
+        for scene in script['scenes']:
+            scene_num = scene['scene_number']
+            narration = scene['narration']
+            
+            vo_file = self.generate_voice(narration, scene_num, script_type)
+            
+            if vo_file:
+                voiceovers.append({
+                    'scene': scene_num,
+                    'file': vo_file,
+                    'duration': scene['duration'],
+                    'type': script_type,
+                    'narration': narration
+                })
         
         return voiceovers
     
-    def save_voiceover_data(self, voiceovers):
-        """Save voiceover metadata"""
+    def run(self):
+        print("\n" + "="*60)
+        print("🎙️ STEP 4: VOICEOVER GENERATION")
+        print("="*60)
+        
+        scripts = self.load_scripts()
+        
+        all_voiceovers = {
+            'short': [],
+            'long': []
+        }
+        
+        # Process short script
+        if scripts.get('short'):
+            print("\n📱 Creating SHORT video voiceovers...")
+            all_voiceovers['short'] = self.process_script(scripts['short'], 'short')
+        
+        # Process long script
+        if scripts.get('long'):
+            print("\n📺 Creating LONG video voiceovers...")
+            all_voiceovers['long'] = self.process_script(scripts['long'], 'long')
+        
+        # Save voiceover data
         data = {
             'generated_at': datetime.now().isoformat(),
-            'voiceovers': voiceovers,
-            'total_duration': sum([v['duration'] for v in voiceovers])
+            'voice_engine': 'Edge TTS (Human-like) / Google TTS',
+            'short_voiceovers': all_voiceovers['short'],
+            'long_voiceovers': all_voiceovers['long']
         }
         
         with open(f"{self.output_dir}/voiceover_data.json", 'w') as f:
             json.dump(data, f, indent=2)
         
+        print(f"\n✅ SHORT: {len(all_voiceovers['short'])} voiceovers")
+        print(f"✅ LONG: {len(all_voiceovers['long'])} voiceovers\n")
+        
         return data
-    
-    def run(self):
-        """Generate voiceovers"""
-        print("🎙️ STEP 4: VOICEOVER GENERATION STARTING...")
-        
-        if not self.script:
-            print("❌ No script found")
-            return
-        
-        voiceovers = self.generate_all_voiceovers()
-        vo_data = self.save_voiceover_data(voiceovers)
-        
-        print(f"""
-        ╔════════════════════════════════════╗
-        ║    VOICEOVERS GENERATED             ║
-        ╚════════════════════════════════════╝
-        Total Scenes: {len(voiceovers)}
-        Total Duration: {vo_data['total_duration']}s
-        """)
-        
-        return vo_data
 
 if __name__ == "__main__":
-    generator = VoiceoverGenerator()
-    generator.run()
+    VoiceoverGenerator().run()

@@ -1,88 +1,132 @@
 import json
+import requests
+from PIL import Image, ImageDraw, ImageFont
 import os
-import subprocess
-from datetime import datetime
 
 class VisualGenerator:
     def __init__(self):
+        self.script = self.load_script()
         self.output_dir = "output/visuals"
         os.makedirs(self.output_dir, exist_ok=True)
-        self.load_script()
     
     def load_script(self):
+        """Load generated script"""
         try:
             with open("output/scripts/short_script.json", 'r') as f:
-                self.script = json.load(f)
+                return json.load(f)
         except:
-            self.script = None
+            return {}
     
-    def download_stock_video(self, search_term, scene_num, duration):
-        """Download video from Pexels API (FREE, no key needed)"""
-        output_file = f"{self.output_dir}/scene_{scene_num}.mp4"
+    def generate_image_prompts(self):
+        """Create detailed prompts for image generation"""
+        prompts = []
         
-        print(f"   Scene {scene_num}: Searching stock footage for '{search_term}'...")
+        for scene in self.script.get('scenes', []):
+            prompt = {
+                'scene_num': scene.get('scene'),
+                'prompt': f"""
+                Create a Pixar-style 3D animated scene:
+                {scene.get('visual')}
+                
+                Style Requirements:
+                - Pixar cinematic quality
+                - Warm, professional lighting
+                - Emotional expressions on characters
+                - Vibrant colors
+                - 4K quality composition
+                - Dynamic camera angle
+                
+                Scene Description: {scene.get('visual')}
+                """,
+                'negative': 'low quality, cartoon, flat, pixelated, ugly, distorted',
+                'duration': scene.get('duration'),
+                'camera_movement': scene.get('camera_movement')
+            }
+            prompts.append(prompt)
         
-        try:
-            # Using yt-dlp to download from public sources
-            # For now, create a professional video background
-            cmd = f'ffmpeg -f lavfi -i color=c=0x1a1a2e:s=1920x1080:d={duration} -vf "fps=30" -c:v libx264 -preset ultrafast -crf 23 -y {output_file} 2>/dev/null'
-            
-            result = os.system(cmd)
-            
-            if os.path.exists(output_file):
-                size_kb = os.path.getsize(output_file) / 1024
-                print(f"      ✅ Video created ({size_kb:.1f} KB) - Duration: {duration}s")
-                return output_file
-            else:
-                print(f"      ❌ Failed")
-                return None
-        
-        except Exception as e:
-            print(f"      ⚠️ Error: {e}")
-            return None
+        return prompts
     
-    def run(self):
-        print("\n" + "="*70)
-        print("🎨 STEP 3: VISUAL GENERATION (REAL VIDEO FOOTAGE)")
-        print("="*70)
+    def create_placeholder_images(self):
+        """Create colorful placeholder images using PIL"""
+        colors = [
+            (255, 100, 100),  # Red
+            (100, 150, 255),  # Blue
+            (100, 255, 150),  # Green
+            (255, 200, 100),  # Orange
+        ]
         
-        if not self.script:
-            print("❌ No script found!")
-            return None
+        images = []
         
-        print(f"\n🎬 Downloading stock video footage...\n")
-        
-        visuals = []
-        
-        for scene in self.script['scenes']:
-            scene_num = scene['scene']
-            search_term = scene.get('visual_search', 'background')
-            duration = scene['duration']
+        for i, scene in enumerate(self.script.get('scenes', [])):
+            # Create image
+            img = Image.new('RGB', (1920, 1080), color=colors[i % len(colors)])
+            draw = ImageDraw.Draw(img)
             
-            video_file = self.download_stock_video(search_term, scene_num, duration)
+            # Add text
+            text = f"Scene {i+1}: {scene.get('visual', 'Scene')}"
             
-            if video_file:
-                visuals.append({
-                    'scene': scene_num,
-                    'file': video_file,
-                    'duration': duration,
-                    'search_term': search_term,
-                    'type': 'stock_footage'
-                })
+            # Save
+            path = f"{self.output_dir}/scene_{i+1}.png"
+            img.save(path)
+            images.append(path)
+            
+            print(f"✅ Created placeholder: {path}")
         
+        return images
+    
+    def generate_with_free_api(self):
+        """Use free image APIs"""
+        # Placeholder API calls
+        images = self.create_placeholder_images()
+        return images
+    
+    def save_visual_data(self, images):
+        """Save visual metadata"""
         data = {
-            'generated_at': datetime.now().isoformat(),
-            'total_scenes': len(visuals),
-            'type': 'real_stock_video',
-            'scenes': visuals
+            'topic': self.script.get('topic'),
+            'scenes': []
         }
+        
+        for i, img_path in enumerate(images):
+            data['scenes'].append({
+                'scene_num': i + 1,
+                'image_path': img_path,
+                'duration': self.script.get('scenes', [{}])[i].get('duration', 3),
+                'camera_movement': self.script.get('scenes', [{}])[i].get('camera_movement', 'none')
+            })
         
         with open(f"{self.output_dir}/visual_data.json", 'w') as f:
             json.dump(data, f, indent=2)
         
-        print(f"\n✅ Created {len(visuals)} video clips (REAL FOOTAGE)\n")
-        
         return data
+    
+    def run(self):
+        """Generate all visuals"""
+        print("🎨 STEP 3: VISUAL GENERATION STARTING...")
+        
+        if not self.script:
+            print("❌ No script found")
+            return
+        
+        # Generate image prompts
+        prompts = self.generate_image_prompts()
+        print(f"✅ Generated {len(prompts)} image prompts")
+        
+        # Create placeholder images
+        images = self.generate_with_free_api()
+        
+        # Save metadata
+        visual_data = self.save_visual_data(images)
+        
+        print(f"""
+        ╔════════════════════════════════════╗
+        ║     VISUALS GENERATED               ║
+        ╚════════════════════════════════════╝
+        Total Scenes: {len(images)}
+        Output Directory: {self.output_dir}
+        """)
+        
+        return visual_data
 
 if __name__ == "__main__":
     generator = VisualGenerator()

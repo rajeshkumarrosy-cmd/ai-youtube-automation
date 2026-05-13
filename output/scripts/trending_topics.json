@@ -1,14 +1,24 @@
 {
-  "generated_at": "2026-05-13T16:54:35.220753",
-  "selected_topic": {
-    "title": "The Disappearance That Shocked The World",
-    "keywords": [
-      "missing",
-      "mystery",
-      "investigation"
-    ],
-    "duration_short": 45,
-    "duration_long": 420
-  },
-  "category": "Mystery"
+  "date": "2026-05-13T18:45:45.160217",
+  "topics": [
+    {
+      "title": "Magic Forest Adventure",
+      "category": "Kids Stories",
+      "engagement_score": 30,
+      "source": "Niche Database"
+    },
+    {
+      "title": "The Haunted House Mystery",
+      "category": "Horror Animation",
+      "engagement_score": 30,
+      "source": "Niche Database"
+    },
+    {
+      "title": "Hidden Treasure Quest",
+      "category": "Kids Stories",
+      "engagement_score": 15,
+      "source": "Niche Database"
+    }
+  ],
+  "total_researched": 3
 }

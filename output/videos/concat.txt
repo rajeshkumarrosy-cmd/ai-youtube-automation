@@ -1,0 +1,4 @@
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_1_with_audio.mp4'
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_2_with_audio.mp4'
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_3_with_audio.mp4'
+file '/home/runner/work/ai-youtube-automation/ai-youtube-automation/output/videos/scene_4_with_audio.mp4'

@@ -1,25 +1,35 @@
 {
-  "generated_at": "2026-05-13T11:29:10.738557",
-  "type": "animated",
-  "total_scenes": 3,
+  "generated_at": "2026-05-13T14:34:20.919468",
+  "total_scenes": 4,
+  "type": "professional_animated",
   "scenes": [
     {
       "scene": 1,
-      "visual_file": "output/visuals/scene_1_animated.mp4",
-      "duration": 3,
-      "description": "INTENSE SHOCK IMAGE related to Magic Forest Adventure"
+      "visual_file": "output/visuals/scene_1.mp4",
+      "duration": 5,
+      "description": "Shocking dramatic scene",
+      "type": "professional_animated"
     },
     {
       "scene": 2,
-      "visual_file": "output/visuals/scene_2_animated.mp4",
-      "duration": 25,
-      "description": "Evidence and story unfolds about Magic Forest Adventure"
+      "visual_file": "output/visuals/scene_2.mp4",
+      "duration": 20,
+      "description": "Evidence and tension",
+      "type": "professional_animated"
     },
     {
       "scene": 3,
-      "visual_file": "output/visuals/scene_3_animated.mp4",
-      "duration": 17,
-      "description": "PLOT TWIST - Ultimate revelation about Magic Forest Adventure"
+      "visual_file": "output/visuals/scene_3.mp4",
+      "duration": 15,
+      "description": "Shocking revelation",
+      "type": "professional_animated"
+    },
+    {
+      "scene": 4,
+      "visual_file": "output/visuals/scene_4.mp4",
+      "duration": 5,
+      "description": "Subscribe reminder",
+      "type": "professional_animated"
     }
   ]
 }

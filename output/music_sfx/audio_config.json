@@ -4,19 +4,25 @@
     {
       "scene": 1,
       "start_time": 0,
-      "duration": 3,
+      "duration": 5,
       "sound_effect": "transition whoosh"
     },
     {
       "scene": 2,
-      "start_time": 3,
-      "duration": 25,
+      "start_time": 5,
+      "duration": 20,
       "sound_effect": "transition whoosh"
     },
     {
       "scene": 3,
-      "start_time": 28,
-      "duration": 17,
+      "start_time": 25,
+      "duration": 15,
+      "sound_effect": "transition whoosh"
+    },
+    {
+      "scene": 4,
+      "start_time": 40,
+      "duration": 5,
       "sound_effect": "transition whoosh"
     }
   ],

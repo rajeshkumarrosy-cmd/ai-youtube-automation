@@ -1,41 +1,53 @@
 {
   "type": "short",
-  "format": "vertical (9:16)",
   "duration": 45,
-  "topic": "Magic Forest Adventure",
-  "category": "Kids Stories",
-  "created_at": "2026-05-13T11:29:07.368729",
-  "structure": "Hook \u2192 Tension \u2192 Twist",
+  "topic": "The Hidden Truth About Area 51",
+  "category": "Mystery & Thriller",
+  "structure": "HOOK \u2192 TENSION \u2192 TWIST \u2192 END",
   "scenes": [
     {
       "scene": 1,
-      "duration": 3,
-      "visual": "INTENSE SHOCK IMAGE related to Magic Forest Adventure",
-      "narration": "Wait... what if magic forest adventure is actually real?",
-      "tone": "shocked",
-      "music": "suspenseful"
+      "duration": 5,
+      "type": "hook",
+      "visual": "Shocking dramatic scene",
+      "narration": "What if everything you knew about The Hidden Truth About Area 51 was wrong?",
+      "emotion": "Shock",
+      "pacing": "Fast"
     },
     {
       "scene": 2,
-      "duration": 25,
-      "visual": "Evidence and story unfolds about Magic Forest Adventure",
-      "narration": "Experts discovered something about Magic Forest Adventure. The truth is more shocking than anyone imagined. Scientists couldn't explain it for years.",
-      "tone": "mysterious",
-      "music": "building tension"
+      "duration": 20,
+      "type": "buildup",
+      "visual": "Evidence and tension",
+      "narration": "Scientists discovered something impossible about The Hidden Truth About Area 51. Governments tried to hide it. But the truth was too big.",
+      "emotion": "Mystery",
+      "pacing": "Medium"
     },
     {
       "scene": 3,
-      "duration": 17,
-      "visual": "PLOT TWIST - Ultimate revelation about Magic Forest Adventure",
-      "narration": "But here's what NOBODY expected. The real story behind Magic Forest Adventure will change how you see everything.",
-      "tone": "shocking revelation",
-      "music": "dramatic peak"
+      "duration": 15,
+      "type": "twist",
+      "visual": "Shocking revelation",
+      "narration": "Here's what nobody expected about The Hidden Truth About Area 51. This changes EVERYTHING.",
+      "emotion": "Shock",
+      "pacing": "Fast"
+    },
+    {
+      "scene": 4,
+      "duration": 5,
+      "type": "cta",
+      "visual": "Subscribe reminder",
+      "narration": "Subscribe for more shocking discoveries.",
+      "emotion": "Engaging",
+      "pacing": "Normal"
     }
   ],
-  "hooks": [
-    "0:00-0:03 = Immediate shock",
-    "0:15 = \"Wait...\" moment",
-    "0:30 = Plot twist hint",
-    "0:42 = Cliffhanger ending"
+  "key_moments": [
+    "0:00-0:05: Shock hook",
+    "0:15: \"What if...\" question",
+    "0:25: Mystery deepens",
+    "0:35: Plot twist hint",
+    "0:40: Final revelation",
+    "0:45: Subscribe call"
   ]
 }

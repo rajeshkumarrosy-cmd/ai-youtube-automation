@@ -1,108 +1,87 @@
 {
   "type": "long",
-  "format": "horizontal (16:9)",
-  "duration": "7 minutes",
-  "total_seconds": 420,
-  "topic": "Magic Forest Adventure",
-  "category": "Kids Stories",
-  "created_at": "2026-05-13T11:29:07.368740",
-  "structure": "Introduction \u2192 Conflict \u2192 Climax \u2192 Resolution",
+  "duration": 420,
+  "topic": "The Hidden Truth About Area 51",
+  "category": "Mystery & Thriller",
+  "structure": "ACT 1: THE QUESTION \u2192 ACT 2: THE INVESTIGATION \u2192 ACT 3: THE TRUTH \u2192 ACT 4: THE IMPACT",
   "acts": {
-    "act_1_opening": {
+    "act_1": {
       "name": "THE QUESTION",
-      "timestamp": "0:00-1:30",
-      "duration": 90,
-      "purpose": "Hook and establish mystery",
-      "scenes": [
-        {
-          "scene": 1,
-          "duration": 45,
-          "narration": "Have you ever wondered what really happened with Magic Forest Adventure? Most people don't know the REAL story.",
-          "visual": "Intriguing visuals about Magic Forest Adventure"
-        },
-        {
-          "scene": 2,
-          "duration": 45,
-          "narration": "The official story says one thing. But the truth? The truth is much stranger than anyone imagined.",
-          "visual": "News clips and evidence about Magic Forest Adventure"
-        }
-      ]
-    },
-    "act_2_conflict": {
-      "name": "THE INVESTIGATION",
-      "timestamp": "1:30-4:00",
-      "duration": 150,
-      "purpose": "Build tension and reveal backstory",
-      "scenes": [
-        {
-          "scene": 3,
-          "duration": 50,
-          "narration": "It started with a discovery. Scientists found something unexpected about Magic Forest Adventure.",
-          "visual": "Research and investigation scenes"
-        },
-        {
-          "scene": 4,
-          "duration": 50,
-          "narration": "They kept digging deeper. What they found contradicted everything they believed about Magic Forest Adventure.",
-          "visual": "Mounting evidence and complications"
-        },
-        {
-          "scene": 5,
-          "duration": 50,
-          "narration": "But their investigation caught the attention of powerful people. People who wanted to keep the truth about Magic Forest Adventure hidden.",
-          "visual": "Tension and conflict emerging"
-        }
-      ]
-    },
-    "act_3_climax": {
-      "name": "THE REVELATION",
-      "timestamp": "4:00-6:00",
-      "duration": 120,
-      "purpose": "Peak emotional moment, big reveal",
-      "scenes": [
-        {
-          "scene": 6,
-          "duration": 60,
-          "narration": "They had to make a choice. Hide the truth about Magic Forest Adventure, or risk everything to expose it.",
-          "visual": "Critical decision moment"
-        },
-        {
-          "scene": 7,
-          "duration": 60,
-          "narration": "They chose the truth. And what they revealed about Magic Forest Adventure shocked the world. Everything changed after that.",
-          "visual": "Shocking revelation and impact"
-        }
-      ]
-    },
-    "act_4_resolution": {
-      "name": "THE TRUTH",
-      "timestamp": "6:00-7:00",
       "duration": 60,
-      "purpose": "Wrap up and life lesson",
       "scenes": [
         {
-          "scene": 8,
           "duration": 30,
-          "narration": "Today, the truth about Magic Forest Adventure is finally known. But not everyone believes it.",
-          "visual": "Aftermath and new normal"
+          "narration": "Have you ever wondered what really happened with The Hidden Truth About Area 51? Most people don't know the REAL story.",
+          "visual": "Intriguing introduction"
         },
         {
-          "scene": 9,
           "duration": 30,
-          "narration": "What we learned from Magic Forest Adventure is this: the truth always matters. Even when it's uncomfortable.",
-          "visual": "Final reflection and conclusion"
+          "narration": "The official story is one thing. But I've uncovered something that changes everything.",
+          "visual": "Building intrigue"
+        }
+      ]
+    },
+    "act_2": {
+      "name": "THE INVESTIGATION",
+      "duration": 180,
+      "scenes": [
+        {
+          "duration": 60,
+          "narration": "It started with a simple discovery about The Hidden Truth About Area 51. But the more I investigated, the deeper the mystery became.",
+          "visual": "Investigation begins"
+        },
+        {
+          "duration": 60,
+          "narration": "I found documents nobody was supposed to see. Interviews with people who were silenced. Evidence that contradicted everything.",
+          "visual": "Evidence mounting"
+        },
+        {
+          "duration": 60,
+          "narration": "But my investigation attracted attention. Powerful people wanted me to stop. They had everything to lose if the truth came out.",
+          "visual": "Tension rising"
+        }
+      ]
+    },
+    "act_3": {
+      "name": "THE TRUTH",
+      "duration": 120,
+      "scenes": [
+        {
+          "duration": 60,
+          "narration": "Here's what I found about The Hidden Truth About Area 51. It's more incredible than any fiction. And it's completely real.",
+          "visual": "Major revelation"
+        },
+        {
+          "duration": 60,
+          "narration": "The implications are staggering. This could change how we understand everything about this topic.",
+          "visual": "Full truth revealed"
+        }
+      ]
+    },
+    "act_4": {
+      "name": "THE IMPACT",
+      "duration": 60,
+      "scenes": [
+        {
+          "duration": 30,
+          "narration": "Today, The Hidden Truth About Area 51 is no longer hidden. The world knows the truth.",
+          "visual": "Aftermath"
+        },
+        {
+          "duration": 30,
+          "narration": "What we learned is this: The truth always matters. Even when it's uncomfortable, even when powerful people want to hide it.",
+          "visual": "Final thought"
         }
       ]
     }
   },
-  "retention_points": [
-    "0:30 - Hook question",
+  "retention_hooks": [
+    "0:30 - Opening question",
     "1:30 - Conflict introduced",
     "2:30 - Stakes raised",
-    "3:30 - Major complication",
+    "3:30 - Major revelation hint",
     "4:30 - Climax begins",
-    "5:30 - Peak moment",
-    "6:00 - Resolution starts",
-    "6:30 - Final message"
+    "5:30 - Truth revealed",
+    "6:30 - Resolution"
   ]
 }

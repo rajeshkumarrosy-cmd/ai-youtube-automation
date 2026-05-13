@@ -1,47 +1,35 @@
 {
-  "generated_at": "2026-05-13T11:29:12.010419",
-  "voice_engine": "Google TTS (Primary), pyttsx3 (Fallback), Edge-TTS (Final)",
+  "generated_at": "2026-05-13T14:34:24.064058",
   "voice_quality": "HUMAN-LIKE",
-  "language": "English (US)",
-  "total_duration_seconds": 45,
-  "voice_properties": {
-    "accent": "American English",
-    "speed": "Natural (140 WPM)",
-    "volume": "Maximum (1.0)",
-    "clarity": "High",
-    "emotion": "Natural",
-    "gender": "Female (Natural sounding)"
-  },
+  "engine_priority": "ElevenLabs > Google > Edge-TTS",
   "voiceovers": [
     {
       "scene": 1,
-      "narration": "Wait... what if magic forest adventure is actually real?",
+      "narration": "What if everything you knew about The Hidden Truth About Area 51 was wrong?",
       "voiceover_file": "output/voiceovers/scene_1.mp3",
-      "duration": 3,
-      "voice_type": "Google TTS (Human-like)",
-      "emotion": "neutral"
+      "duration": 5,
+      "voice_quality": "HUMAN-LIKE"
     },
     {
       "scene": 2,
-      "narration": "Experts discovered something about Magic Forest Adventure. The truth is more shocking than anyone imagined. Scientists couldn't explain it for years.",
+      "narration": "Scientists discovered something impossible about The Hidden Truth About Area 51. Governments tried to hide it. But the truth was too big.",
       "voiceover_file": "output/voiceovers/scene_2.mp3",
-      "duration": 25,
-      "voice_type": "Google TTS (Human-like)",
-      "emotion": "neutral"
+      "duration": 20,
+      "voice_quality": "HUMAN-LIKE"
     },
     {
       "scene": 3,
-      "narration": "But here's what NOBODY expected. The real story behind Magic Forest Adventure will change how you see everything.",
+      "narration": "Here's what nobody expected about The Hidden Truth About Area 51. This changes EVERYTHING.",
       "voiceover_file": "output/voiceovers/scene_3.mp3",
-      "duration": 17,
-      "voice_type": "Google TTS (Human-like)",
-      "emotion": "neutral"
+      "duration": 15,
+      "voice_quality": "HUMAN-LIKE"
+    },
+    {
+      "scene": 4,
+      "narration": "Subscribe for more shocking discoveries.",
+      "voiceover_file": "output/voiceovers/scene_4.mp3",
+      "duration": 5,
+      "voice_quality": "HUMAN-LIKE"
     }
-  ],
-  "quality_metrics": {
-    "human_like": true,
-    "natural_sounding": true,
-    "clear_pronunciation": true,
-    "emotion_conveyed": true
-  }
+  ]
 }

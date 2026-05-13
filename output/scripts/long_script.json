@@ -1,27 +1,74 @@
 {
   "type": "long",
   "duration": 420,
-  "topic": "AI Becomes Conscious - What Happened Next",
+  "title": "The Disappearance That Shocked The World",
+  "format": "HORIZONTAL (16:9)",
+  "pacing": "CINEMATIC",
   "scenes": [
     {
       "scene": 1,
       "duration": 60,
-      "text": "Have you ever wondered about AI Becomes Conscious - What Happened Next? Today, I'm revealing the complete truth."
+      "type": "INTRODUCTION",
+      "narration": "Have you ever wondered what really happened with The Disappearance That Shocked The World? Today, I'm revealing the complete untold story. The truth has been hidden for years, but I finally uncovered it.",
+      "visual_search": "cinematic introduction mysterious",
+      "emotion": "CURIOSITY"
     },
     {
       "scene": 2,
-      "duration": 120,
-      "text": "My investigation into AI Becomes Conscious - What Happened Next took me around the world. I found documents nobody was supposed to see."
+      "duration": 90,
+      "type": "INVESTIGATION BEGINS",
+      "narration": "My journey investigating The Disappearance That Shocked The World started with a simple question. But the more I dug, the deeper the mystery became. I found documents nobody was supposed to see.",
+      "visual_search": "investigation research discovery",
+      "emotion": "INTRIGUE"
     },
     {
       "scene": 3,
-      "duration": 120,
-      "text": "Here's what I discovered about AI Becomes Conscious - What Happened Next. The evidence is overwhelming and undeniable."
+      "duration": 90,
+      "type": "EVIDENCE MOUNTING",
+      "narration": "I interviewed witnesses who risked everything to tell the truth about The Disappearance That Shocked The World. Their stories contradicted everything the government said. The evidence was undeniable.",
+      "visual_search": "interview testimony evidence",
+      "emotion": "TENSION"
     },
     {
       "scene": 4,
-      "duration": 120,
-      "text": "The implications of AI Becomes Conscious - What Happened Next are staggering. This could change how we understand everything."
+      "duration": 90,
+      "type": "THE THREAT",
+      "narration": "But my investigation attracted unwanted attention. Powerful people wanted me to stop. They had everything to lose if the truth about The Disappearance That Shocked The World came out.",
+      "visual_search": "danger threat conflict",
+      "emotion": "DANGER"
+    },
+    {
+      "scene": 5,
+      "duration": 60,
+      "type": "BREAKTHROUGH",
+      "narration": "Then I found it. The smoking gun. The proof that everything about The Disappearance That Shocked The World was a lie. This could change history.",
+      "visual_search": "breakthrough discovery truth",
+      "emotion": "REVELATION"
+    },
+    {
+      "scene": 6,
+      "duration": 60,
+      "type": "FULL TRUTH",
+      "narration": "Here's what really happened with The Disappearance That Shocked The World. The complete, unfiltered truth. This is bigger than anyone imagined.",
+      "visual_search": "amazing revelation truth",
+      "emotion": "SHOCK"
+    },
+    {
+      "scene": 7,
+      "duration": 60,
+      "type": "IMPLICATIONS",
+      "narration": "The implications of The Disappearance That Shocked The World are staggering. This could reshape how we understand everything. We can never look at this the same way again.",
+      "visual_search": "impact consequence change",
+      "emotion": "AWESTRUK"
+    },
+    {
+      "scene": 8,
+      "duration": 30,
+      "type": "CLOSING",
+      "narration": "The story of The Disappearance That Shocked The World is finally being told. Share this with everyone. The truth cannot be hidden anymore.",
+      "visual_search": "conclusion resolution",
+      "emotion": "EMPOWERMENT"
     }
-  ]
+  ],
+  "total_narration": "Have you ever wondered what really happened? Today I'm revealing the complete untold story. The truth has been hidden for years. My journey started with a simple question. The deeper I dug, the deeper the mystery became. I found documents nobody was supposed to see. I interviewed witnesses who risked everything. Their stories contradicted everything the government said. My investigation attracted unwanted attention. Powerful people wanted me to stop. Then I found it. The smoking gun. The proof that everything was a lie. Here's what really happened. The complete, unfiltered truth. This is bigger than anyone imagined. The implications are staggering. We can never look at this the same way again. The story is finally being told. Share this with everyone. The truth cannot be hidden anymore."
 }

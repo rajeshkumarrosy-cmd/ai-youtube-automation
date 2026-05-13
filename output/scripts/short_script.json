@@ -1,22 +1,42 @@
 {
   "type": "short",
   "duration": 45,
-  "topic": "AI Becomes Conscious - What Happened Next",
+  "title": "The Disappearance That Shocked The World",
+  "format": "VERTICAL (9:16)",
+  "pacing": "FAST",
   "scenes": [
     {
       "scene": 1,
       "duration": 5,
-      "text": "What if ai becomes conscious - what happened next is actually real?"
+      "type": "HOOK",
+      "narration": "What if the disappearance that shocked the world actually happened?",
+      "visual_search": "shocking revelation dramatic",
+      "emotion": "SHOCK"
     },
     {
       "scene": 2,
-      "duration": 25,
-      "text": "Experts discovered something shocking about AI Becomes Conscious - What Happened Next. The truth is more incredible than anyone imagined."
+      "duration": 20,
+      "type": "BUILDUP",
+      "narration": "Scientists made an incredible discovery. Nobody expected this about The Disappearance That Shocked The World. The evidence is overwhelming.",
+      "visual_search": "evidence investigation discovery",
+      "emotion": "MYSTERY"
     },
     {
       "scene": 3,
       "duration": 15,
-      "text": "Here's what nobody expected about AI Becomes Conscious - What Happened Next. This changes everything."
+      "type": "TWIST",
+      "narration": "But here's the truth about The Disappearance That Shocked The World that will shock you. This changes EVERYTHING.",
+      "visual_search": "shocking truth revelation amazing",
+      "emotion": "SHOCK"
+    },
+    {
+      "scene": 4,
+      "duration": 5,
+      "type": "CTA",
+      "narration": "Subscribe for more incredible stories.",
+      "visual_search": "subscribe button",
+      "emotion": "ENGAGEMENT"
     }
-  ]
+  ],
+  "total_narration": "What if it actually happened? Scientists made an incredible discovery. Nobody expected this. The evidence is overwhelming. But here's the truth that will shock you. This changes everything. Subscribe for more incredible stories."
 }

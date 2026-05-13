@@ -1,20 +1,35 @@
 {
-  "generated_at": "2026-05-13T16:34:41.898498",
+  "generated_at": "2026-05-13T16:54:40.282072",
+  "total_voiceovers": 4,
+  "voice_quality": "HUMAN-LIKE NATURAL",
   "voiceovers": [
     {
       "scene": 1,
       "file": "output/voiceovers/scene_1.mp3",
-      "duration": 5
+      "duration": 5,
+      "narration": "What if the disappearance that shocked the world actually happened?",
+      "voice_type": "HUMAN-LIKE NATURAL"
     },
     {
       "scene": 2,
       "file": "output/voiceovers/scene_2.mp3",
-      "duration": 25
+      "duration": 20,
+      "narration": "Scientists made an incredible discovery. Nobody expected this about The Disappearance That Shocked The World. The evidence is overwhelming.",
+      "voice_type": "HUMAN-LIKE NATURAL"
     },
     {
       "scene": 3,
       "file": "output/voiceovers/scene_3.mp3",
-      "duration": 15
+      "duration": 15,
+      "narration": "But here's the truth about The Disappearance That Shocked The World that will shock you. This changes EVERYTHING.",
+      "voice_type": "HUMAN-LIKE NATURAL"
+    },
+    {
+      "scene": 4,
+      "file": "output/voiceovers/scene_4.mp3",
+      "duration": 5,
+      "narration": "Subscribe for more incredible stories.",
+      "voice_type": "HUMAN-LIKE NATURAL"
     }
   ]
 }

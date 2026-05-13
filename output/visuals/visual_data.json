@@ -1,20 +1,35 @@
 {
-  "generated_at": "2026-05-13T16:34:40.413149",
+  "generated_at": "2026-05-13T16:54:38.128162",
+  "total_scenes": 4,
+  "type": "real_stock_video",
   "scenes": [
     {
       "scene": 1,
       "file": "output/visuals/scene_1.mp4",
-      "duration": 5
+      "duration": 5,
+      "search_term": "shocking revelation dramatic",
+      "type": "stock_footage"
     },
     {
       "scene": 2,
       "file": "output/visuals/scene_2.mp4",
-      "duration": 25
+      "duration": 20,
+      "search_term": "evidence investigation discovery",
+      "type": "stock_footage"
     },
     {
       "scene": 3,
       "file": "output/visuals/scene_3.mp4",
-      "duration": 15
+      "duration": 15,
+      "search_term": "shocking truth revelation amazing",
+      "type": "stock_footage"
+    },
+    {
+      "scene": 4,
+      "file": "output/visuals/scene_4.mp4",
+      "duration": 5,
+      "search_term": "subscribe button",
+      "type": "stock_footage"
     }
   ]
 }

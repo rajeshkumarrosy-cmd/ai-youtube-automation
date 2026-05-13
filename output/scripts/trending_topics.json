@@ -1,9 +1,14 @@
 {
-  "generated_at": "2026-05-13T16:34:37.697934",
-  "topics": [
-    {
-      "title": "AI Becomes Conscious - What Happened Next",
-      "category": "Sci-Fi"
-    }
-  ]
+  "generated_at": "2026-05-13T16:54:35.220753",
+  "selected_topic": {
+    "title": "The Disappearance That Shocked The World",
+    "keywords": [
+      "missing",
+      "mystery",
+      "investigation"
+    ],
+    "duration_short": 45,
+    "duration_long": 420
+  },
+  "category": "Mystery"
 }

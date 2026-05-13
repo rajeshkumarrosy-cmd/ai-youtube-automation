@@ -1,26 +1,27 @@
-import json
 import os
-from PIL import Image, ImageDraw, ImageFont
+from PIL import Image, ImageDraw
 from datetime import datetime
 
 class ThumbnailGenerator:
-    def __init__(self):
-        self.output_dir = "output/thumbnails"
-        os.makedirs(self.output_dir, exist_ok=True)
-    
     def run(self):
-        print("\n" + "="*60)
+        print("\n" + "="*70)
         print("🖼️ STEP 7: THUMBNAIL")
-        print("="*60)
+        print("="*70)
+        
+        os.makedirs("output/thumbnails", exist_ok=True)
         
         img = Image.new('RGB', (1280, 720), color=(255, 50, 50))
         draw = ImageDraw.Draw(img)
-        draw.text((100, 300), "AMAZING STORY", fill=(255, 255, 255))
         
-        output_file = f"{self.output_dir}/thumbnail.png"
+        try:
+            draw.text((150, 300), "SHOCKING STORY", fill=(255, 255, 255))
+        except:
+            pass
+        
+        output_file = "output/thumbnails/thumbnail.png"
         img.save(output_file)
         
-        print(f"\n✅ Thumbnail created: {output_file}\n")
+        print(f"\n✅ Thumbnail created\n")
         
         return {'file': output_file}
 

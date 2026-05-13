@@ -6,148 +6,142 @@ class ScriptGenerator:
     def __init__(self):
         self.output_dir = "output/scripts"
         os.makedirs(self.output_dir, exist_ok=True)
-        self.load_topic()
+        self.topic = self.load_topic()
     
     def load_topic(self):
         try:
             with open("output/scripts/trending_topics.json", 'r') as f:
-                data = json.load(f)
-                self.topic = data.get('selected_topic', {})
+                return json.load(f)['selected_topic']
         except:
-            self.topic = {"title": "Amazing Story"}
+            return {
+                "title": "Amazing Story",
+                "short_hook": "What if this was real?",
+                "long_hook": "The truth behind this story will shock you"
+            }
     
     def generate_short_script(self):
-        """SHORT: 45 seconds"""
-        title = self.topic.get('title', 'Amazing Story')
+        """
+        SHORT VIDEO: 45 seconds
+        Fast paced, shocking, viral
+        """
+        title = self.topic['title']
+        hook = self.topic['short_hook']
         
         return {
             'type': 'short',
             'duration': 45,
             'title': title,
-            'format': 'VERTICAL (9:16)',
-            'pacing': 'FAST',
+            'format': 'VERTICAL 9:16',
             'scenes': [
                 {
-                    'scene': 1,
+                    'scene_number': 1,
                     'duration': 5,
-                    'type': 'HOOK',
-                    'narration': f"What if {title.lower()} actually happened?",
-                    'visual_search': 'shocking revelation dramatic',
-                    'emotion': 'SHOCK'
+                    'narration': f"{hook}!",
+                    'visual_type': 'hook',
+                    'background_color': '1a1a2e'
                 },
                 {
-                    'scene': 2,
+                    'scene_number': 2,
                     'duration': 20,
-                    'type': 'BUILDUP',
-                    'narration': f"Scientists discovered something incredible about {title}. The evidence is overwhelming.",
-                    'visual_search': 'evidence investigation discovery',
-                    'emotion': 'MYSTERY'
+                    'narration': f"This is the story of {title}. Scientists and experts were completely shocked by what they found. Nobody expected this.",
+                    'visual_type': 'story',
+                    'background_color': '16213e'
                 },
                 {
-                    'scene': 3,
+                    'scene_number': 3,
                     'duration': 15,
-                    'type': 'TWIST',
-                    'narration': f"But here's the truth about {title} that will shock you. This changes EVERYTHING.",
-                    'visual_search': 'shocking truth revelation amazing',
-                    'emotion': 'SHOCK'
+                    'narration': f"The truth about {title} will change how you see everything. This is completely real.",
+                    'visual_type': 'twist',
+                    'background_color': '0f3460'
                 },
                 {
-                    'scene': 4,
+                    'scene_number': 4,
                     'duration': 5,
-                    'type': 'CTA',
-                    'narration': "Subscribe for more incredible stories.",
-                    'visual_search': 'subscribe button',
-                    'emotion': 'ENGAGEMENT'
+                    'narration': "Subscribe for more incredible stories every day!",
+                    'visual_type': 'cta',
+                    'background_color': 'e94560'
                 }
             ]
         }
     
     def generate_long_script(self):
-        """LONG: 7 minutes"""
-        title = self.topic.get('title', 'Amazing Story')
+        """
+        LONG VIDEO: 7 minutes
+        COMPLETELY DIFFERENT from short
+        Deep investigation style
+        """
+        title = self.topic['title']
+        hook = self.topic['long_hook']
         
         return {
             'type': 'long',
             'duration': 420,
             'title': title,
-            'format': 'HORIZONTAL (16:9)',
-            'pacing': 'CINEMATIC',
+            'format': 'HORIZONTAL 16:9',
             'scenes': [
                 {
-                    'scene': 1,
+                    'scene_number': 1,
+                    'duration': 45,
+                    'narration': f"{hook}. Today we uncover the complete story that nobody has told before.",
+                    'visual_type': 'opening',
+                    'background_color': '0d0d0d'
+                },
+                {
+                    'scene_number': 2,
+                    'duration': 75,
+                    'narration': f"The story of {title} began years ago. Most people have no idea what really happened. I spent months investigating this.",
+                    'visual_type': 'backstory',
+                    'background_color': '1a0a00'
+                },
+                {
+                    'scene_number': 3,
+                    'duration': 75,
+                    'narration': f"When I started investigating {title}, I found documents that were never meant to be public. The evidence was overwhelming.",
+                    'visual_type': 'investigation',
+                    'background_color': '000a1a'
+                },
+                {
+                    'scene_number': 4,
                     'duration': 60,
-                    'type': 'INTRODUCTION',
-                    'narration': f"Have you ever wondered what really happened with {title}? Today, I'm revealing the complete untold story.",
-                    'visual_search': 'cinematic introduction mysterious',
-                    'emotion': 'CURIOSITY'
+                    'narration': f"I interviewed people who witnessed {title} firsthand. Their accounts were impossible to believe. But they were telling the truth.",
+                    'visual_type': 'testimony',
+                    'background_color': '1a001a'
                 },
                 {
-                    'scene': 2,
-                    'duration': 90,
-                    'type': 'INVESTIGATION BEGINS',
-                    'narration': f"My journey investigating {title} started with a simple question. But the more I dug, the deeper the mystery became.",
-                    'visual_search': 'investigation research discovery',
-                    'emotion': 'INTRIGUE'
-                },
-                {
-                    'scene': 3,
-                    'duration': 90,
-                    'type': 'EVIDENCE MOUNTING',
-                    'narration': f"I found evidence about {title} that contradicted everything. The truth was hidden for years.",
-                    'visual_search': 'evidence testimony investigation',
-                    'emotion': 'TENSION'
-                },
-                {
-                    'scene': 4,
-                    'duration': 90,
-                    'type': 'THE THREAT',
-                    'narration': f"My investigation into {title} attracted unwanted attention. Powerful people wanted me to stop.",
-                    'visual_search': 'danger threat conflict',
-                    'emotion': 'DANGER'
-                },
-                {
-                    'scene': 5,
+                    'scene_number': 5,
                     'duration': 60,
-                    'type': 'BREAKTHROUGH',
-                    'narration': f"Then I found it. The smoking gun. Proof that {title} was completely different from what we believed.",
-                    'visual_search': 'breakthrough discovery truth',
-                    'emotion': 'REVELATION'
+                    'narration': f"The deeper I went into {title}, the more dangerous it became. Powerful people did not want this story told.",
+                    'visual_type': 'danger',
+                    'background_color': '1a0000'
                 },
                 {
-                    'scene': 6,
+                    'scene_number': 6,
                     'duration': 60,
-                    'type': 'FULL TRUTH',
-                    'narration': f"Here's what really happened with {title}. The complete, unfiltered truth.",
-                    'visual_search': 'amazing revelation truth',
-                    'emotion': 'SHOCK'
+                    'narration': f"But then I found it. The proof. Everything about {title} was confirmed. This changes history.",
+                    'visual_type': 'revelation',
+                    'background_color': '001a00'
                 },
                 {
-                    'scene': 7,
-                    'duration': 60,
-                    'type': 'IMPLICATIONS',
-                    'narration': f"The implications of {title} are staggering. We can never look at this the same way again.",
-                    'visual_search': 'impact consequence change',
-                    'emotion': 'AWESTRUK'
-                },
-                {
-                    'scene': 8,
+                    'scene_number': 7,
                     'duration': 30,
-                    'type': 'CLOSING',
-                    'narration': f"The truth of {title} is finally being told. Share this with everyone.",
-                    'visual_search': 'conclusion resolution',
-                    'emotion': 'EMPOWERMENT'
+                    'narration': f"The truth about {title} is now out. Share this story. The world needs to know.",
+                    'visual_type': 'closing',
+                    'background_color': '0d0d0d'
+                },
+                {
+                    'scene_number': 8,
+                    'duration': 15,
+                    'narration': "Subscribe for more incredible investigations. New story every single day.",
+                    'visual_type': 'cta',
+                    'background_color': '1a1a00'
                 }
             ]
         }
     
     def run(self):
-        print("\n" + "="*70)
+        print("\n" + "="*60)
         print("✍️ STEP 2: SCRIPT GENERATION")
-        print("="*70)
-        
-        if not self.topic.get('title'):
-            print("❌ No topic found!")
-            return None
+        print("="*60)
         
         print(f"\n📝 Topic: {self.topic['title']}\n")
         
@@ -160,11 +154,13 @@ class ScriptGenerator:
         with open(f"{self.output_dir}/long_script.json", 'w') as f:
             json.dump(long, f, indent=2)
         
-        print(f"✅ SHORT SCRIPT: 45 seconds, 4 scenes")
-        print(f"✅ LONG SCRIPT: 7 minutes, 8 scenes\n")
+        print("✅ SHORT SCRIPT: 45 seconds, 4 scenes")
+        print("   → Fast paced, viral style")
+        print("\n✅ LONG SCRIPT: 7 minutes, 8 scenes")
+        print("   → Deep investigation style")
+        print("   → COMPLETELY DIFFERENT from short\n")
         
         return {'short': short, 'long': long}
 
 if __name__ == "__main__":
-    generator = ScriptGenerator()
-    generator.run()
+    ScriptGenerator().run()

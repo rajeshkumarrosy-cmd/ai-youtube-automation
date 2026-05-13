@@ -1,87 +1,27 @@
 {
   "type": "long",
   "duration": 420,
-  "topic": "The Hidden Truth About Area 51",
-  "category": "Mystery & Thriller",
-  "structure": "ACT 1: THE QUESTION \u2192 ACT 2: THE INVESTIGATION \u2192 ACT 3: THE TRUTH \u2192 ACT 4: THE IMPACT",
-  "acts": {
-    "act_1": {
-      "name": "THE QUESTION",
+  "topic": "AI Becomes Conscious - What Happened Next",
+  "scenes": [
+    {
+      "scene": 1,
       "duration": 60,
-      "scenes": [
-        {
-          "duration": 30,
-          "narration": "Have you ever wondered what really happened with The Hidden Truth About Area 51? Most people don't know the REAL story.",
-          "visual": "Intriguing introduction"
-        },
-        {
-          "duration": 30,
-          "narration": "The official story is one thing. But I've uncovered something that changes everything.",
-          "visual": "Building intrigue"
-        }
-      ]
+      "text": "Have you ever wondered about AI Becomes Conscious - What Happened Next? Today, I'm revealing the complete truth."
     },
-    "act_2": {
-      "name": "THE INVESTIGATION",
-      "duration": 180,
-      "scenes": [
-        {
-          "duration": 60,
-          "narration": "It started with a simple discovery about The Hidden Truth About Area 51. But the more I investigated, the deeper the mystery became.",
-          "visual": "Investigation begins"
-        },
-        {
-          "duration": 60,
-          "narration": "I found documents nobody was supposed to see. Interviews with people who were silenced. Evidence that contradicted everything.",
-          "visual": "Evidence mounting"
-        },
-        {
-          "duration": 60,
-          "narration": "But my investigation attracted attention. Powerful people wanted me to stop. They had everything to lose if the truth came out.",
-          "visual": "Tension rising"
-        }
-      ]
-    },
-    "act_3": {
-      "name": "THE TRUTH",
+    {
+      "scene": 2,
       "duration": 120,
-      "scenes": [
-        {
-          "duration": 60,
-          "narration": "Here's what I found about The Hidden Truth About Area 51. It's more incredible than any fiction. And it's completely real.",
-          "visual": "Major revelation"
-        },
-        {
-          "duration": 60,
-          "narration": "The implications are staggering. This could change how we understand everything about this topic.",
-          "visual": "Full truth revealed"
-        }
-      ]
+      "text": "My investigation into AI Becomes Conscious - What Happened Next took me around the world. I found documents nobody was supposed to see."
     },
-    "act_4": {
-      "name": "THE IMPACT",
-      "duration": 60,
-      "scenes": [
-        {
-          "duration": 30,
-          "narration": "Today, The Hidden Truth About Area 51 is no longer hidden. The world knows the truth.",
-          "visual": "Aftermath"
-        },
-        {
-          "duration": 30,
-          "narration": "What we learned is this: The truth always matters. Even when it's uncomfortable, even when powerful people want to hide it.",
-          "visual": "Final thought"
-        }
-      ]
+    {
+      "scene": 3,
+      "duration": 120,
+      "text": "Here's what I discovered about AI Becomes Conscious - What Happened Next. The evidence is overwhelming and undeniable."
+    },
+    {
+      "scene": 4,
+      "duration": 120,
+      "text": "The implications of AI Becomes Conscious - What Happened Next are staggering. This could change how we understand everything."
     }
-  },
-  "retention_hooks": [
-    "0:30 - Opening question",
-    "1:30 - Conflict introduced",
-    "2:30 - Stakes raised",
-    "3:30 - Major revelation hint",
-    "4:30 - Climax begins",
-    "5:30 - Truth revealed",
-    "6:30 - Resolution"
   ]
 }

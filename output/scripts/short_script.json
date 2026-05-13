@@ -1,53 +1,22 @@
 {
   "type": "short",
   "duration": 45,
-  "topic": "The Hidden Truth About Area 51",
-  "category": "Mystery & Thriller",
-  "structure": "HOOK \u2192 TENSION \u2192 TWIST \u2192 END",
+  "topic": "AI Becomes Conscious - What Happened Next",
   "scenes": [
     {
       "scene": 1,
       "duration": 5,
-      "type": "hook",
-      "visual": "Shocking dramatic scene",
-      "narration": "What if everything you knew about The Hidden Truth About Area 51 was wrong?",
-      "emotion": "Shock",
-      "pacing": "Fast"
+      "text": "What if ai becomes conscious - what happened next is actually real?"
     },
     {
       "scene": 2,
-      "duration": 20,
-      "type": "buildup",
-      "visual": "Evidence and tension",
-      "narration": "Scientists discovered something impossible about The Hidden Truth About Area 51. Governments tried to hide it. But the truth was too big.",
-      "emotion": "Mystery",
-      "pacing": "Medium"
+      "duration": 25,
+      "text": "Experts discovered something shocking about AI Becomes Conscious - What Happened Next. The truth is more incredible than anyone imagined."
     },
     {
       "scene": 3,
       "duration": 15,
-      "type": "twist",
-      "visual": "Shocking revelation",
-      "narration": "Here's what nobody expected about The Hidden Truth About Area 51. This changes EVERYTHING.",
-      "emotion": "Shock",
-      "pacing": "Fast"
-    },
-    {
-      "scene": 4,
-      "duration": 5,
-      "type": "cta",
-      "visual": "Subscribe reminder",
-      "narration": "Subscribe for more shocking discoveries.",
-      "emotion": "Engaging",
-      "pacing": "Normal"
+      "text": "Here's what nobody expected about AI Becomes Conscious - What Happened Next. This changes everything."
     }
-  ],
-  "key_moments": [
-    "0:00-0:05: Shock hook",
-    "0:15: \"What if...\" question",
-    "0:25: Mystery deepens",
-    "0:35: Plot twist hint",
-    "0:40: Final revelation",
-    "0:45: Subscribe call"
   ]
 }

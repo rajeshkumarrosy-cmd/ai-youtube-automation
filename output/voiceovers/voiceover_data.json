@@ -1,35 +1,20 @@
 {
-  "generated_at": "2026-05-13T14:34:24.064058",
-  "voice_quality": "HUMAN-LIKE",
-  "engine_priority": "ElevenLabs > Google > Edge-TTS",
+  "generated_at": "2026-05-13T16:34:41.898498",
   "voiceovers": [
     {
       "scene": 1,
-      "narration": "What if everything you knew about The Hidden Truth About Area 51 was wrong?",
-      "voiceover_file": "output/voiceovers/scene_1.mp3",
-      "duration": 5,
-      "voice_quality": "HUMAN-LIKE"
+      "file": "output/voiceovers/scene_1.mp3",
+      "duration": 5
     },
     {
       "scene": 2,
-      "narration": "Scientists discovered something impossible about The Hidden Truth About Area 51. Governments tried to hide it. But the truth was too big.",
-      "voiceover_file": "output/voiceovers/scene_2.mp3",
-      "duration": 20,
-      "voice_quality": "HUMAN-LIKE"
+      "file": "output/voiceovers/scene_2.mp3",
+      "duration": 25
     },
     {
       "scene": 3,
-      "narration": "Here's what nobody expected about The Hidden Truth About Area 51. This changes EVERYTHING.",
-      "voiceover_file": "output/voiceovers/scene_3.mp3",
-      "duration": 15,
-      "voice_quality": "HUMAN-LIKE"
-    },
-    {
-      "scene": 4,
-      "narration": "Subscribe for more shocking discoveries.",
-      "voiceover_file": "output/voiceovers/scene_4.mp3",
-      "duration": 5,
-      "voice_quality": "HUMAN-LIKE"
+      "file": "output/voiceovers/scene_3.mp3",
+      "duration": 15
     }
   ]
 }

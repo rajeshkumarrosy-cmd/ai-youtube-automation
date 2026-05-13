@@ -1,15 +1,11 @@
-from datetime import datetime
-
 class Analytics:
     def run(self):
-        print("\n" + "="*60)
+        print("\n" + "="*70)
         print("📊 STEP 10: ANALYTICS")
-        print("="*60)
+        print("="*70)
         
         print(f"""
-✅ Analytics tracked
-
-Your video is complete and ready!
+✅ Video production complete!
         """)
         
         return {'status': 'complete'}

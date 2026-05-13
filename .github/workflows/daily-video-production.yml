@@ -2,227 +2,71 @@ name: 🎬 Autonomous Daily Video Production
 
 on:
   schedule:
-    - cron: '0 2 * * *'
-  workflow_dispatch:
+    - cron: '0 2 * * *'  # Runs daily at 2 AM UTC
+  workflow_dispatch:     # Manual trigger option
 
 jobs:
   video-production:
     runs-on: ubuntu-latest
     
     steps:
-      - name: 📥 Checkout Repository
+      - name: Checkout Repository
         uses: actions/checkout@v3
-        with:
-          fetch-depth: 0
       
-      - name: 🐍 Set up Python 3.10
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.10'
       
-      - name: 📦 Install System Dependencies
+      - name: Install Dependencies
         run: |
-          echo "=========================================="
-          echo "📦 Installing system packages..."
-          echo "=========================================="
-          sudo apt-get update
-          sudo apt-get install -y ffmpeg
-          echo ""
-          echo "Verifying FFmpeg installation..."
-          ffmpeg -version | head -5
-          echo "✅ FFmpeg installed successfully"
-          echo ""
+          pip install requests beautifulsoup4 praw google-trends-api \
+          moviepy pillow pyttsx3 edge-tts youtube-dl yt-dlp \
+          google-auth-oauthlib google-auth-httplib2 google-api-python-client
       
-      - name: 📚 Install Python Dependencies
-        run: |
-          echo "=========================================="
-          echo "📚 Installing Python packages..."
-          echo "=========================================="
-          python -m pip install --upgrade pip
-          pip install -r requirements.txt
-          echo ""
-          echo "✅ All Python packages installed"
-          echo ""
-      
-      # ============================================
-      # STEP 1: TREND RESEARCH
-      # ============================================
       - name: 📈 Step 1 - Trend Research
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "📈 STEP 1: TREND RESEARCH"
-          echo "=========================================="
-          python scripts/1_trend_research.py
-          echo ""
+        run: python scripts/1_trend_research.py
       
-      # ============================================
-      # STEP 2: SCRIPT GENERATION
-      # ============================================
       - name: ✍️ Step 2 - Script Generation
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "✍️ STEP 2: SCRIPT GENERATION"
-          echo "=========================================="
-          python scripts/2_script_generation.py
-          echo ""
+        run: python scripts/2_script_generation.py
       
-      # ============================================
-      # STEP 3: VISUAL GENERATION
-      # ============================================
       - name: 🎨 Step 3 - Visual Generation
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🎨 STEP 3: VISUAL GENERATION"
-          echo "=========================================="
-          python scripts/3_visual_generation.py
-          echo ""
+        run: python scripts/3_visual_generation.py
       
-      # ============================================
-      # STEP 4: VOICEOVER GENERATION
-      # ============================================
       - name: 🎙️ Step 4 - Voiceover Generation
-        env:
-          ELEVENLABS_API_KEY: ${{ secrets.ELEVENLABS_API_KEY }}
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🎙️ STEP 4: VOICEOVER GENERATION"
-          echo "=========================================="
-          python scripts/4_voiceover.py
-          echo ""
+        run: python scripts/4_voiceover.py
       
-      # ============================================
-      # STEP 5: MUSIC & SOUND EFFECTS
-      # ============================================
       - name: 🎵 Step 5 - Background Music & SFX
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🎵 STEP 5: MUSIC & SOUND EFFECTS"
-          echo "=========================================="
-          python scripts/5_music_sfx.py
-          echo ""
+        run: python scripts/5_music_sfx.py
       
-      # ============================================
-      # STEP 6: VIDEO EDITING
-      # ============================================
       - name: 🎬 Step 6 - Video Editing
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🎬 STEP 6: VIDEO EDITING"
-          echo "=========================================="
-          python scripts/6_video_editing.py
-          echo ""
+        run: python scripts/6_video_editing.py
       
-      # ============================================
-      # STEP 7: THUMBNAIL GENERATION
-      # ============================================
       - name: 🖼️ Step 7 - Thumbnail Generation
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🖼️ STEP 7: THUMBNAIL GENERATION"
-          echo "=========================================="
-          python scripts/7_thumbnail.py
-          echo ""
+        run: python scripts/7_thumbnail.py
       
-      # ============================================
-      # STEP 8: SEO OPTIMIZATION
-      # ============================================
       - name: 🔍 Step 8 - SEO Optimization
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🔍 STEP 8: SEO OPTIMIZATION"
-          echo "=========================================="
-          python scripts/8_seo_optimization.py
-          echo ""
+        run: python scripts/8_seo_optimization.py
       
-      # ============================================
-      # STEP 9: YOUTUBE UPLOAD
-      # ============================================
       - name: 📤 Step 9 - YouTube Upload
         env:
           YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
           YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "📤 STEP 9: YOUTUBE UPLOAD"
-          echo "=========================================="
-          python scripts/9_youtube_upload.py
-          echo ""
+        run: python scripts/9_youtube_upload.py
       
-      # ============================================
-      # STEP 10: ANALYTICS & LEARNING
-      # ============================================
       - name: 📊 Step 10 - Analytics & Learning
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "📊 STEP 10: ANALYTICS & LEARNING"
-          echo "=========================================="
-          python scripts/10_analytics.py
-          echo ""
+        run: python scripts/10_analytics.py
       
-      # ============================================
-      # COMMIT & PUSH RESULTS
-      # ============================================
-      - name: 📝 Commit & Push Results to Repository
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: 📝 Commit Results
         run: |
-          echo ""
-          echo "=========================================="
-          echo "📝 COMMITTING RESULTS"
-          echo "=========================================="
-          
           git config --local user.email "action@github.com"
           git config --local user.name "AI Bot"
-          
-          if git diff-index --quiet HEAD --; then
-            echo "✅ No changes to commit"
-          else
-            echo "📝 Found changes, committing..."
-            git add -A
-            git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d %H:%M:%S')"
-            
-            git push https://x-access-token:${GITHUB_TOKEN}@github.com/${{ github.repository }}.git || {
-              echo "⚠️ Push failed, but continuing..."
-            }
-          fi
-          echo ""
-      
-      # ============================================
-      # FINAL SUCCESS MESSAGE
-      # ============================================
-      - name: ✅ Workflow Complete
-        if: always()
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "✅ WORKFLOW COMPLETE!"
-          echo "=========================================="
-          echo ""
-          echo "📊 Video Production Summary:"
-          echo "   ✅ Step 1: Trend Research"
-          echo "   ✅ Step 2: Script Generation"
-          echo "   ✅ Step 3: Visual Generation"
-          echo "   ✅ Step 4: Voiceover Generation"
-          echo "   ✅ Step 5: Music & SFX"
-          echo "   ✅ Step 6: Video Editing"
-          echo "   ✅ Step 7: Thumbnail Generation"
-          echo "   ✅ Step 8: SEO Optimization"
-          echo "   ✅ Step 9: YouTube Upload"
-          echo "   ✅ Step 10: Analytics"
-          echo ""
-          echo "📁 Output files saved in: output/"
-          echo "🎬 Your video is ready!"
-          echo "📺 Check YouTube Studio for your new video"
-          echo ""
-          echo "=========================================="
-          echo ""
+          git add -A
+          git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d')"
+          git push
+
+      - name: 📧 Send Notification
+        uses: actions/github-script@v6
+        with:
+          script: |
+            console.log("✅ Video production completed successfully!");

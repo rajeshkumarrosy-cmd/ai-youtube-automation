@@ -1,137 +1,90 @@
 import os
 import json
 
-def check_all_files():
-    print("\n" + "="*70)
-    print("🔍 VIDEO GENERATION DIAGNOSTIC")
-    print("="*70 + "\n")
+def check():
+    print("\n" + "="*60)
+    print("🔍 VIDEO DIAGNOSTIC")
+    print("="*60 + "\n")
     
     # Check Step 1
-    print("✓ STEP 1: Trends")
-    if os.path.exists("output/scripts/trending_topics.json"):
-        print("   ✅ Trends file exists")
-        try:
-            with open("output/scripts/trending_topics.json") as f:
-                data = json.load(f)
-                topic = data.get('selected_topic', {}).get('title', 'Unknown')
-                print(f"   📝 Topic: {topic}")
-        except Exception as e:
-            print(f"   ⚠️ Error reading file: {e}")
+    print("STEP 1: Trends")
+    f = "output/scripts/trending_topics.json"
+    if os.path.exists(f):
+        with open(f) as file:
+            d = json.load(file)
+            print(f"   ✅ Topic: {d.get('selected_topic', {}).get('title')}")
     else:
-        print("   ❌ Trends file NOT found")
+        print("   ❌ Missing")
     
     # Check Step 2
-    print("\n✓ STEP 2: Scripts")
-    if os.path.exists("output/scripts/short_script.json"):
-        print("   ✅ Short script exists")
-        try:
-            with open("output/scripts/short_script.json") as f:
-                data = json.load(f)
-                scenes = len(data.get('scenes', []))
-                print(f"   📝 Scenes: {scenes}")
-        except Exception as e:
-            print(f"   ⚠️ Error reading file: {e}")
-    else:
-        print("   ❌ Short script NOT found")
-    
-    if os.path.exists("output/scripts/long_script.json"):
-        print("   ✅ Long script exists")
-    else:
-        print("   ❌ Long script NOT found")
+    print("\nSTEP 2: Scripts")
+    for t in ['short', 'long']:
+        f = f"output/scripts/{t}_script.json"
+        if os.path.exists(f):
+            with open(f) as file:
+                d = json.load(file)
+                print(f"   ✅ {t}: {len(d.get('scenes', []))} scenes")
+        else:
+            print(f"   ❌ {t}: Missing")
     
     # Check Step 3
-    print("\n✓ STEP 3: Visuals")
-    if os.path.exists("output/visuals/visual_data.json"):
-        print("   ✅ Visual data exists")
-        try:
-            with open("output/visuals/visual_data.json") as f:
-                data = json.load(f)
-                total = len(data.get('scenes', []))
-                print(f"   🎬 Video clips: {total}")
-                
-                for scene in data.get('scenes', []):
-                    video_file = scene.get('file')
-                    if os.path.exists(video_file):
-                        size = os.path.getsize(video_file) / (1024 * 1024)
-                        print(f"      ✅ Scene {scene['scene']}: {size:.2f} MB")
-                    else:
-                        print(f"      ❌ Scene {scene['scene']}: FILE NOT FOUND - {video_file}")
-        except Exception as e:
-            print(f"   ⚠️ Error reading file: {e}")
+    print("\nSTEP 3: Visuals")
+    f = "output/visuals/visual_data.json"
+    if os.path.exists(f):
+        with open(f) as file:
+            d = json.load(file)
+            short = d.get('short_scenes', [])
+            long = d.get('long_scenes', [])
+            print(f"   Short scenes: {len(short)}")
+            print(f"   Long scenes: {len(long)}")
+            
+            for s in short:
+                vf = s.get('file')
+                exists = os.path.exists(vf) if vf else False
+                size = os.path.getsize(vf)/(1024*1024) if exists else 0
+                status = f"✅ {size:.2f}MB" if exists else "❌ MISSING"
+                print(f"      Short Scene {s.get('scene')}: {status}")
+            
+            for s in long:
+                vf = s.get('file')
+                exists = os.path.exists(vf) if vf else False
+                size = os.path.getsize(vf)/(1024*1024) if exists else 0
+                status = f"✅ {size:.2f}MB" if exists else "❌ MISSING"
+                print(f"      Long Scene {s.get('scene')}: {status}")
     else:
-        print("   ❌ Visual data NOT found")
-        print("   ❌ Checking for scene files...")
-        for i in range(1, 5):
-            if os.path.exists(f"output/visuals/scene_{i}.mp4"):
-                size = os.path.getsize(f"output/visuals/scene_{i}.mp4") / (1024 * 1024)
-                print(f"      ✅ Scene {i}: {size:.2f} MB")
+        print("   ❌ Visual data missing")
     
     # Check Step 4
-    print("\n✓ STEP 4: Voiceovers")
-    if os.path.exists("output/voiceovers/voiceover_data.json"):
-        print("   ✅ Voiceover data exists")
-        try:
-            with open("output/voiceovers/voiceover_data.json") as f:
-                data = json.load(f)
-                total = len(data.get('voiceovers', []))
-                print(f"   🎤 Voiceovers: {total}")
-                
-                for vo in data.get('voiceovers', []):
-                    audio_file = vo.get('file')
-                    if os.path.exists(audio_file):
-                        size = os.path.getsize(audio_file) / 1024
-                        print(f"      ✅ Scene {vo['scene']}: {size:.1f} KB")
-                    else:
-                        print(f"      ❌ Scene {vo['scene']}: FILE NOT FOUND - {audio_file}")
-        except Exception as e:
-            print(f"   ⚠️ Error reading file: {e}")
+    print("\nSTEP 4: Voiceovers")
+    f = "output/voiceovers/voiceover_data.json"
+    if os.path.exists(f):
+        with open(f) as file:
+            d = json.load(file)
+            short = d.get('short_voiceovers', [])
+            long = d.get('long_voiceovers', [])
+            print(f"   Short voiceovers: {len(short)}")
+            print(f"   Long voiceovers: {len(long)}")
+            
+            for s in short:
+                af = s.get('file')
+                exists = os.path.exists(af) if af else False
+                size = os.path.getsize(af)/1024 if exists else 0
+                status = f"✅ {size:.1f}KB" if exists else "❌ MISSING"
+                print(f"      Short Voice {s.get('scene')}: {status}")
     else:
-        print("   ❌ Voiceover data NOT found")
-        print("   ❌ Checking for audio files...")
-        for i in range(1, 5):
-            if os.path.exists(f"output/voiceovers/scene_{i}.mp3"):
-                size = os.path.getsize(f"output/voiceovers/scene_{i}.mp3") / 1024
-                print(f"      ✅ Scene {i}: {size:.1f} KB")
+        print("   ❌ Voiceover data missing")
     
     # Check Step 6
-    print("\n✓ STEP 6: Final Video")
-    if os.path.exists("output/videos/final_video_short.mp4"):
-        print("   ✅ FINAL VIDEO EXISTS!")
-        try:
-            size = os.path.getsize("output/videos/final_video_short.mp4") / (1024 * 1024)
-            print(f"   📹 Size: {size:.2f} MB")
-            print(f"   📍 Path: output/videos/final_video_short.mp4")
-        except Exception as e:
-            print(f"   ⚠️ Error getting size: {e}")
-    else:
-        print("   ❌ FINAL VIDEO NOT FOUND!")
-        
-        print("\n   Checking for scene_X_final.mp4 files...")
-        for i in range(1, 5):
-            scene_file = f"output/videos/scene_{i}_final.mp4"
-            if os.path.exists(scene_file):
-                try:
-                    size = os.path.getsize(scene_file) / (1024 * 1024)
-                    print(f"      ✅ Scene {i}: {size:.2f} MB")
-                except:
-                    print(f"      ✅ Scene {i}: EXISTS (can't read size)")
-            else:
-                print(f"      ❌ Scene {i}: NOT FOUND")
+    print("\nSTEP 6: Final Videos")
+    for t in ['short', 'long']:
+        f = f"output/videos/final_{t}.mp4"
+        if os.path.exists(f):
+            size = os.path.getsize(f)/(1024*1024)
+            print(f"   ✅ {t}: {size:.2f} MB - READY!")
+        else:
+            print(f"   ❌ {t}: NOT FOUND")
     
-    # Summary
-    print("\n" + "="*70)
-    print("🔍 DIAGNOSTIC COMPLETE")
-    print("="*70)
-    
-    # Check if main video exists
-    if os.path.exists("output/videos/final_video_short.mp4"):
-        print("\n✅ SUCCESS! Video file created!")
-        print("📹 Download: output/videos/final_video_short.mp4")
-    else:
-        print("\n❌ VIDEO NOT CREATED")
-        print("⚠️ Check which step failed above")
-    
-    print("\n")
+    print("\n" + "="*60)
 
 if __name__ == "__main__":
-    check_all_files()
+    check()

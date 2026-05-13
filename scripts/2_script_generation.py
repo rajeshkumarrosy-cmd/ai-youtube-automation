@@ -1,216 +1,169 @@
 import json
-import google.generativeai as genai
+import os
 from datetime import datetime
 
 class ScriptGenerator:
     def __init__(self):
-        self.topics = self.load_topics()
-        self.short_script_file = "output/scripts/short_script.json"
-        self.long_script_file = "output/scripts/long_script.json"
+        self.output_dir = "output/scripts"
+        os.makedirs(self.output_dir, exist_ok=True)
+        self.load_topic()
     
-    def load_topics(self):
-        """Load trending topics"""
+    def load_topic(self):
         try:
             with open("output/scripts/trending_topics.json", 'r') as f:
-                return json.load(f)['topics']
+                data = json.load(f)
+                self.topic = data.get('selected_topic', {})
         except:
-            return []
+            self.topic = {"title": "Amazing Story"}
     
-    def generate_short_script(self, topic):
-        """Generate 15-60 sec short script"""
-        prompt = f"""
-        Create a SHORT VIDEO SCRIPT (15-60 seconds) for YouTube Shorts.
+    def generate_short_script(self):
+        """SHORT: 45 seconds"""
+        title = self.topic.get('title', 'Amazing Story')
         
-        Topic: {topic}
-        
-        Requirements:
-        1. Hook viewer in FIRST 2 SECONDS with curiosity or emotion
-        2. Tell a complete micro-story
-        3. Use simple English
-        4. Sound natural and conversational
-        5. Include emotional or surprising twist at end
-        6. Duration: 45 seconds max
-        
-        Format:
-        [SCENE 1]
-        Visual: (describe what's shown)
-        Narration: (exact words to speak)
-        Duration: XXs
-        
-        [SCENE 2]
-        Visual:
-        Narration:
-        Duration:
-        
-        [SCENE 3 - ENDING TWIST]
-        Visual:
-        Narration:
-        Duration:
-        
-        Keep narration conversational and engaging!
-        """
-        
-        # Using free Gemini API (or fallback template)
-        script = self.create_template_script(topic)
-        return script
-    
-    def generate_long_script(self, topic):
-        """Generate 5-8 min long-form script"""
-        prompt = f"""
-        Create a LONG-FORM SCRIPT (5-8 minutes) for YouTube video.
-        
-        Topic: {topic}
-        
-        Requirements:
-        1. Cinematic storytelling with clear structure
-        2. Beginning: Hook + context (1 min)
-        3. Middle: Build tension and conflict (3-4 min)
-        4. Climax: Emotional peak (1-2 min)
-        5. Ending: Resolution + life lesson (30 sec)
-        6. Add retention hooks every 15-20 seconds
-        7. Use emotional language
-        
-        Format with TIMESTAMPS:
-        [0:00-1:00] OPENING
-        [1:00-4:00] CONFLICT
-        [4:00-6:30] CLIMAX
-        [6:30-8:00] ENDING
-        
-        Include visual descriptions for animators.
-        """
-        
-        script = self.create_long_template(topic)
-        return script
-    
-    def create_template_script(self, topic):
-        """Template for short videos"""
         return {
             'type': 'short',
             'duration': 45,
-            'topic': topic,
+            'title': title,
+            'format': 'VERTICAL (9:16)',
+            'pacing': 'FAST',
             'scenes': [
                 {
                     'scene': 1,
-                    'duration': 3,
-                    'visual': f"[INTENSE HOOK IMAGE] Shocking moment related to {topic}",
-                    'narration': f"What if... something unbelievable happened?",
-                    'camera_movement': 'zoom in'
+                    'duration': 5,
+                    'type': 'HOOK',
+                    'narration': f"What if {title.lower()} actually happened?",
+                    'visual_search': 'shocking revelation dramatic',
+                    'emotion': 'SHOCK'
                 },
                 {
                     'scene': 2,
-                    'duration': 25,
-                    'visual': "Narrative unfolds with emotion",
-                    'narration': f"The story behind {topic} that will shock you...",
-                    'camera_movement': 'smooth pan'
+                    'duration': 20,
+                    'type': 'BUILDUP',
+                    'narration': f"Scientists discovered something incredible about {title}. The evidence is overwhelming.",
+                    'visual_search': 'evidence investigation discovery',
+                    'emotion': 'MYSTERY'
                 },
                 {
                     'scene': 3,
-                    'duration': 17,
-                    'visual': "PLOT TWIST - Unexpected ending",
-                    'narration': "But here's the twist nobody expected!",
-                    'camera_movement': 'quick zoom'
+                    'duration': 15,
+                    'type': 'TWIST',
+                    'narration': f"But here's the truth about {title} that will shock you. This changes EVERYTHING.",
+                    'visual_search': 'shocking truth revelation amazing',
+                    'emotion': 'SHOCK'
+                },
+                {
+                    'scene': 4,
+                    'duration': 5,
+                    'type': 'CTA',
+                    'narration': "Subscribe for more incredible stories.",
+                    'visual_search': 'subscribe button',
+                    'emotion': 'ENGAGEMENT'
                 }
             ]
         }
     
-    def create_long_template(self, topic):
-        """Template for long-form videos"""
+    def generate_long_script(self):
+        """LONG: 7 minutes"""
+        title = self.topic.get('title', 'Amazing Story')
+        
         return {
             'type': 'long',
-            'duration': '5-8 min',
-            'topic': topic,
-            'structure': {
-                'opening': {
-                    'timestamp': '0:00-1:00',
-                    'scenes': [
-                        {
-                            'visual': 'Hook image with dynamic text',
-                            'narration': f'Have you ever wondered about {topic}?',
-                            'music': 'suspenseful buildup'
-                        }
-                    ]
+            'duration': 420,
+            'title': title,
+            'format': 'HORIZONTAL (16:9)',
+            'pacing': 'CINEMATIC',
+            'scenes': [
+                {
+                    'scene': 1,
+                    'duration': 60,
+                    'type': 'INTRODUCTION',
+                    'narration': f"Have you ever wondered what really happened with {title}? Today, I'm revealing the complete untold story.",
+                    'visual_search': 'cinematic introduction mysterious',
+                    'emotion': 'CURIOSITY'
                 },
-                'conflict': {
-                    'timestamp': '1:00-4:00',
-                    'scenes': [
-                        {
-                            'visual': 'Story progression with tension',
-                            'narration': 'The incredible truth unfolds...',
-                            'music': 'dramatic build'
-                        }
-                    ]
+                {
+                    'scene': 2,
+                    'duration': 90,
+                    'type': 'INVESTIGATION BEGINS',
+                    'narration': f"My journey investigating {title} started with a simple question. But the more I dug, the deeper the mystery became.",
+                    'visual_search': 'investigation research discovery',
+                    'emotion': 'INTRIGUE'
                 },
-                'climax': {
-                    'timestamp': '4:00-6:30',
-                    'scenes': [
-                        {
-                            'visual': 'Peak emotional moment',
-                            'narration': 'And then... the shocking revelation!',
-                            'music': 'intense orchestral'
-                        }
-                    ]
+                {
+                    'scene': 3,
+                    'duration': 90,
+                    'type': 'EVIDENCE MOUNTING',
+                    'narration': f"I found evidence about {title} that contradicted everything. The truth was hidden for years.",
+                    'visual_search': 'evidence testimony investigation',
+                    'emotion': 'TENSION'
                 },
-                'ending': {
-                    'timestamp': '6:30-8:00',
-                    'scenes': [
-                        {
-                            'visual': 'Resolution and lesson',
-                            'narration': 'Remember this story always...',
-                            'music': 'emotional resolution'
-                        }
-                    ]
+                {
+                    'scene': 4,
+                    'duration': 90,
+                    'type': 'THE THREAT',
+                    'narration': f"My investigation into {title} attracted unwanted attention. Powerful people wanted me to stop.",
+                    'visual_search': 'danger threat conflict',
+                    'emotion': 'DANGER'
+                },
+                {
+                    'scene': 5,
+                    'duration': 60,
+                    'type': 'BREAKTHROUGH',
+                    'narration': f"Then I found it. The smoking gun. Proof that {title} was completely different from what we believed.",
+                    'visual_search': 'breakthrough discovery truth',
+                    'emotion': 'REVELATION'
+                },
+                {
+                    'scene': 6,
+                    'duration': 60,
+                    'type': 'FULL TRUTH',
+                    'narration': f"Here's what really happened with {title}. The complete, unfiltered truth.",
+                    'visual_search': 'amazing revelation truth',
+                    'emotion': 'SHOCK'
+                },
+                {
+                    'scene': 7,
+                    'duration': 60,
+                    'type': 'IMPLICATIONS',
+                    'narration': f"The implications of {title} are staggering. We can never look at this the same way again.",
+                    'visual_search': 'impact consequence change',
+                    'emotion': 'AWESTRUK'
+                },
+                {
+                    'scene': 8,
+                    'duration': 30,
+                    'type': 'CLOSING',
+                    'narration': f"The truth of {title} is finally being told. Share this with everyone.",
+                    'visual_search': 'conclusion resolution',
+                    'emotion': 'EMPOWERMENT'
                 }
-            }
+            ]
         }
     
-    def add_retention_hooks(self, script):
-        """Add engagement hooks every 15 seconds"""
-        hooks = [
-            "Wait until you hear this...",
-            "You won't believe what happened next...",
-            "But that's not even the crazy part...",
-            "Here's where it gets interesting...",
-            "This is where things took a turn...",
-            "Nobody expected what came next...",
-        ]
-        
-        return script
-    
-    def save_scripts(self, short_script, long_script):
-        """Save both scripts"""
-        with open(self.short_script_file, 'w') as f:
-            json.dump(short_script, f, indent=2)
-        
-        with open(self.long_script_file, 'w') as f:
-            json.dump(long_script, f, indent=2)
-        
-        print(f"✅ Scripts saved")
-    
     def run(self):
-        """Generate scripts"""
-        print("✍️ STEP 2: SCRIPT GENERATION STARTING...")
+        print("\n" + "="*70)
+        print("✍️ STEP 2: SCRIPT GENERATION")
+        print("="*70)
         
-        if not self.topics:
-            print("❌ No topics found")
-            return
+        if not self.topic.get('title'):
+            print("❌ No topic found!")
+            return None
         
-        selected_topic = self.topics[0]['title']
-        print(f"\n📝 Generating scripts for: {selected_topic}")
+        print(f"\n📝 Topic: {self.topic['title']}\n")
         
-        short_script = self.generate_short_script(selected_topic)
-        long_script = self.generate_long_script(selected_topic)
+        short = self.generate_short_script()
+        long = self.generate_long_script()
         
-        self.save_scripts(short_script, long_script)
+        with open(f"{self.output_dir}/short_script.json", 'w') as f:
+            json.dump(short, f, indent=2)
         
-        print(f"""
-        ╔════════════════════════════════════╗
-        ║     SCRIPTS GENERATED               ║
-        ╚════════════════════════════════════╝
-        Short: {short_script['duration']}s
-        Long: {long_script['duration']}
-        """)
+        with open(f"{self.output_dir}/long_script.json", 'w') as f:
+            json.dump(long, f, indent=2)
         
-        return {'short': short_script, 'long': long_script}
+        print(f"✅ SHORT SCRIPT: 45 seconds, 4 scenes")
+        print(f"✅ LONG SCRIPT: 7 minutes, 8 scenes\n")
+        
+        return {'short': short, 'long': long}
 
 if __name__ == "__main__":
     generator = ScriptGenerator()

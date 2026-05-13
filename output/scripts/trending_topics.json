@@ -1,24 +1,41 @@
 {
-  "date": "2026-05-13T18:45:45.160217",
-  "topics": [
+  "generated_at": "2026-05-13T19:20:54.611567",
+  "selected_topic": {
+    "title": "Time Traveler Found in 2024",
+    "category": "Sci-Fi",
+    "short_hook": "He knew things nobody should know",
+    "long_hook": "The stranger appeared from nowhere and knew the future"
+  },
+  "all_topics": [
     {
-      "title": "Magic Forest Adventure",
-      "category": "Kids Stories",
-      "engagement_score": 30,
-      "source": "Niche Database"
+      "title": "AI Becomes Conscious",
+      "category": "Sci-Fi",
+      "short_hook": "What if AI suddenly woke up?",
+      "long_hook": "The day artificial intelligence became conscious changed everything"
     },
     {
-      "title": "The Haunted House Mystery",
-      "category": "Horror Animation",
-      "engagement_score": 30,
-      "source": "Niche Database"
+      "title": "Lost City of Gold Found",
+      "category": "Mystery",
+      "short_hook": "Scientists found something impossible",
+      "long_hook": "After 500 years, the lost city was finally discovered"
     },
     {
-      "title": "Hidden Treasure Quest",
-      "category": "Kids Stories",
-      "engagement_score": 15,
-      "source": "Niche Database"
+      "title": "From Homeless to Billionaire",
+      "category": "Motivational",
+      "short_hook": "One decision changed everything",
+      "long_hook": "Nobody believed he could do it. He proved them all wrong"
+    },
+    {
+      "title": "Time Traveler Found in 2024",
+      "category": "Sci-Fi",
+      "short_hook": "He knew things nobody should know",
+      "long_hook": "The stranger appeared from nowhere and knew the future"
+    },
+    {
+      "title": "The Last Human on Earth",
+      "category": "Sci-Fi",
+      "short_hook": "Everyone was gone. Except one",
+      "long_hook": "When the world ended, only one person survived"
     }
-  ],
-  "total_researched": 3
+  ]
 }

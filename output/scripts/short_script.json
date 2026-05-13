@@ -1,42 +1,36 @@
 {
   "type": "short",
   "duration": 45,
-  "title": "The Disappearance That Shocked The World",
-  "format": "VERTICAL (9:16)",
-  "pacing": "FAST",
+  "title": "Time Traveler Found in 2024",
+  "format": "VERTICAL 9:16",
   "scenes": [
     {
-      "scene": 1,
+      "scene_number": 1,
       "duration": 5,
-      "type": "HOOK",
-      "narration": "What if the disappearance that shocked the world actually happened?",
-      "visual_search": "shocking revelation dramatic",
-      "emotion": "SHOCK"
+      "narration": "He knew things nobody should know!",
+      "visual_type": "hook",
+      "background_color": "1a1a2e"
     },
     {
-      "scene": 2,
+      "scene_number": 2,
       "duration": 20,
-      "type": "BUILDUP",
-      "narration": "Scientists made an incredible discovery. Nobody expected this about The Disappearance That Shocked The World. The evidence is overwhelming.",
-      "visual_search": "evidence investigation discovery",
-      "emotion": "MYSTERY"
+      "narration": "This is the story of Time Traveler Found in 2024. Scientists and experts were completely shocked by what they found. Nobody expected this.",
+      "visual_type": "story",
+      "background_color": "16213e"
     },
     {
-      "scene": 3,
+      "scene_number": 3,
       "duration": 15,
-      "type": "TWIST",
-      "narration": "But here's the truth about The Disappearance That Shocked The World that will shock you. This changes EVERYTHING.",
-      "visual_search": "shocking truth revelation amazing",
-      "emotion": "SHOCK"
+      "narration": "The truth about Time Traveler Found in 2024 will change how you see everything. This is completely real.",
+      "visual_type": "twist",
+      "background_color": "0f3460"
     },
     {
-      "scene": 4,
+      "scene_number": 4,
       "duration": 5,
-      "type": "CTA",
-      "narration": "Subscribe for more incredible stories.",
-      "visual_search": "subscribe button",
-      "emotion": "ENGAGEMENT"
+      "narration": "Subscribe for more incredible stories every day!",
+      "visual_type": "cta",
+      "background_color": "e94560"
     }
-  ],
-  "total_narration": "What if it actually happened? Scientists made an incredible discovery. Nobody expected this. The evidence is overwhelming. But here's the truth that will shock you. This changes everything. Subscribe for more incredible stories."
+  ]
 }

@@ -1,30 +1,92 @@
 {
-  "generated_at": "2026-05-13T18:45:45.589107",
-  "voiceovers": [
+  "generated_at": "2026-05-13T19:21:00.411695",
+  "voice_engine": "Edge TTS (Human-like) / Google TTS",
+  "short_voiceovers": [
     {
       "scene": 1,
-      "narration": "What if the disappearance that shocked the world actually happened?",
-      "voiceover_file": "output/voiceovers/scene_1.mp3",
-      "duration": 5
+      "file": "output/voiceovers/short_scene_1.mp3",
+      "duration": 5,
+      "type": "short",
+      "narration": "He knew things nobody should know!"
     },
     {
       "scene": 2,
-      "narration": "Scientists made an incredible discovery. Nobody expected this about The Disappearance That Shocked The World. The evidence is overwhelming.",
-      "voiceover_file": "output/voiceovers/scene_2.mp3",
-      "duration": 20
+      "file": "output/voiceovers/short_scene_2.mp3",
+      "duration": 20,
+      "type": "short",
+      "narration": "This is the story of Time Traveler Found in 2024. Scientists and experts were completely shocked by what they found. Nobody expected this."
     },
     {
       "scene": 3,
-      "narration": "But here's the truth about The Disappearance That Shocked The World that will shock you. This changes EVERYTHING.",
-      "voiceover_file": "output/voiceovers/scene_3.mp3",
-      "duration": 15
+      "file": "output/voiceovers/short_scene_3.mp3",
+      "duration": 15,
+      "type": "short",
+      "narration": "The truth about Time Traveler Found in 2024 will change how you see everything. This is completely real."
     },
     {
       "scene": 4,
-      "narration": "Subscribe for more incredible stories.",
-      "voiceover_file": "output/voiceovers/scene_4.mp3",
-      "duration": 5
+      "file": "output/voiceovers/short_scene_4.mp3",
+      "duration": 5,
+      "type": "short",
+      "narration": "Subscribe for more incredible stories every day!"
     }
   ],
-  "total_duration": 45
+  "long_voiceovers": [
+    {
+      "scene": 1,
+      "file": "output/voiceovers/long_scene_1.mp3",
+      "duration": 45,
+      "type": "long",
+      "narration": "The stranger appeared from nowhere and knew the future. Today we uncover the complete story that nobody has told before."
+    },
+    {
+      "scene": 2,
+      "file": "output/voiceovers/long_scene_2.mp3",
+      "duration": 75,
+      "type": "long",
+      "narration": "The story of Time Traveler Found in 2024 began years ago. Most people have no idea what really happened. I spent months investigating this."
+    },
+    {
+      "scene": 3,
+      "file": "output/voiceovers/long_scene_3.mp3",
+      "duration": 75,
+      "type": "long",
+      "narration": "When I started investigating Time Traveler Found in 2024, I found documents that were never meant to be public. The evidence was overwhelming."
+    },
+    {
+      "scene": 4,
+      "file": "output/voiceovers/long_scene_4.mp3",
+      "duration": 60,
+      "type": "long",
+      "narration": "I interviewed people who witnessed Time Traveler Found in 2024 firsthand. Their accounts were impossible to believe. But they were telling the truth."
+    },
+    {
+      "scene": 5,
+      "file": "output/voiceovers/long_scene_5.mp3",
+      "duration": 60,
+      "type": "long",
+      "narration": "The deeper I went into Time Traveler Found in 2024, the more dangerous it became. Powerful people did not want this story told."
+    },
+    {
+      "scene": 6,
+      "file": "output/voiceovers/long_scene_6.mp3",
+      "duration": 60,
+      "type": "long",
+      "narration": "But then I found it. The proof. Everything about Time Traveler Found in 2024 was confirmed. This changes history."
+    },
+    {
+      "scene": 7,
+      "file": "output/voiceovers/long_scene_7.mp3",
+      "duration": 30,
+      "type": "long",
+      "narration": "The truth about Time Traveler Found in 2024 is now out. Share this story. The world needs to know."
+    },
+    {
+      "scene": 8,
+      "file": "output/voiceovers/long_scene_8.mp3",
+      "duration": 15,
+      "type": "long",
+      "narration": "Subscribe for more incredible investigations. New story every single day."
+    }
+  ]
 }

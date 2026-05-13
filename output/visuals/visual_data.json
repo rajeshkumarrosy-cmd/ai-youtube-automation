@@ -1,29 +1,24 @@
 {
-  "topic": null,
   "scenes": [
     {
-      "scene_num": 1,
-      "image_path": "output/visuals/scene_1.png",
-      "duration": 5,
-      "camera_movement": "none"
+      "scene": 1,
+      "description": "",
+      "file": "output/visuals/scene_1.mp4"
     },
     {
-      "scene_num": 2,
-      "image_path": "output/visuals/scene_2.png",
-      "duration": 20,
-      "camera_movement": "none"
+      "scene": 2,
+      "description": "",
+      "file": "output/visuals/scene_2.mp4"
     },
     {
-      "scene_num": 3,
-      "image_path": "output/visuals/scene_3.png",
-      "duration": 15,
-      "camera_movement": "none"
+      "scene": 3,
+      "description": "",
+      "file": "output/visuals/scene_3.mp4"
     },
     {
-      "scene_num": 4,
-      "image_path": "output/visuals/scene_4.png",
-      "duration": 5,
-      "camera_movement": "none"
+      "scene": 4,
+      "description": "",
+      "file": "output/visuals/scene_4.mp4"
     }
   ]
 }

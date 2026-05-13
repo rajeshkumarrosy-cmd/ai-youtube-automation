@@ -1,74 +1,64 @@
 {
   "type": "long",
   "duration": 420,
-  "title": "The Disappearance That Shocked The World",
-  "format": "HORIZONTAL (16:9)",
-  "pacing": "CINEMATIC",
+  "title": "Time Traveler Found in 2024",
+  "format": "HORIZONTAL 16:9",
   "scenes": [
     {
-      "scene": 1,
+      "scene_number": 1,
+      "duration": 45,
+      "narration": "The stranger appeared from nowhere and knew the future. Today we uncover the complete story that nobody has told before.",
+      "visual_type": "opening",
+      "background_color": "0d0d0d"
+    },
+    {
+      "scene_number": 2,
+      "duration": 75,
+      "narration": "The story of Time Traveler Found in 2024 began years ago. Most people have no idea what really happened. I spent months investigating this.",
+      "visual_type": "backstory",
+      "background_color": "1a0a00"
+    },
+    {
+      "scene_number": 3,
+      "duration": 75,
+      "narration": "When I started investigating Time Traveler Found in 2024, I found documents that were never meant to be public. The evidence was overwhelming.",
+      "visual_type": "investigation",
+      "background_color": "000a1a"
+    },
+    {
+      "scene_number": 4,
       "duration": 60,
-      "type": "INTRODUCTION",
-      "narration": "Have you ever wondered what really happened with The Disappearance That Shocked The World? Today, I'm revealing the complete untold story. The truth has been hidden for years, but I finally uncovered it.",
-      "visual_search": "cinematic introduction mysterious",
-      "emotion": "CURIOSITY"
+      "narration": "I interviewed people who witnessed Time Traveler Found in 2024 firsthand. Their accounts were impossible to believe. But they were telling the truth.",
+      "visual_type": "testimony",
+      "background_color": "1a001a"
     },
     {
-      "scene": 2,
-      "duration": 90,
-      "type": "INVESTIGATION BEGINS",
-      "narration": "My journey investigating The Disappearance That Shocked The World started with a simple question. But the more I dug, the deeper the mystery became. I found documents nobody was supposed to see.",
-      "visual_search": "investigation research discovery",
-      "emotion": "INTRIGUE"
-    },
-    {
-      "scene": 3,
-      "duration": 90,
-      "type": "EVIDENCE MOUNTING",
-      "narration": "I interviewed witnesses who risked everything to tell the truth about The Disappearance That Shocked The World. Their stories contradicted everything the government said. The evidence was undeniable.",
-      "visual_search": "interview testimony evidence",
-      "emotion": "TENSION"
-    },
-    {
-      "scene": 4,
-      "duration": 90,
-      "type": "THE THREAT",
-      "narration": "But my investigation attracted unwanted attention. Powerful people wanted me to stop. They had everything to lose if the truth about The Disappearance That Shocked The World came out.",
-      "visual_search": "danger threat conflict",
-      "emotion": "DANGER"
-    },
-    {
-      "scene": 5,
+      "scene_number": 5,
       "duration": 60,
-      "type": "BREAKTHROUGH",
-      "narration": "Then I found it. The smoking gun. The proof that everything about The Disappearance That Shocked The World was a lie. This could change history.",
-      "visual_search": "breakthrough discovery truth",
-      "emotion": "REVELATION"
+      "narration": "The deeper I went into Time Traveler Found in 2024, the more dangerous it became. Powerful people did not want this story told.",
+      "visual_type": "danger",
+      "background_color": "1a0000"
     },
     {
-      "scene": 6,
+      "scene_number": 6,
       "duration": 60,
-      "type": "FULL TRUTH",
-      "narration": "Here's what really happened with The Disappearance That Shocked The World. The complete, unfiltered truth. This is bigger than anyone imagined.",
-      "visual_search": "amazing revelation truth",
-      "emotion": "SHOCK"
+      "narration": "But then I found it. The proof. Everything about Time Traveler Found in 2024 was confirmed. This changes history.",
+      "visual_type": "revelation",
+      "background_color": "001a00"
     },
     {
-      "scene": 7,
-      "duration": 60,
-      "type": "IMPLICATIONS",
-      "narration": "The implications of The Disappearance That Shocked The World are staggering. This could reshape how we understand everything. We can never look at this the same way again.",
-      "visual_search": "impact consequence change",
-      "emotion": "AWESTRUK"
-    },
-    {
-      "scene": 8,
+      "scene_number": 7,
       "duration": 30,
-      "type": "CLOSING",
-      "narration": "The story of The Disappearance That Shocked The World is finally being told. Share this with everyone. The truth cannot be hidden anymore.",
-      "visual_search": "conclusion resolution",
-      "emotion": "EMPOWERMENT"
+      "narration": "The truth about Time Traveler Found in 2024 is now out. Share this story. The world needs to know.",
+      "visual_type": "closing",
+      "background_color": "0d0d0d"
+    },
+    {
+      "scene_number": 8,
+      "duration": 15,
+      "narration": "Subscribe for more incredible investigations. New story every single day.",
+      "visual_type": "cta",
+      "background_color": "1a1a00"
     }
-  ],
-  "total_narration": "Have you ever wondered what really happened? Today I'm revealing the complete untold story. The truth has been hidden for years. My journey started with a simple question. The deeper I dug, the deeper the mystery became. I found documents nobody was supposed to see. I interviewed witnesses who risked everything. Their stories contradicted everything the government said. My investigation attracted unwanted attention. Powerful people wanted me to stop. Then I found it. The smoking gun. The proof that everything was a lie. Here's what really happened. The complete, unfiltered truth. This is bigger than anyone imagined. The implications are staggering. We can never look at this the same way again. The story is finally being told. Share this with everyone. The truth cannot be hidden anymore."
+  ]
 }

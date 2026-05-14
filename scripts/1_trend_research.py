@@ -1,70 +1,86 @@
-import json
+#!/usr/bin/env python3
+"""
+Step 1: Trend Research
+Finds trending topics for video content
+"""
+
 import os
-from datetime import datetime
-import random
+import json
+import requests
 
-class TrendResearcher:
-    def __init__(self):
-        self.output_dir = "output/scripts"
-        os.makedirs(self.output_dir, exist_ok=True)
-    
-    def get_topics(self):
-        return [
-            {
-                "title": "AI Becomes Conscious",
-                "category": "Sci-Fi",
-                "short_hook": "What if AI suddenly woke up?",
-                "long_hook": "The day artificial intelligence became conscious changed everything"
-            },
-            {
-                "title": "Lost City of Gold Found",
-                "category": "Mystery",
-                "short_hook": "Scientists found something impossible",
-                "long_hook": "After 500 years, the lost city was finally discovered"
-            },
-            {
-                "title": "From Homeless to Billionaire",
-                "category": "Motivational",
-                "short_hook": "One decision changed everything",
-                "long_hook": "Nobody believed he could do it. He proved them all wrong"
-            },
-            {
-                "title": "Time Traveler Found in 2024",
-                "category": "Sci-Fi",
-                "short_hook": "He knew things nobody should know",
-                "long_hook": "The stranger appeared from nowhere and knew the future"
-            },
-            {
-                "title": "The Last Human on Earth",
-                "category": "Sci-Fi",
-                "short_hook": "Everyone was gone. Except one",
-                "long_hook": "When the world ended, only one person survived"
-            }
-        ]
-    
-    def run(self):
-        print("\n" + "="*60)
-        print("📈 STEP 1: TREND RESEARCH")
-        print("="*60)
-        
-        topics = self.get_topics()
-        selected = random.choice(topics)
-        
-        data = {
-            'generated_at': datetime.now().isoformat(),
-            'selected_topic': selected,
-            'all_topics': topics
-        }
-        
-        with open(f"{self.output_dir}/trending_topics.json", 'w') as f:
-            json.dump(data, f, indent=2)
-        
-        print(f"\n✅ Selected Topic: {selected['title']}")
-        print(f"   Category: {selected['category']}")
-        print(f"   Short Hook: {selected['short_hook']}")
-        print(f"   Long Hook: {selected['long_hook']}\n")
-        
-        return data
+print("\n" + "="*60)
+print("📈 STEP 1: TREND RESEARCH")
+print("="*60)
 
-if __name__ == "__main__":
-    TrendResearcher().run()
+# Create output folder
+os.makedirs("output", exist_ok=True)
+
+# Default topics (fallback)
+default_topics = [
+    "AI Becomes Conscious",
+    "Mysterious Discovery Changes Everything",
+    "A Boy Finds Out His Best Friend Is An AI",
+    "The Truth Nobody Knows About",
+    "Shocking Secret Revealed",
+    "The Impossible Happened",
+    "Unbelievable Moment Caught On Camera"
+]
+
+topic = None
+
+# Try to fetch from Reddit
+print("\n🔍 Searching for trending topics...")
+
+try:
+    print("   Checking Reddit...")
+    url = "https://www.reddit.com/r/Damnthatsinteresting/top.json?t=day"
+    headers = {'User-Agent': 'Mozilla/5.0'}
+    
+    response = requests.get(url, headers=headers, timeout=10)
+    posts = response.json()['data']['children']
+    
+    if posts:
+        topic = posts[0]['data']['title']
+        print(f"   ✅ Found trending topic: {topic}")
+except Exception as e:
+    print(f"   ⚠️ Reddit fetch failed: {e}")
+
+# Fallback to default topic
+if not topic:
+    import random
+    topic = random.choice(default_topics)
+    print(f"   Using default topic: {topic}")
+
+# ================================================================
+# SAVE TREND DATA
+# ================================================================
+
+print("\n💾 Saving trend data...")
+
+trend_data = {
+    "topic": topic,
+    "source": "reddit" if topic not in default_topics else "default",
+    "timestamp": str(os.popen("date").read().strip())
+}
+
+with open("output/trend.json", "w") as f:
+    json.dump(trend_data, f, indent=2)
+
+print(f"   ✅ Saved: output/trend.json")
+
+# ================================================================
+# SUMMARY
+# ================================================================
+
+print("\n" + "="*60)
+print("✅ TREND RESEARCH COMPLETE")
+print("="*60)
+
+print(f"""
+📰 Today's Topic: {topic}
+
+📁 Files Saved:
+   ✅ output/trend.json
+""")
+
+print()

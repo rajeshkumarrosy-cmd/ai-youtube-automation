@@ -1,0 +1,47 @@
+{
+  "title": "The Complete Story: Mysterious Discovery Changes Everything",
+  "description": "A complete narrative journey about Mysterious Discovery Changes Everything",
+  "scenes": [
+    {
+      "number": 1,
+      "duration": "60s",
+      "description": "Introduction and setup"
+    },
+    {
+      "number": 2,
+      "duration": "60s",
+      "description": "First revelation"
+    },
+    {
+      "number": 3,
+      "duration": "60s",
+      "description": "Complication arrives"
+    },
+    {
+      "number": 4,
+      "duration": "60s",
+      "description": "Tension builds"
+    },
+    {
+      "number": 5,
+      "duration": "60s",
+      "description": "Major twist revealed"
+    },
+    {
+      "number": 6,
+      "duration": "60s",
+      "description": "Consequences unfold"
+    },
+    {
+      "number": 7,
+      "duration": "60s",
+      "description": "Climax moment"
+    },
+    {
+      "number": 8,
+      "duration": "60s",
+      "description": "Resolution and ending"
+    }
+  ],
+  "ending": "Remember to subscribe and like!"
+}

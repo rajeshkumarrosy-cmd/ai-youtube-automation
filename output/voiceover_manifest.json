@@ -1,0 +1,20 @@
+{
+  "short_voiceovers": [
+    "output/voiceovers/short_1.mp3",
+    "output/voiceovers/short_2.mp3",
+    "output/voiceovers/short_3.mp3",
+    "output/voiceovers/short_4.mp3"
+  ],
+  "long_voiceovers": [
+    "output/voiceovers/long_1.mp3",
+    "output/voiceovers/long_2.mp3",
+    "output/voiceovers/long_3.mp3",
+    "output/voiceovers/long_4.mp3",
+    "output/voiceovers/long_5.mp3",
+    "output/voiceovers/long_6.mp3",
+    "output/voiceovers/long_7.mp3",
+    "output/voiceovers/long_8.mp3"
+  ],
+  "short_count": 4,
+  "long_count": 8
+}

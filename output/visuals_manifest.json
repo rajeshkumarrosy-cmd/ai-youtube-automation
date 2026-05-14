@@ -1,0 +1,20 @@
+{
+  "short_visuals": [
+    "output/visuals/short_scene_0.png",
+    "output/visuals/short_scene_1.png",
+    "output/visuals/short_scene_2.png",
+    "output/visuals/short_scene_3.png"
+  ],
+  "long_visuals": [
+    "output/visuals/long_scene_0.png",
+    "output/visuals/long_scene_1.png",
+    "output/visuals/long_scene_2.png",
+    "output/visuals/long_scene_3.png",
+    "output/visuals/long_scene_4.png",
+    "output/visuals/long_scene_5.png",
+    "output/visuals/long_scene_6.png",
+    "output/visuals/long_scene_7.png"
+  ],
+  "short_count": 4,
+  "long_count": 8
+}

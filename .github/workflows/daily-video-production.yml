@@ -3,12 +3,12 @@ name: 🎬 Autonomous Daily Video Production
 on:
   schedule:
     - cron: '0 2 * * *'  # Runs daily at 2 AM UTC
-  workflow_dispatch:     # Manual trigger (run anytime)
+  workflow_dispatch:     # Manual trigger option
 
 jobs:
   video-production:
     runs-on: ubuntu-latest
-    timeout-minutes: 90
+    timeout-minutes: 120
     
     steps:
       # ============================================
@@ -46,7 +46,14 @@ jobs:
           echo "=========================================="
           python -m pip install --upgrade pip
           pip install -r requirements.txt
-          echo "✅ All packages installed"
+          echo ""
+          echo "Verifying installations..."
+          python -c "import moviepy; print('✅ moviepy installed')"
+          python -c "import pydub; print('✅ pydub installed')"
+          python -c "import requests; print('✅ requests installed')"
+          python -c "import PIL; print('✅ Pillow installed')"
+          echo ""
+          echo "✅ All packages installed successfully"
           echo ""
       
       # ============================================
@@ -54,8 +61,13 @@ jobs:
       # ============================================
       - name: 📁 Create Output Directories
         run: |
-          mkdir -p output/{images,audio,videos,thumbnails}
+          echo ""
+          echo "=========================================="
+          echo "📁 Creating output directories..."
+          echo "=========================================="
+          mkdir -p output/{images,audio,videos,thumbnails,visuals,voiceovers,music_sfx}
           echo "✅ Output directories created"
+          echo ""
       
       # ============================================
       # STEP 1: TREND RESEARCH
@@ -110,204 +122,4 @@ jobs:
           echo ""
       
       # ============================================
-      # STEP 5: MUSIC & SOUND EFFECTS
-      # ============================================
-      - name: 🎵 Step 5 - Music & Sound Effects
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🎵 STEP 5: MUSIC & SOUND EFFECTS"
-          echo "=========================================="
-          python scripts/5_music_sfx.py
-          echo "✅ Music & SFX completed"
-          echo ""
-      
-      # ============================================
-      # DEBUG: CHECK ASSETS
-      # ============================================
-      - name: 🔍 Debug - Check Generated Assets
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🔍 CHECKING GENERATED ASSETS"
-          echo "=========================================="
-          python scripts/DEBUG_check_videos.py
-          echo ""
-          echo "Assets status:"
-          ls -la output/ 2>/dev/null || echo "No output folder yet"
-          echo ""
-      
-      # ============================================
-      # STEP 6: VIDEO EDITING
-      # ============================================
-      - name: 🎬 Step 6 - Video Editing & Assembly
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🎬 STEP 6: VIDEO EDITING & ASSEMBLY"
-          echo "=========================================="
-          python scripts/6_video_editing.py
-          echo "✅ Video editing completed"
-          echo ""
-      
-      # ============================================
-      # VERIFY VIDEO FILES
-      # ============================================
-      - name: ✅ Verify Video Files
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "✅ VERIFYING VIDEO OUTPUT"
-          echo "=========================================="
-          
-          if [ -f "output/videos/final_short.mp4" ]; then
-            echo "✅ Short video created!"
-            ls -lh output/videos/final_short.mp4
-          else
-            echo "⚠️ Short video not found"
-          fi
-          
-          if [ -f "output/videos/final_long.mp4" ]; then
-            echo "✅ Long video created!"
-            ls -lh output/videos/final_long.mp4
-          else
-            echo "⚠️ Long video not found"
-          fi
-          
-          echo ""
-      
-      # ============================================
-      # STEP 7: THUMBNAIL GENERATION
-      # ============================================
-      - name: 🖼️ Step 7 - Thumbnail Generation
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🖼️ STEP 7: THUMBNAIL GENERATION"
-          echo "=========================================="
-          python scripts/7_thumbnail.py
-          echo "✅ Thumbnail generation completed"
-          echo ""
-      
-      # ============================================
-      # STEP 8: SEO OPTIMIZATION
-      # ============================================
-      - name: 🔍 Step 8 - SEO Optimization
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "🔍 STEP 8: SEO OPTIMIZATION"
-          echo "=========================================="
-          python scripts/8_seo_optimization.py
-          echo "✅ SEO optimization completed"
-          echo ""
-      
-      # ============================================
-      # STEP 9: YOUTUBE UPLOAD
-      # ============================================
-      - name: 📤 Step 9 - YouTube Upload
-        env:
-          YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
-          YOUTUBE_CHANNEL_ID: ${{ secrets.YOUTUBE_CHANNEL_ID }}
-          YOUTUBE_CLIENT_SECRET: ${{ secrets.YOUTUBE_CLIENT_SECRET }}
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "📤 STEP 9: YOUTUBE UPLOAD"
-          echo "=========================================="
-          
-          if [ -z "$YOUTUBE_API_KEY" ] || [ -z "$YOUTUBE_CHANNEL_ID" ]; then
-            echo "⚠️ YouTube credentials not configured"
-            echo "   Videos created but not uploaded"
-            echo "   To enable uploads, add GitHub secrets:"
-            echo "   - YOUTUBE_API_KEY"
-            echo "   - YOUTUBE_CHANNEL_ID"
-            echo "   - YOUTUBE_CLIENT_SECRET"
-          else
-            python scripts/9_youtube_upload.py
-            echo "✅ YouTube upload completed"
-          fi
-          echo ""
-      
-      # ============================================
-      # STEP 10: ANALYTICS & LEARNING
-      # ============================================
-      - name: 📊 Step 10 - Analytics & Learning
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "📊 STEP 10: ANALYTICS & LEARNING"
-          echo "=========================================="
-          python scripts/10_analytics.py
-          echo "✅ Analytics completed"
-          echo ""
-      
-      # ============================================
-      # COMMIT & PUSH RESULTS
-      # ============================================
-      - name: 📝 Commit & Push Results
-        run: |
-          echo ""
-          echo "=========================================="
-          echo "📝 COMMITTING RESULTS TO GITHUB"
-          echo "=========================================="
-          
-          git config --local user.email "ai-bot@youtube.local"
-          git config --local user.name "🤖 AI Video Bot"
-          
-          # Check for changes
-          if git diff-index --quiet HEAD --; then
-            echo "✅ No changes to commit"
-          else
-            echo "📝 Found changes, committing..."
-            git add -A
-            git commit -m "🎬 Daily video production - $(date +'%Y-%m-%d %H:%M:%S UTC')" || true
-            git push || echo "Push completed"
-          fi
-          echo ""
-      
-      # ============================================
-      # FINAL SUMMARY
-      # ============================================
-      - name: ✅ Workflow Summary
-        if: always()
-        run: |
-          echo ""
-          echo "╔════════════════════════════════════════════════════════╗"
-          echo "║                                                        ║"
-          echo "║  ✅ DAILY VIDEO PRODUCTION PIPELINE COMPLETE!          ║"
-          echo "║                                                        ║"
-          echo "╚════════════════════════════════════════════════════════╝"
-          echo ""
-          echo "📊 PRODUCTION STEPS COMPLETED:"
-          echo "   ✅ Step 1:  Trend Research"
-          echo "   ✅ Step 2:  Script Generation"
-          echo "   ✅ Step 3:  Visual Generation"
-          echo "   ✅ Step 4:  Voiceover Generation"
-          echo "   ✅ Step 5:  Music & Sound Effects"
-          echo "   ✅ Step 6:  Video Editing & Assembly"
-          echo "   ✅ Step 7:  Thumbnail Generation"
-          echo "   ✅ Step 8:  SEO Optimization"
-          echo "   ✅ Step 9:  YouTube Upload"
-          echo "   ✅ Step 10: Analytics & Learning"
-          echo ""
-          echo "📹 OUTPUT FILES:"
-          echo "   📱 Short Video: output/videos/final_short.mp4"
-          echo "   📺 Long Video:  output/videos/final_long.mp4"
-          echo "   🎨 Thumbnail:   output/thumbnails/thumbnail.jpg"
-          echo "   🎤 Voiceover:   output/audio/narration.wav"
-          echo "   📝 Script:      output/script.txt"
-          echo "   📊 SEO Data:    output/seo_metadata.json"
-          echo ""
-          echo "🚀 NEXT STEPS:"
-          echo "   1. Check GitHub releases for video files"
-          echo "   2. Monitor YouTube Studio for uploads"
-          echo "   3. Track analytics in Step 10 report"
-          echo ""
-          echo "⏰ SCHEDULE:"
-          echo "   ⏰ Runs daily at 2:00 AM UTC"
-          echo "   🔄 Next run: Tomorrow at 2:00 AM UTC"
-          echo "   🎬 Videos created: 1 per day"
-          echo ""
-          echo "📧 For issues, check GitHub Actions logs"
-          echo ""
+      # STEP 5: MUSIC 

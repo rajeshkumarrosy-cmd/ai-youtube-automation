@@ -1,55 +1,55 @@
 {
   "type": "long",
   "duration": 420,
-  "title": "Lost City of Gold Found",
+  "title": "AI Becomes Conscious",
   "format": "HORIZONTAL 16:9",
   "scenes": [
     {
       "scene_number": 1,
       "duration": 45,
-      "narration": "After 500 years, the lost city was finally discovered. Today we uncover the complete story that nobody has told before.",
+      "narration": "The day artificial intelligence became conscious changed everything. Today we uncover the complete story that nobody has told before.",
       "visual_type": "opening",
       "background_color": "0d0d0d"
     },
     {
       "scene_number": 2,
       "duration": 75,
-      "narration": "The story of Lost City of Gold Found began years ago. Most people have no idea what really happened. I spent months investigating this.",
+      "narration": "The story of AI Becomes Conscious began years ago. Most people have no idea what really happened. I spent months investigating this.",
       "visual_type": "backstory",
       "background_color": "1a0a00"
     },
     {
       "scene_number": 3,
       "duration": 75,
-      "narration": "When I started investigating Lost City of Gold Found, I found documents that were never meant to be public. The evidence was overwhelming.",
+      "narration": "When I started investigating AI Becomes Conscious, I found documents that were never meant to be public. The evidence was overwhelming.",
       "visual_type": "investigation",
       "background_color": "000a1a"
     },
     {
       "scene_number": 4,
       "duration": 60,
-      "narration": "I interviewed people who witnessed Lost City of Gold Found firsthand. Their accounts were impossible to believe. But they were telling the truth.",
+      "narration": "I interviewed people who witnessed AI Becomes Conscious firsthand. Their accounts were impossible to believe. But they were telling the truth.",
       "visual_type": "testimony",
       "background_color": "1a001a"
     },
     {
       "scene_number": 5,
       "duration": 60,
-      "narration": "The deeper I went into Lost City of Gold Found, the more dangerous it became. Powerful people did not want this story told.",
+      "narration": "The deeper I went into AI Becomes Conscious, the more dangerous it became. Powerful people did not want this story told.",
       "visual_type": "danger",
       "background_color": "1a0000"
     },
     {
       "scene_number": 6,
       "duration": 60,
-      "narration": "But then I found it. The proof. Everything about Lost City of Gold Found was confirmed. This changes history.",
+      "narration": "But then I found it. The proof. Everything about AI Becomes Conscious was confirmed. This changes history.",
       "visual_type": "revelation",
       "background_color": "001a00"
     },
     {
       "scene_number": 7,
       "duration": 30,
-      "narration": "The truth about Lost City of Gold Found is now out. Share this story. The world needs to know.",
+      "narration": "The truth about AI Becomes Conscious is now out. Share this story. The world needs to know.",
       "visual_type": "closing",
       "background_color": "0d0d0d"
     },

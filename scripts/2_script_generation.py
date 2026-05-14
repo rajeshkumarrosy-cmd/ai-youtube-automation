@@ -1,166 +1,275 @@
-import json
+#!/usr/bin/env python3
+"""
+Step 2: Script Generation
+Generates short and long scripts using AI or templates
+"""
+
 import os
-from datetime import datetime
+import json
+import subprocess
 
-class ScriptGenerator:
-    def __init__(self):
-        self.output_dir = "output/scripts"
-        os.makedirs(self.output_dir, exist_ok=True)
-        self.topic = self.load_topic()
+print("\n" + "="*60)
+print("✍️ STEP 2: SCRIPT GENERATION")
+print("="*60)
+
+# Create output folder
+os.makedirs("output", exist_ok=True)
+
+# Load the trending topic from Step 1
+try:
+    with open("output/trend.json", "r") as f:
+        trend_data = json.load(f)
+        topic = trend_data.get("topic", "An amazing discovery")
+except:
+    print("⚠️ No trend data found, using default topic")
+    topic = "An amazing discovery changes everything"
+
+print(f"\n📝 Topic: {topic}")
+
+# ================================================================
+# GENERATE SHORT SCRIPT (30-60 seconds)
+# ================================================================
+
+print("\n📱 Generating SHORT script...")
+
+short_prompt = f"""
+Create a 30-60 second viral YouTube SHORT script about: {topic}
+
+Requirements:
+- HOOK in first 5 seconds (grab attention!)
+- 4 scenes with timings
+- Shocking twist
+- Call to action
+- Make it PUNCHY and FAST
+
+Format as JSON:
+{{
+    "title": "script title",
+    "hook": "opening line",
+    "scenes": [
+        {{"number": 1, "duration": "5-10s", "description": "scene description"}},
+        {{"number": 2, "duration": "5-10s", "description": "scene description"}},
+        {{"number": 3, "duration": "5-10s", "description": "scene description"}},
+        {{"number": 4, "duration": "5-10s", "description": "scene description"}}
+    ],
+    "ending": "call to action"
+}}
+"""
+
+short_script = None
+
+# Try to generate with AI
+try:
+    print("   🤖 Generating with AI...")
+    result = subprocess.run(
+        ["ollama", "run", "mistral", short_prompt],
+        capture_output=True,
+        text=True,
+        timeout=60
+    )
     
-    def load_topic(self):
-        try:
-            with open("output/scripts/trending_topics.json", 'r') as f:
-                return json.load(f)['selected_topic']
-        except:
-            return {
-                "title": "Amazing Story",
-                "short_hook": "What if this was real?",
-                "long_hook": "The truth behind this story will shock you"
+    # Try to parse JSON from output
+    import re
+    json_match = re.search(r'\{.*\}', result.stdout, re.DOTALL)
+    if json_match:
+        short_script = json.loads(json_match.group())
+        print("   ✅ AI generated short script")
+except:
+    print("   ⚠️ AI generation failed, using template")
+    short_script = None
+
+# Fallback to template
+if not short_script:
+    short_script = {
+        "title": f"Shocking Discovery: {topic}",
+        "hook": "Wait... you won't believe what just happened!",
+        "scenes": [
+            {
+                "number": 1,
+                "duration": "10s",
+                "description": f"A mysterious discovery about {topic}"
+            },
+            {
+                "number": 2,
+                "duration": "10s",
+                "description": "The situation becomes shocking"
+            },
+            {
+                "number": 3,
+                "duration": "10s",
+                "description": "An unexpected twist revealed"
+            },
+            {
+                "number": 4,
+                "duration": "10s",
+                "description": "The real truth emerges"
             }
-    
-    def generate_short_script(self):
-        """
-        SHORT VIDEO: 45 seconds
-        Fast paced, shocking, viral
-        """
-        title = self.topic['title']
-        hook = self.topic['short_hook']
-        
-        return {
-            'type': 'short',
-            'duration': 45,
-            'title': title,
-            'format': 'VERTICAL 9:16',
-            'scenes': [
-                {
-                    'scene_number': 1,
-                    'duration': 5,
-                    'narration': f"{hook}!",
-                    'visual_type': 'hook',
-                    'background_color': '1a1a2e'
-                },
-                {
-                    'scene_number': 2,
-                    'duration': 20,
-                    'narration': f"This is the story of {title}. Scientists and experts were completely shocked by what they found. Nobody expected this.",
-                    'visual_type': 'story',
-                    'background_color': '16213e'
-                },
-                {
-                    'scene_number': 3,
-                    'duration': 15,
-                    'narration': f"The truth about {title} will change how you see everything. This is completely real.",
-                    'visual_type': 'twist',
-                    'background_color': '0f3460'
-                },
-                {
-                    'scene_number': 4,
-                    'duration': 5,
-                    'narration': "Subscribe for more incredible stories every day!",
-                    'visual_type': 'cta',
-                    'background_color': 'e94560'
-                }
-            ]
-        }
-    
-    def generate_long_script(self):
-        """
-        LONG VIDEO: 7 minutes
-        COMPLETELY DIFFERENT from short
-        Deep investigation style
-        """
-        title = self.topic['title']
-        hook = self.topic['long_hook']
-        
-        return {
-            'type': 'long',
-            'duration': 420,
-            'title': title,
-            'format': 'HORIZONTAL 16:9',
-            'scenes': [
-                {
-                    'scene_number': 1,
-                    'duration': 45,
-                    'narration': f"{hook}. Today we uncover the complete story that nobody has told before.",
-                    'visual_type': 'opening',
-                    'background_color': '0d0d0d'
-                },
-                {
-                    'scene_number': 2,
-                    'duration': 75,
-                    'narration': f"The story of {title} began years ago. Most people have no idea what really happened. I spent months investigating this.",
-                    'visual_type': 'backstory',
-                    'background_color': '1a0a00'
-                },
-                {
-                    'scene_number': 3,
-                    'duration': 75,
-                    'narration': f"When I started investigating {title}, I found documents that were never meant to be public. The evidence was overwhelming.",
-                    'visual_type': 'investigation',
-                    'background_color': '000a1a'
-                },
-                {
-                    'scene_number': 4,
-                    'duration': 60,
-                    'narration': f"I interviewed people who witnessed {title} firsthand. Their accounts were impossible to believe. But they were telling the truth.",
-                    'visual_type': 'testimony',
-                    'background_color': '1a001a'
-                },
-                {
-                    'scene_number': 5,
-                    'duration': 60,
-                    'narration': f"The deeper I went into {title}, the more dangerous it became. Powerful people did not want this story told.",
-                    'visual_type': 'danger',
-                    'background_color': '1a0000'
-                },
-                {
-                    'scene_number': 6,
-                    'duration': 60,
-                    'narration': f"But then I found it. The proof. Everything about {title} was confirmed. This changes history.",
-                    'visual_type': 'revelation',
-                    'background_color': '001a00'
-                },
-                {
-                    'scene_number': 7,
-                    'duration': 30,
-                    'narration': f"The truth about {title} is now out. Share this story. The world needs to know.",
-                    'visual_type': 'closing',
-                    'background_color': '0d0d0d'
-                },
-                {
-                    'scene_number': 8,
-                    'duration': 15,
-                    'narration': "Subscribe for more incredible investigations. New story every single day.",
-                    'visual_type': 'cta',
-                    'background_color': '1a1a00'
-                }
-            ]
-        }
-    
-    def run(self):
-        print("\n" + "="*60)
-        print("✍️ STEP 2: SCRIPT GENERATION")
-        print("="*60)
-        
-        print(f"\n📝 Topic: {self.topic['title']}\n")
-        
-        short = self.generate_short_script()
-        long = self.generate_long_script()
-        
-        with open(f"{self.output_dir}/short_script.json", 'w') as f:
-            json.dump(short, f, indent=2)
-        
-        with open(f"{self.output_dir}/long_script.json", 'w') as f:
-            json.dump(long, f, indent=2)
-        
-        print("✅ SHORT SCRIPT: 45 seconds, 4 scenes")
-        print("   → Fast paced, viral style")
-        print("\n✅ LONG SCRIPT: 7 minutes, 8 scenes")
-        print("   → Deep investigation style")
-        print("   → COMPLETELY DIFFERENT from short\n")
-        
-        return {'short': short, 'long': long}
+        ],
+        "ending": "Subscribe for more shocking discoveries!"
+    }
 
-if __name__ == "__main__":
-    ScriptGenerator().run()
+print(f"   ✅ Short script: {len(short_script['scenes'])} scenes")
+
+# ================================================================
+# GENERATE LONG SCRIPT (5-8 minutes)
+# ================================================================
+
+print("\n📺 Generating LONG script...")
+
+long_prompt = f"""
+Create a 5-8 minute cinematic story script about: {topic}
+
+Requirements:
+- HOOK in first 30 seconds
+- 8 scenes with detailed descriptions
+- Rising action and climax
+- Emotional beats
+- Professional storytelling
+
+Format as JSON:
+{{
+    "title": "story title",
+    "description": "brief description",
+    "scenes": [
+        {{"number": 1, "duration": "60s", "description": "scene description"}},
+        {{"number": 2, "duration": "60s", "description": "scene description"}},
+        (... 6 more scenes ...)
+    ],
+    "ending": "conclusion message"
+}}
+"""
+
+long_script = None
+
+# Try to generate with AI
+try:
+    print("   🤖 Generating with AI...")
+    result = subprocess.run(
+        ["ollama", "run", "mistral", long_prompt],
+        capture_output=True,
+        text=True,
+        timeout=60
+    )
+    
+    # Try to parse JSON from output
+    import re
+    json_match = re.search(r'\{.*\}', result.stdout, re.DOTALL)
+    if json_match:
+        long_script = json.loads(json_match.group())
+        print("   ✅ AI generated long script")
+except:
+    print("   ⚠️ AI generation failed, using template")
+    long_script = None
+
+# Fallback to template
+if not long_script:
+    long_script = {
+        "title": f"The Complete Story: {topic}",
+        "description": f"A complete narrative journey about {topic}",
+        "scenes": [
+            {
+                "number": 1,
+                "duration": "60s",
+                "description": "Introduction and setup"
+            },
+            {
+                "number": 2,
+                "duration": "60s",
+                "description": "First revelation"
+            },
+            {
+                "number": 3,
+                "duration": "60s",
+                "description": "Complication arrives"
+            },
+            {
+                "number": 4,
+                "duration": "60s",
+                "description": "Tension builds"
+            },
+            {
+                "number": 5,
+                "duration": "60s",
+                "description": "Major twist revealed"
+            },
+            {
+                "number": 6,
+                "duration": "60s",
+                "description": "Consequences unfold"
+            },
+            {
+                "number": 7,
+                "duration": "60s",
+                "description": "Climax moment"
+            },
+            {
+                "number": 8,
+                "duration": "60s",
+                "description": "Resolution and ending"
+            }
+        ],
+        "ending": "Remember to subscribe and like!"
+    }
+
+print(f"   ✅ Long script: {len(long_script['scenes'])} scenes")
+
+# ================================================================
+# SAVE SCRIPTS TO JSON
+# ================================================================
+
+print("\n💾 Saving scripts...")
+
+scripts_data = {
+    "topic": topic,
+    "short": short_script,
+    "long": long_script,
+    "generated_at": str(os.popen("date").read().strip())
+}
+
+# Save main scripts file
+with open("output/scripts.json", "w") as f:
+    json.dump(scripts_data, f, indent=2)
+
+print("   ✅ Saved: output/scripts.json")
+
+# Also save individual script files for reference
+with open("output/short_script.json", "w") as f:
+    json.dump(short_script, f, indent=2)
+
+print("   ✅ Saved: output/short_script.json")
+
+with open("output/long_script.json", "w") as f:
+    json.dump(long_script, f, indent=2)
+
+print("   ✅ Saved: output/long_script.json")
+
+# ================================================================
+# SUMMARY
+# ================================================================
+
+print("\n" + "="*60)
+print("✅ SCRIPT GENERATION COMPLETE")
+print("="*60)
+
+print(f"""
+📝 Scripts Generated:
+
+SHORT VIDEO:
+   Title: {short_script['title']}
+   Hook: {short_script['hook']}
+   Scenes: {len(short_script['scenes'])}
+   Duration: ~45 seconds
+
+LONG VIDEO:
+   Title: {long_script['title']}
+   Description: {long_script['description']}
+   Scenes: {len(long_script['scenes'])}
+   Duration: ~8 minutes
+
+📁 Files Saved:
+   ✅ output/scripts.json (main file)
+   ✅ output/short_script.json
+   ✅ output/long_script.json
+""")
+
+print()

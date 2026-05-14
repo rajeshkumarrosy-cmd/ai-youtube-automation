@@ -1,27 +1,27 @@
 {
   "type": "short",
   "duration": 45,
-  "title": "Time Traveler Found in 2024",
+  "title": "Lost City of Gold Found",
   "format": "VERTICAL 9:16",
   "scenes": [
     {
       "scene_number": 1,
       "duration": 5,
-      "narration": "He knew things nobody should know!",
+      "narration": "Scientists found something impossible!",
       "visual_type": "hook",
       "background_color": "1a1a2e"
     },
     {
       "scene_number": 2,
       "duration": 20,
-      "narration": "This is the story of Time Traveler Found in 2024. Scientists and experts were completely shocked by what they found. Nobody expected this.",
+      "narration": "This is the story of Lost City of Gold Found. Scientists and experts were completely shocked by what they found. Nobody expected this.",
       "visual_type": "story",
       "background_color": "16213e"
     },
     {
       "scene_number": 3,
       "duration": 15,
-      "narration": "The truth about Time Traveler Found in 2024 will change how you see everything. This is completely real.",
+      "narration": "The truth about Lost City of Gold Found will change how you see everything. This is completely real.",
       "visual_type": "twist",
       "background_color": "0f3460"
     },

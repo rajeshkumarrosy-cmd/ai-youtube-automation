@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-05-14T10:38:43.118720",
+  "generated_at": "2026-05-14T14:35:21.877820",
   "voice_engine": "Edge TTS (Human-like) / Google TTS",
   "short_voiceovers": [
     {
@@ -7,21 +7,21 @@
       "file": "output/voiceovers/short_scene_1.mp3",
       "duration": 5,
       "type": "short",
-      "narration": "He knew things nobody should know!"
+      "narration": "Scientists found something impossible!"
     },
     {
       "scene": 2,
       "file": "output/voiceovers/short_scene_2.mp3",
       "duration": 20,
       "type": "short",
-      "narration": "This is the story of Time Traveler Found in 2024. Scientists and experts were completely shocked by what they found. Nobody expected this."
+      "narration": "This is the story of Lost City of Gold Found. Scientists and experts were completely shocked by what they found. Nobody expected this."
     },
     {
       "scene": 3,
       "file": "output/voiceovers/short_scene_3.mp3",
       "duration": 15,
       "type": "short",
-      "narration": "The truth about Time Traveler Found in 2024 will change how you see everything. This is completely real."
+      "narration": "The truth about Lost City of Gold Found will change how you see everything. This is completely real."
     },
     {
       "scene": 4,
@@ -37,49 +37,49 @@
       "file": "output/voiceovers/long_scene_1.mp3",
       "duration": 45,
       "type": "long",
-      "narration": "The stranger appeared from nowhere and knew the future. Today we uncover the complete story that nobody has told before."
+      "narration": "After 500 years, the lost city was finally discovered. Today we uncover the complete story that nobody has told before."
     },
     {
       "scene": 2,
       "file": "output/voiceovers/long_scene_2.mp3",
       "duration": 75,
       "type": "long",
-      "narration": "The story of Time Traveler Found in 2024 began years ago. Most people have no idea what really happened. I spent months investigating this."
+      "narration": "The story of Lost City of Gold Found began years ago. Most people have no idea what really happened. I spent months investigating this."
     },
     {
       "scene": 3,
       "file": "output/voiceovers/long_scene_3.mp3",
       "duration": 75,
       "type": "long",
-      "narration": "When I started investigating Time Traveler Found in 2024, I found documents that were never meant to be public. The evidence was overwhelming."
+      "narration": "When I started investigating Lost City of Gold Found, I found documents that were never meant to be public. The evidence was overwhelming."
     },
     {
       "scene": 4,
       "file": "output/voiceovers/long_scene_4.mp3",
       "duration": 60,
       "type": "long",
-      "narration": "I interviewed people who witnessed Time Traveler Found in 2024 firsthand. Their accounts were impossible to believe. But they were telling the truth."
+      "narration": "I interviewed people who witnessed Lost City of Gold Found firsthand. Their accounts were impossible to believe. But they were telling the truth."
     },
     {
       "scene": 5,
       "file": "output/voiceovers/long_scene_5.mp3",
       "duration": 60,
       "type": "long",
-      "narration": "The deeper I went into Time Traveler Found in 2024, the more dangerous it became. Powerful people did not want this story told."
+      "narration": "The deeper I went into Lost City of Gold Found, the more dangerous it became. Powerful people did not want this story told."
     },
     {
       "scene": 6,
       "file": "output/voiceovers/long_scene_6.mp3",
       "duration": 60,
       "type": "long",
-      "narration": "But then I found it. The proof. Everything about Time Traveler Found in 2024 was confirmed. This changes history."
+      "narration": "But then I found it. The proof. Everything about Lost City of Gold Found was confirmed. This changes history."
     },
     {
       "scene": 7,
       "file": "output/voiceovers/long_scene_7.mp3",
       "duration": 30,
       "type": "long",
-      "narration": "The truth about Time Traveler Found in 2024 is now out. Share this story. The world needs to know."
+      "narration": "The truth about Lost City of Gold Found is now out. Share this story. The world needs to know."
     },
     {
       "scene": 8,

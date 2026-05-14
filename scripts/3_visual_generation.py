@@ -1,89 +1,164 @@
-import json
+#!/usr/bin/env python3
+"""
+Step 3: Visual Generation
+Creates images WITHOUT needing Stable Diffusion
+Works on GitHub Actions!
+"""
+
 import os
-from pathlib import Path
+import json
+from PIL import Image, ImageDraw, ImageFont
 
-class FastVisualGenerator:
-    """Creates DUMMY video files for testing (no downloads!)"""
-    
-    def __init__(self):
-        self.output_dir = "output/visuals"
-        os.makedirs(self.output_dir, exist_ok=True)
-    
-    def create_dummy_video(self, filename, duration=5):
-        """Create a small dummy MP4 file using FFmpeg"""
-        import subprocess
-        
-        filepath = os.path.join(self.output_dir, filename)
-        
-        try:
-            # Create a black video (no download needed!)
-            cmd = [
-                'ffmpeg',
-                '-f', 'lavfi',
-                '-i', f'color=c=black:s=1280x720:d={duration}',
-                '-pix_fmt', 'yuv420p',
-                '-c:v', 'libx264',
-                '-preset', 'ultrafast',  # Super fast!
-                '-y',
-                filepath
-            ]
-            
-            print(f"      Creating {filename}...")
-            result = subprocess.run(cmd, capture_output=True, timeout=30)
-            
-            if os.path.exists(filepath):
-                size = os.path.getsize(filepath) / (1024 * 1024)
-                print(f"      ✅ {filename} ({size:.2f} MB)")
-                return filepath
-            else:
-                print(f"      ❌ Failed to create {filename}")
-                return None
-                
-        except Exception as e:
-            print(f"      ⚠️ Error: {e}")
-            return None
-    
-    def run(self):
-        print("\n" + "="*70)
-        print("🎨 STEP 3: VISUAL GENERATION (FAST MODE - DUMMY VIDEOS)")
-        print("="*70 + "\n")
-        
-        # Load script data
-        print("   Loading script...")
-        try:
-            with open("output/scripts/short_script.json", 'r') as f:
-                script_data = json.load(f)
-                scenes = script_data.get('scenes', [])
-                print(f"   ✅ Found {len(scenes)} scenes\n")
-        except Exception as e:
-            print(f"   ❌ Error: {e}")
-            return None
-        
-        # Create dummy videos
-        print("   Creating dummy videos...")
-        visual_data = {'scenes': []}
-        
-        for i, scene in enumerate(scenes):
-            video_file = self.create_dummy_video(f"scene_{i+1}.mp4", duration=5)
-            
-            if video_file:
-                visual_data['scenes'].append({
-                    'scene': i + 1,
-                    'description': scene.get('description', ''),
-                    'file': video_file
-                })
-        
-        # Save visual data
-        output_file = os.path.join(self.output_dir, "visual_data.json")
-        with open(output_file, 'w') as f:
-            json.dump(visual_data, f, indent=2)
-        
-        print(f"\n✅ STEP 3 COMPLETE!")
-        print(f"   📊 Scenes created: {len(visual_data['scenes'])}")
-        print(f"   📁 Saved to: {output_file}\n")
-        
-        return visual_data
+print("\n" + "="*60)
+print("🎨 STEP 3: VISUAL GENERATION")
+print("="*60)
 
-if __name__ == "__main__":
-    generator = FastVisualGenerator()
-    generator.run()
+# Create output folder
+os.makedirs("output/visuals", exist_ok=True)
+
+# Load the script data
+try:
+    with open("output/scripts.json", "r") as f:
+        scripts = json.load(f)
+except:
+    print("❌ No scripts found!")
+    exit(1)
+
+# ================================================================
+# CREATE SHORT VIDEO SCENES
+# ================================================================
+
+print("\n📱 Generating SHORT video scenes...")
+
+short_script = scripts.get("short", {})
+short_scenes = short_script.get("scenes", [])
+
+short_visuals = []
+
+for i, scene in enumerate(short_scenes):
+    print(f"   Scene {i+1}/{len(short_scenes)}...")
+    
+    # Create colorful background
+    colors = [
+        (255, 50, 50),      # Red
+        (50, 100, 255),     # Blue
+        (255, 150, 0),      # Orange
+        (100, 200, 100)     # Green
+    ]
+    
+    color = colors[i % len(colors)]
+    
+    # Create image
+    img = Image.new('RGB', (1080, 1920), color=color)
+    draw = ImageDraw.Draw(img)
+    
+    # Add text
+    try:
+        title_font = ImageFont.truetype("arial.ttf", 100)
+        text_font = ImageFont.truetype("arial.ttf", 50)
+    except:
+        title_font = ImageFont.load_default()
+        text_font = ImageFont.load_default()
+    
+    # Extract key words from scene description
+    scene_desc = scene.get("description", f"Scene {i+1}")
+    words = scene_desc.split()[:3]
+    title = " ".join(words).upper()
+    
+    # Draw title
+    draw.text((540, 400), title, font=title_font, fill=(255, 255, 255), anchor='mm')
+    
+    # Draw scene number
+    draw.text((540, 800), f"SCENE {i+1}", font=text_font, fill=(200, 200, 200), anchor='mm')
+    
+    # Save
+    visual_path = f"output/visuals/short_scene_{i}.png"
+    img.save(visual_path)
+    short_visuals.append(visual_path)
+    
+    print(f"      ✅ Saved: {visual_path}")
+
+print(f"\n✅ SHORT scenes created: {len(short_visuals)}")
+
+# ================================================================
+# CREATE LONG VIDEO SCENES
+# ================================================================
+
+print("\n📺 Generating LONG video scenes...")
+
+long_script = scripts.get("long", {})
+long_scenes = long_script.get("scenes", [])
+
+long_visuals = []
+
+for i, scene in enumerate(long_scenes):
+    print(f"   Scene {i+1}/{len(long_scenes)}...")
+    
+    # Create colorful background
+    colors = [
+        (255, 50, 50),
+        (50, 100, 255),
+        (255, 150, 0),
+        (100, 200, 100),
+        (200, 100, 200),
+        (100, 200, 200),
+        (255, 200, 50),
+        (150, 100, 200)
+    ]
+    
+    color = colors[i % len(colors)]
+    
+    # Create image (16:9 for long videos)
+    img = Image.new('RGB', (1920, 1080), color=color)
+    draw = ImageDraw.Draw(img)
+    
+    # Add text
+    try:
+        title_font = ImageFont.truetype("arial.ttf", 120)
+        text_font = ImageFont.truetype("arial.ttf", 60)
+    except:
+        title_font = ImageFont.load_default()
+        text_font = ImageFont.load_default()
+    
+    # Extract key words from scene description
+    scene_desc = scene.get("description", f"Scene {i+1}")
+    words = scene_desc.split()[:3]
+    title = " ".join(words).upper()
+    
+    # Draw title
+    draw.text((960, 400), title, font=title_font, fill=(255, 255, 255), anchor='mm')
+    
+    # Draw scene number
+    draw.text((960, 750), f"SCENE {i+1}", font=text_font, fill=(200, 200, 200), anchor='mm')
+    
+    # Save
+    visual_path = f"output/visuals/long_scene_{i}.png"
+    img.save(visual_path)
+    long_visuals.append(visual_path)
+    
+    print(f"      ✅ Saved: {visual_path}")
+
+print(f"\n✅ LONG scenes created: {len(long_visuals)}")
+
+# ================================================================
+# SAVE VISUALS MANIFEST
+# ================================================================
+
+visuals_manifest = {
+    "short_visuals": short_visuals,
+    "long_visuals": long_visuals,
+    "short_count": len(short_visuals),
+    "long_count": len(long_visuals)
+}
+
+with open("output/visuals_manifest.json", "w") as f:
+    json.dump(visuals_manifest, f, indent=2)
+
+print("\n" + "="*60)
+print("✅ VISUAL GENERATION COMPLETE")
+print("="*60)
+print(f"\n📊 Summary:")
+print(f"   Short visuals: {len(short_visuals)}")
+print(f"   Long visuals: {len(long_visuals)}")
+print(f"   Total: {len(short_visuals) + len(long_visuals)} images")
+print()

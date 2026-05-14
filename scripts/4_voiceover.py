@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 """
 Step 4: Voiceover Generation
-Generates voice narration for videos using multiple TTS engines
+Creates voice narration using the simplest method possible
 """
 
 import os
 import json
 import subprocess
-from pathlib import Path
 
 print("\n" + "="*60)
 print("🎙️ STEP 4: VOICEOVER GENERATION")
@@ -25,82 +24,7 @@ except:
     exit(1)
 
 # ================================================================
-# HELPER FUNCTION: Generate voice with fallbacks
-# ================================================================
-
-def generate_voice(text, output_path, scene_num, video_type):
-    """Generate voice with multiple TTS engine fallbacks"""
-    
-    print(f"      Scene {scene_num}: '{text[:50]}...'")
-    
-    # Try Method 1: Piper TTS (Best quality, local)
-    try:
-        print(f"         Trying Piper TTS...")
-        subprocess.run([
-            "piper",
-            "--model", "en_US-amy-medium",
-            "--output-file", output_path
-        ], input=text.encode(), timeout=60, check=True, capture_output=True)
-        
-        print(f"         ✅ Piper TTS success")
-        return True
-    
-    except Exception as e:
-        print(f"         Piper error: {e}")
-    
-    # Try Method 2: Edge TTS (Microsoft, high quality)
-    try:
-        print(f"         Trying Edge TTS...")
-        subprocess.run([
-            "edge-tts",
-            "--text", text,
-            "--voice", "en-US-AriaNeural",
-            "--write-media", output_path,
-            "--rate", "+0%"
-        ], timeout=60, check=True, capture_output=True)
-        
-        print(f"         ✅ Edge TTS success")
-        return True
-    
-    except Exception as e:
-        print(f"         Edge TTS error: {e}")
-    
-    # Try Method 3: gTTS (Google Text-to-Speech)
-    try:
-        print(f"         Trying gTTS...")
-        from gtts import gTTS
-        
-        tts = gTTS(text=text, lang='en', slow=False)
-        tts.save(output_path)
-        
-        print(f"         ✅ gTTS success")
-        return True
-    
-    except Exception as e:
-        print(f"         gTTS error: {e}")
-    
-    # Fallback: Create silent audio
-    try:
-        print(f"         Creating fallback silent audio...")
-        subprocess.run([
-            "ffmpeg", "-f", "lavfi",
-            "-i", "anullsrc=r=44100:cl=mono",
-            "-t", "5",
-            "-q:a", "9",
-            "-acodec", "libmp3lame",
-            output_path,
-            "-y"
-        ], timeout=30, capture_output=True)
-        
-        print(f"         ✅ Fallback audio created")
-        return True
-    
-    except Exception as e:
-        print(f"         Fallback error: {e}")
-        return False
-
-# ================================================================
-# CREATE SHORT VIDEO VOICEOVERS
+# CREATE SHORT VIDEO VOICEOVERS (using gTTS - simplest)
 # ================================================================
 
 print("\n📱 Creating SHORT video voiceovers...")
@@ -110,19 +34,44 @@ short_scenes = short_script.get("scenes", [])
 
 short_voiceovers = []
 
-for i, scene in enumerate(short_scenes):
-    narration = scene.get("description", f"Scene {i+1}")
-    output_path = f"output/voiceovers/short_{i+1}.wav"
+for i, scene in enumerate(short_scenes, 1):
+    narration = scene.get("description", f"Scene {i}")
+    output_path = f"output/voiceovers/short_{i}.mp3"
     
-    success = generate_voice(narration, output_path, i+1, "short")
+    print(f"   Scene {i}/{ len(short_scenes)}: Creating voice...")
     
-    if success and os.path.exists(output_path):
+    try:
+        # Try using gTTS (simplest, no external dependencies)
+        from gtts import gTTS
+        
+        tts = gTTS(text=narration, lang='en', slow=False)
+        tts.save(output_path)
+        
         short_voiceovers.append(output_path)
-        print(f"         ✅ Saved: {output_path}")
-    else:
-        print(f"         ❌ Voice generation failed")
+        print(f"      ✅ Saved: {output_path}")
+    
+    except ImportError:
+        print(f"      ⚠️ gTTS not available, creating fallback...")
+        
+        # Fallback: Create silent MP3
+        try:
+            subprocess.run([
+                "ffmpeg", "-f", "lavfi",
+                "-i", "anullsrc=r=44100:cl=mono",
+                "-t", "3",
+                "-q:a", "9",
+                "-acodec", "libmp3lame",
+                output_path,
+                "-y"
+            ], capture_output=True, timeout=15)
+            
+            short_voiceovers.append(output_path)
+            print(f"      ✅ Fallback saved: {output_path}")
+        
+        except Exception as e:
+            print(f"      ❌ Error: {e}")
 
-print(f"\n✅ SHORT voiceovers created: {len(short_voiceovers)}")
+print(f"\n✅ SHORT voiceovers: {len(short_voiceovers)}/{len(short_scenes)}")
 
 # ================================================================
 # CREATE LONG VIDEO VOICEOVERS
@@ -135,27 +84,52 @@ long_scenes = long_script.get("scenes", [])
 
 long_voiceovers = []
 
-for i, scene in enumerate(long_scenes):
-    narration = scene.get("description", f"Scene {i+1}")
-    output_path = f"output/voiceovers/long_{i+1}.wav"
+for i, scene in enumerate(long_scenes, 1):
+    narration = scene.get("description", f"Scene {i}")
+    output_path = f"output/voiceovers/long_{i}.mp3"
     
-    success = generate_voice(narration, output_path, i+1, "long")
+    print(f"   Scene {i}/{len(long_scenes)}: Creating voice...")
     
-    if success and os.path.exists(output_path):
+    try:
+        # Try using gTTS
+        from gtts import gTTS
+        
+        tts = gTTS(text=narration, lang='en', slow=False)
+        tts.save(output_path)
+        
         long_voiceovers.append(output_path)
-        print(f"         ✅ Saved: {output_path}")
-    else:
-        print(f"         ❌ Voice generation failed")
+        print(f"      ✅ Saved: {output_path}")
+    
+    except ImportError:
+        print(f"      ⚠️ gTTS not available, creating fallback...")
+        
+        # Fallback: Create silent MP3
+        try:
+            subprocess.run([
+                "ffmpeg", "-f", "lavfi",
+                "-i", "anullsrc=r=44100:cl=mono",
+                "-t", "3",
+                "-q:a", "9",
+                "-acodec", "libmp3lame",
+                output_path,
+                "-y"
+            ], capture_output=True, timeout=15)
+            
+            long_voiceovers.append(output_path)
+            print(f"      ✅ Fallback saved: {output_path}")
+        
+        except Exception as e:
+            print(f"      ❌ Error: {e}")
 
-print(f"\n✅ LONG voiceovers created: {len(long_voiceovers)}")
+print(f"\n✅ LONG voiceovers: {len(long_voiceovers)}/{len(long_scenes)}")
 
 # ================================================================
-# SAVE VOICEOVER MANIFEST
+# SAVE MANIFEST
 # ================================================================
 
-print("\n💾 Saving voiceover manifest...")
+print("\n💾 Saving manifest...")
 
-voiceover_manifest = {
+manifest = {
     "short_voiceovers": short_voiceovers,
     "long_voiceovers": long_voiceovers,
     "short_count": len(short_voiceovers),
@@ -163,9 +137,9 @@ voiceover_manifest = {
 }
 
 with open("output/voiceover_manifest.json", "w") as f:
-    json.dump(voiceover_manifest, f, indent=2)
+    json.dump(manifest, f, indent=2)
 
-print(f"   ✅ Saved: output/voiceover_manifest.json")
+print("   ✅ Saved: output/voiceover_manifest.json")
 
 # ================================================================
 # SUMMARY
@@ -176,20 +150,10 @@ print("✅ VOICEOVER GENERATION COMPLETE")
 print("="*60)
 
 print(f"""
-🎤 Voiceovers Created:
-
-SHORT VIDEO:
-   Scenes: {len(short_voiceovers)}/{len(short_scenes)}
-   Files: output/voiceovers/short_*.wav
-
-LONG VIDEO:
-   Scenes: {len(long_voiceovers)}/{len(long_scenes)}
-   Files: output/voiceovers/long_*.wav
-
-📁 Files Saved:
-   ✅ output/voiceover_manifest.json
-   ✅ output/voiceovers/short_*.wav
-   ✅ output/voiceovers/long_*.wav
+🎤 Summary:
+   SHORT: {len(short_voiceovers)} voiceovers
+   LONG: {len(long_voiceovers)} voiceovers
+   Total: {len(short_voiceovers) + len(long_voiceovers)} files
 """)
 
 print()

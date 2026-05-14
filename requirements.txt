@@ -8,13 +8,14 @@ Pillow>=10.0.0
 numpy>=1.24.0
 opencv-python>=4.8.0
 
-# Video/Audio processing
-moviepy>=1.0.3
+# Video/Audio processing (FIXED VERSIONS)
+moviepy==1.0.3
 pydub>=0.25.1
 ffmpeg-python==0.2.0
+imageio==2.31.3
+imageio-ffmpeg==0.4.9
 
-# Text-to-Speech (Voice Generation)
-piper-tts>=1.4.0
+# Text-to-Speech
 edge-tts>=6.0.0
 gTTS>=2.3.0
 

@@ -1,13 +1,13 @@
 {
-  "topic": "Mysterious Discovery Changes Everything",
+  "topic": "The Impossible Happened",
   "short": {
-    "title": "Shocking Discovery: Mysterious Discovery Changes Everything",
+    "title": "Shocking Discovery: The Impossible Happened",
     "hook": "Wait... you won't believe what just happened!",
     "scenes": [
       {
         "number": 1,
         "duration": "10s",
-        "description": "A mysterious discovery about Mysterious Discovery Changes Everything"
+        "description": "A mysterious discovery about The Impossible Happened"
       },
       {
         "number": 2,
@@ -28,8 +28,8 @@
     "ending": "Subscribe for more shocking discoveries!"
   },
   "long": {
-    "title": "The Complete Story: Mysterious Discovery Changes Everything",
-    "description": "A complete narrative journey about Mysterious Discovery Changes Everything",
+    "title": "The Complete Story: The Impossible Happened",
+    "description": "A complete narrative journey about The Impossible Happened",
     "scenes": [
       {
         "number": 1,
@@ -74,5 +74,5 @@
     ],
     "ending": "Remember to subscribe and like!"
   },
-  "generated_at": "Sat Jun 13 06:16:43 UTC 2026"
+  "generated_at": "Sun Jun 14 06:40:37 UTC 2026"
 }

@@ -1,13 +1,13 @@
 {
-  "topic": "Shocking Secret Revealed",
+  "topic": "The Truth Nobody Knows About",
   "short": {
-    "title": "Shocking Discovery: Shocking Secret Revealed",
+    "title": "Shocking Discovery: The Truth Nobody Knows About",
     "hook": "Wait... you won't believe what just happened!",
     "scenes": [
       {
         "number": 1,
         "duration": "10s",
-        "description": "A mysterious discovery about Shocking Secret Revealed"
+        "description": "A mysterious discovery about The Truth Nobody Knows About"
       },
       {
         "number": 2,
@@ -28,8 +28,8 @@
     "ending": "Subscribe for more shocking discoveries!"
   },
   "long": {
-    "title": "The Complete Story: Shocking Secret Revealed",
-    "description": "A complete narrative journey about Shocking Secret Revealed",
+    "title": "The Complete Story: The Truth Nobody Knows About",
+    "description": "A complete narrative journey about The Truth Nobody Knows About",
     "scenes": [
       {
         "number": 1,
@@ -74,5 +74,5 @@
     ],
     "ending": "Remember to subscribe and like!"
   },
-  "generated_at": "Thu Jul  2 05:59:40 UTC 2026"
+  "generated_at": "Fri Jul  3 05:53:20 UTC 2026"
 }

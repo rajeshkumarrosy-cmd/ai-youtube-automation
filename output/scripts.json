@@ -1,13 +1,13 @@
 {
-  "topic": "The Truth Nobody Knows About",
+  "topic": "Unbelievable Moment Caught On Camera",
   "short": {
-    "title": "Shocking Discovery: The Truth Nobody Knows About",
+    "title": "Shocking Discovery: Unbelievable Moment Caught On Camera",
     "hook": "Wait... you won't believe what just happened!",
     "scenes": [
       {
         "number": 1,
         "duration": "10s",
-        "description": "A mysterious discovery about The Truth Nobody Knows About"
+        "description": "A mysterious discovery about Unbelievable Moment Caught On Camera"
       },
       {
         "number": 2,
@@ -28,8 +28,8 @@
     "ending": "Subscribe for more shocking discoveries!"
   },
   "long": {
-    "title": "The Complete Story: The Truth Nobody Knows About",
-    "description": "A complete narrative journey about The Truth Nobody Knows About",
+    "title": "The Complete Story: Unbelievable Moment Caught On Camera",
+    "description": "A complete narrative journey about Unbelievable Moment Caught On Camera",
     "scenes": [
       {
         "number": 1,
@@ -74,5 +74,5 @@
     ],
     "ending": "Remember to subscribe and like!"
   },
-  "generated_at": "Sat Jul 11 05:13:36 UTC 2026"
+  "generated_at": "Sun Jul 12 05:28:10 UTC 2026"
 }

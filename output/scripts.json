@@ -1,13 +1,13 @@
 {
-  "topic": "AI Becomes Conscious",
+  "topic": "Mysterious Discovery Changes Everything",
   "short": {
-    "title": "Shocking Discovery: AI Becomes Conscious",
+    "title": "Shocking Discovery: Mysterious Discovery Changes Everything",
     "hook": "Wait... you won't believe what just happened!",
     "scenes": [
       {
         "number": 1,
         "duration": "10s",
-        "description": "A mysterious discovery about AI Becomes Conscious"
+        "description": "A mysterious discovery about Mysterious Discovery Changes Everything"
       },
       {
         "number": 2,
@@ -28,8 +28,8 @@
     "ending": "Subscribe for more shocking discoveries!"
   },
   "long": {
-    "title": "The Complete Story: AI Becomes Conscious",
-    "description": "A complete narrative journey about AI Becomes Conscious",
+    "title": "The Complete Story: Mysterious Discovery Changes Everything",
+    "description": "A complete narrative journey about Mysterious Discovery Changes Everything",
     "scenes": [
       {
         "number": 1,
@@ -74,5 +74,5 @@
     ],
     "ending": "Remember to subscribe and like!"
   },
-  "generated_at": "Tue Jul 21 05:20:40 UTC 2026"
+  "generated_at": "Wed Jul 22 05:19:31 UTC 2026"
 }

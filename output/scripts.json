@@ -1,13 +1,13 @@
 {
-  "topic": "The Truth Nobody Knows About",
+  "topic": "A Boy Finds Out His Best Friend Is An AI",
   "short": {
-    "title": "Shocking Discovery: The Truth Nobody Knows About",
+    "title": "Shocking Discovery: A Boy Finds Out His Best Friend Is An AI",
     "hook": "Wait... you won't believe what just happened!",
     "scenes": [
       {
         "number": 1,
         "duration": "10s",
-        "description": "A mysterious discovery about The Truth Nobody Knows About"
+        "description": "A mysterious discovery about A Boy Finds Out His Best Friend Is An AI"
       },
       {
         "number": 2,
@@ -28,8 +28,8 @@
     "ending": "Subscribe for more shocking discoveries!"
   },
   "long": {
-    "title": "The Complete Story: The Truth Nobody Knows About",
-    "description": "A complete narrative journey about The Truth Nobody Knows About",
+    "title": "The Complete Story: A Boy Finds Out His Best Friend Is An AI",
+    "description": "A complete narrative journey about A Boy Finds Out His Best Friend Is An AI",
     "scenes": [
       {
         "number": 1,
@@ -74,5 +74,5 @@
     ],
     "ending": "Remember to subscribe and like!"
   },
-  "generated_at": "Mon Aug 31 08:08:50 UTC 2026"
+  "generated_at": "Tue Sep  1 07:18:20 UTC 2026"
 }
